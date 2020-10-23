@@ -6,17 +6,17 @@
 		private $Utilisateur_ID;
 		private $Profil_ID;
 		private $UtilisateurName;
-		private $UtilisateurNickName;
+		private $UtilisateurPrenom;
 		private $UtilisateurMDP;
 		private $UtilisateurEmail;
 
 		function __Construct($Utilisateur_ID,$Profil_ID,$UtilisateurName,
-							$UtilisateurNickName,$UtilisateurMDP,$UtilisateurEmail)
+							$UtilisateurPrenom,$UtilisateurMDP,$UtilisateurEmail)
 		{
 			$this->Utilisateur_ID 	     = $Utilisateur_ID;
 			$this->Profil_ID 	     	 = $Profil_ID;
 			$this->UtilisateurName	     = $UtilisateurName;
-			$this->UtilisateurNickName   = $UtilisateurNickName;
+			$this->UtilisateurPrenom   = $UtilisateurPrenom;
 			$this->UtilisateurMDP		 = $UtilisateurMDP;
 			$this->UtilisateurEmail	     = $UtilisateurEmail;
 		}
@@ -41,11 +41,11 @@
 		function setUtilisateurName($UtilisateurName){
 			 $this->UtilisateurName = $UtilisateurName;
 		}
-		function getUtilisateurNickName(){
-			return $this->UtilisateurNickName;
+		function getUtilisateurPrenom(){
+			return $this->UtilisateurPrenom;
 		}
-		function setUtilisateurNickName($UtilisateurNickName){
-			 $this->UtilisateurNickName = $UtilisateurNickName;
+		function setUtilisateurPrenom($UtilisateurPrenom){
+			 $this->UtilisateurPrenom = $UtilisateurPrenom;
 		}
 		function getUtilisateurMDP(){
 			return $this->UtilisateurMDP;

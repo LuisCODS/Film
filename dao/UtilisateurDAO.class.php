@@ -19,7 +19,7 @@ include'../includes/Connection.class.php';
 					$sql = 'insert into utilisateur 
 							(Profil_ID,
 							 UtilisateurName,
-							 UtilisateurNickName,
+							 UtilisateurPrenom,
 							 UtilisateurMDP,
 							 UtilisateurEmail)
 							 values(?,?,?,?,?)';
@@ -28,7 +28,7 @@ include'../includes/Connection.class.php';
 
 					$stmt->bindValue(1, $user->getProfilID() );
 					$stmt->bindValue(2, $user->getUtilisateurName() );
-					$stmt->bindValue(3, $user->getUtilisateurNickName() );
+					$stmt->bindValue(3, $user->getUtilisateurPrenom() );
 					$stmt->bindValue(4, $user->getUtilisateurMDP() );
 					$stmt->bindValue(5, $user->getUtilisateurEmail() );
 
@@ -45,7 +45,7 @@ include'../includes/Connection.class.php';
 				   $sql =  'update utilisateur set
 							Profil_ID = ?,
 							UtilisateurName = ?,
-							UtilisateurNickName = ?,
+							UtilisateurPrenom = ?,
 							UtilisateurMDP = ?,
 							UtilisateurEmail = ?							
 							where Utilisateur_ID = ?';
@@ -54,7 +54,7 @@ include'../includes/Connection.class.php';
 
 					$stmt->bindValue(1, $user->getProfilID() );
 					$stmt->bindValue(2, $user->getUtilisateurName() );
-					$stmt->bindValue(3, $user->getUtilisateurNickName());
+					$stmt->bindValue(3, $user->getUtilisateurPrenom());
 					$stmt->bindValue(4, $user->getUtilisateurMDP());
 					$stmt->bindValue(5, $user->getUtilisateurEmail());
 					$stmt->bindValue(6, $user->getUtilisateurID() );
@@ -86,7 +86,7 @@ include'../includes/Connection.class.php';
 					Utilisateur_ID, 
 					Profil_ID,
 					UtilisateurName, 
-					UtilisateurNickName,
+					UtilisateurPrenom,
 					UtilisateurMDP,	
 					UtilisateurEmail			
 				    from utilisateur

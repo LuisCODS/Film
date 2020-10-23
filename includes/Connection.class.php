@@ -6,7 +6,7 @@
 		function getConnection()
 		{
 			try	{
-				  $this->cn = new PDO('mysql:host=localhost;dbname=blogphp','root','');
+				  $this->cn = new PDO('mysql:host=localhost;dbname=bd_film','root','');
 				  $this->cn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 			} 
 			catch(PDOException $e){
