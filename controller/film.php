@@ -1,6 +1,7 @@
 <?php
  // --------------------------------------------------------------
- // CONTROLLEUR - film  
+ // 				CONTROLLEUR - film  
+//  Recebe os dados  enviado pelo moduloScript.js
  //--------------------------------------------------------------- 
 	include '../model/Film.class.php';
 	include '../dao/FilmDAO.class.php';
@@ -57,9 +58,9 @@
 		// 		echo $filmDAO->delete($PK_ID_Film);//Si ok return 1
 		// 	break;
 
-		// case 'getUtilisateur':
-		// 	echo $filmDAO->getfilm($txtInput);//Si ok return 1
-		// 	break;
+		case 'getFilm':
+			echo $filmDAO->getFilm();//Si ok return 1
+			break;
 			
 		// default:
 		// 	echo "Aucun action trouvée";

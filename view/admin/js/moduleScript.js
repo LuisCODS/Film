@@ -1,52 +1,131 @@
-//========================================================================
-//CLASSE RESPONSABLE POUR L'ÉCOUTE DES ÉVÉNEMENTS DU MODULE.
-//========================================================================
-
-
-
-//Url to be send
-var userController = '../../controller/login.php';
-
-
-//var_dump(#champs);	
-//console.log(champs);
+//  PORTÉE GLOBAL 
+var filmController ='../../controller/film.php';
+var strRecherchee = "";
 
 
 //========================================================================
 // Things that should be done every time a page loads
 //========================================================================
 $(()=>{
-	validerFormInputs();//(moduleFunction.js)
+	//alert("Teste");
+	 lister(strRecherchee); //(moduleFunction.js)
+	// validerFormInputs();//(moduleFunction.js)
 });
 
+//========================================================================
+//  ZONE DE RECHERCHE: declenchée dès qu'il y a une entrée par l'user.
+//========================================================================
+$('#txtInput').keyup(()=> {
+	//Get textBox value by ID.
+	strRecherchee = $('#txtInput').val();
+	// alert(strRecherchee); //To test
+	lister(strRecherchee);
+});
 
-//GET ACTION  FRON BUTTON LOGIN
-$('#btnLogin').click(()=>{
+//========================================================================
+// BOUTON (+) : Open a window to add a new Profil member.
+//========================================================================
+$('#btnPlus').click(()=>    
+{
+	//Open the modal windows
+	$('.ModalCadastro').modal("show");	
 
-	if (validerEntreeVide()) 
+	//Cache le boutton Supprimer du modal
+	//on javascript sintax:  document.getElementById("btnSupprimer").hidden = true;
+	$("#btnSupprimer").css("display", "none");
+	//Set title h5 au modal
+	$("#ModalTitle").html("Nouveau Film");
+
+	//Clean input  filds
+	$("#PK_ID_Film").val("");
+	$("#titre").val("");
+});
+
+//========================================================================
+// Cette fonction est declenchée dès que le button btnAjouter
+// du modal est appuyé.
+// ========================================================================
+$('#btnAjouter').click(()=>    
+{		
+	//alert("Teste");
+	// Si true
+	if( validerEntreeVide() )
 	{
-		//get textbox value
-		//console.log( $("#UtilisateurMDP").val());
+		//console.log(validerEntreeVide()); //to test
+		//get all form inputs  
+		var champs   = $("#formAjouter").serialize();
+		//Get ID from film
+		var PK_ID_Film = $("#PK_ID_Film").val();	
+		//Si le champ est vide, action = insert, sinon action = update
+		var actionType = (PK_ID_Film=="") ?'action=insert' : 'action=update';
+		//console.log(actionType); //to test!
 
-			//Serialize all form fields
-		var champs = $("#formLogin").serialize();
-		//Set controlleur action
-		var action = 'action=getUtilisateur';	
+		// REQUISITION asynchrone 
+		$.ajax({
+			method: "POST", 
+			url:filmController,
+			data: actionType+'&'+champs
+			//CALLBACK: Si l'insertion ou update a été fait, msg = 1
+			}).done((msg)=>	{
+			var reponse = (msg == 1) ? "Enregistré avec sucess!" : msg;
+			//console.log(msg); to test
 
-	 	$.ajax({
-			method: 'POST',
-			url: userController,
-			data: action+'&'+champs		
-		}).done((jsonData)=>{	
-			//data contien un Json;
-			console.log(jsonData);
-		 	$.ajax({
-				method: 'POST',
-				url: '../login/validLogin.php',
-				data: 	"obj="+jsonData+'&'+champs		
-			})
+			//Windos showup	
+			$.confirm({
+				title: 'Enregistré avec sucess!',
+				content: reponse,
+				buttons: {
+					Ok: ()=>{					
+						 $('#ModalCadastro').modal('toggle');//close modal
+				  //        // Recharge la page actuelle à partir du 
+				  //        //... serveur, sans utiliser le cache.		
+						// location.reload(true);
+						// // lister(strRecherchee);						 
+					}				
+				}
+			});		   
 		});
 	}
-});
+	//else{ console.log(validerEntreeVide()); //to test	}	
+ });
+	
+
+
+
+ 
+
+//========================================================================
+//   Cette fonction est declenchée dès que le button btnSupprimer
+//   ...( from ajouter.php) du modal est appuyé.
+//========================================================================
+$('#btnSupprimer').click(()=>    
+{	
+	//get all inputs from form (Profil_ID et ProfilNom )
+	var champs   = $("#formAjouter").serialize();
+	var actionType = 'action=delete';
+
+	// REQUISITION asynchrone 
+	$.ajax({
+		method: "POST", 
+		url:filmController,
+		data: actionType+'&'+champs
+		
+		}).done((callBack)=>
+		{
+			var reponse = (callBack == 1) ? "Supprimé avec sucess!" : callBack;
+			//Windos popup du plugin	
+			$.confirm({
+				title: 'Attention!',
+				content: reponse,
+				buttons: {
+					Ok: ()=>{
+				         // Recharge la page actuelle à partir du 
+				         //... serveur, sans utiliser le cache.
+						 location.reload(true);
+					}				
+				}
+			});
+		});
+}); 
 
 

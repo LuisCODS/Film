@@ -11,7 +11,7 @@
 <div class="row">
         <div class="col-md-12">
             <h1>Liste des membres <i class="fas fa-users"></i></h1>
-            </div>
+        </div>
         <div class="col-md-12">
             <table class="table table-hover ">
                 <thead class="thead-dark">
