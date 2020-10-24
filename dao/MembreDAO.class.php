@@ -5,7 +5,9 @@ DAO (Data acce objet): classes responsables de la création du CRUD
 et de la persistance des données dans la base de données; 
 */
 
-require_once '../includes/Connection.class.php';
+include '../includes/Connection.class.php';
+//require_once("../includes/Connection.class.php");
+
 
 Class MembreDAO 
 {
@@ -114,9 +116,9 @@ Class MembreDAO
 			$sql = "select PK_ID_Membre, nom, courriel  from Membre";			
 			$stmt = $this->cn->prepare($sql);
 			$stmt->execute();
-			$rs = $stmt->fetchall(PDO::FETCH_ASSOC); 
+			// $rs = $stmt->fetchall(PDO::FETCH_ASSOC); 
 			// traite comme objt 
-			// $rs = $stmt->fetchall(PDO::FETCH_OBJ); 	
+			$rs = $stmt->fetchall(PDO::FETCH_OBJ); 	
 			return $rs;
 
 		} catch (PDOException $e) {

@@ -5,7 +5,7 @@ DAO (Data acce objet): classes responsables de la création du CRUD
 et de la persistance des données dans la base de données; 
 */
 
-require_once '../includes/Connection.class.php';
+include '../includes/Connection.class.php';
 
 Class FilmDAO 
 {
@@ -90,6 +90,19 @@ Class FilmDAO
 		}
 	}
 
+	function getFilm()
+	{
+        // $sql = 'select PK_ID_Film,titre,prix,realisateur,categorie,pochette,description from Film';
+		$sql = 'select * from Film';					
+		$stmt = $this->cn->prepare($sql);
+		$stmt->execute();
+		$rs = $stmt->fetchall(PDO::FETCH_ASSOC); 
+		// traiter comme objt  $rs = $stmt->fetchall(PDO::FETCH_OBJ); 
+
+		return $rs;
+	}
+
+	
 	// Method that returns a list of Membree in ccategoriecent order.
 	//Retour: tableau en format json.
 	// function getMembre($txtInput)
@@ -104,18 +117,6 @@ Class FilmDAO
 	// 	//Retourn un array en json,car HTML(browser) only ready string.
 	// 	 return json_encode($tableau);
 	// }
-
-	function getFilm()
-	{
-        // $sql = 'select PK_ID_Film,titre,prix,realisateur,categorie,pochette,description from Film';
-		$sql = 'select * from Film';					
-		$stmt = $this->cn->prepare($sql);
-		$stmt->execute();
-		$rs = $stmt->fetchall(PDO::FETCH_ASSOC); 
-		// traiter comme objt  $rs = $stmt->fetchall(PDO::FETCH_OBJ); 
-
-		return $rs;
-	}
 
 }
 

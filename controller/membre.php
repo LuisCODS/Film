@@ -2,22 +2,17 @@
  // --------------------------------------------------------------
  // CONTROLLEUR - MEMBRE  
  //--------------------------------------------------------------- 
- require_once '../model/Membre.class.php';
- require_once '../dao/MembreDAO.class.php';
+ include '../model/Membre.class.php';
+ include '../dao/MembreDAO.class.php';
 
-	/* 	
-	Extrait tous les données envoyés par moduleScript.js. 
-	Desormais touts les chams du formulaires sont acessibles directement par leur noms.
-	Ce qui permet de creer les parametre qui sont fournit au constructeur d'un nouveau membre 
-	*/
+
 	extract($_POST);
-	// echo $_POST["action"];
-	$action = $action;//get hiddin input from form
-	
+	// echo $_POST["action"];//get hiddin input from form
+
 	//CRUD
 	$membreDAO = new MembreDAO();
 
-	switch ($action) 
+	switch ($action) //get hiddin input from form
 	{
 		case 'insert':
 			$membre = new Membre(null,$nom,$prenom,$profil,$courriel,$tel_membre,$MDP_membre);	

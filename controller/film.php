@@ -9,44 +9,37 @@
 	$filmDAO = new FilmDAO();
 	//Get all form's inputs
 	extract($_POST);	
-	//Destination de la pochette au serveur
-	$dossier="../../img";
-	//Serveur root main
-	//$dossier = $_SERVER['DOCUMENT_ROOT'] . "\\FilmPHP__MVC_GIT\\img\\";
+	//Serveur location
+	$location="../img/";
 
-	//Create a tolk key unique(new name de la pochette a upload concatenée avec le titre du film
+	//Create a tolk key unique(new name)
 	$nomPochette=sha1($titre.time());
 	//Default image si pas de img fournit
 	$pochette="avatar.jpg";
 	//print_r($_POST);
 
-
-	// gestion - Upload de la photo
-
 	//Si une image a été envoyéé
 	if($_FILES['pochette']['tmp_name']!=="")
 	{
-		
 		//Get real name file from server side
-		$tmp = $_FILES['pochette']['tmp_name'];
+		$filename = $_FILES['pochette']['tmp_name'];
 		//Get name file from user side
 		$fichier= $_FILES['pochette']['name'];
 		// Get file extension 
 		$extension=strrchr($fichier,'.');
-		//deplace le dossier temp au dossier physique du serveur 
-		@move_uploaded_file($tmp,$dossier.$nomPochette.$extension);//le @ enleve les msn d'erreur cote client
+		//Move file to a new location
+		@move_uploaded_file($filename,$location.$nomPochette.$extension);//le @ enleve les msn d'erreur cote client
 		//effacer le fichier temporaire
-		@unlink($tmp); 
+		@unlink($filename); 
 		$pochette=$nomPochette.$extension;//Attache le nom  generé coté serveur avec l'extention obtenu cote client
 	}
 
  	 //echo $_POST["insert"];
 	//to test! var_dumping  print_r($data);
- 	 $action = $_POST["action"];
+ 	// $action = $_POST["action"];
  	 //print_r($action);//to test
-
 	
-	switch ($action) 
+	switch ($action) //get hiddin input from form
 	{
 		case 'insert':
 			$film = new Film(null,$titre,$prix,$realisateur,$categorie,$pochette,$description);	

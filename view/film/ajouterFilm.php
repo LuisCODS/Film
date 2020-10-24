@@ -8,8 +8,9 @@
               onSubmit="return valider();">
           <!-- FORNECE O TIPO DE ACAO AO CONTROLLER -->
           <div class="form-group">
-                <input type="hidden" class="form-control" id="action" 
-                name="action" value="insert" >
+                <input type="hidden" class="form-control" 
+                 readonly="true" id="action" 
+                 name="action" value="insert" >
           </div>
           <div class="form-group">
               <label for="PK_ID_Film"></label>
