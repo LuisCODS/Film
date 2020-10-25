@@ -15,7 +15,7 @@ Class FilmDAO
 		$pdo = new Connection();
 		$this->cn = $pdo->getConnection();
 	}
-// ______________________________ CDRUD ___________________________
+ // ______________________________ CDRUD ___________________________
 
 	function insert(Film $f)
 	{		
@@ -92,14 +92,12 @@ Class FilmDAO
 
 	function getFilm()
 	{
-        // $sql = 'select PK_ID_Film,titre,prix,realisateur,categorie,pochette,description from Film';
-		$sql = 'select * from Film';					
+        $sql = 'select PK_ID_Film,titre,prix,realisateur,categorie,pochette,description from Film';
 		$stmt = $this->cn->prepare($sql);
 		$stmt->execute();
 		$rs = $stmt->fetchall(PDO::FETCH_ASSOC); 
 		// traiter comme objt  $rs = $stmt->fetchall(PDO::FETCH_OBJ); 
-
-		return $rs;
+		return json_encode($rs);
 	}
 
 	

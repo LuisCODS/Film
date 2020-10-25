@@ -1,9 +1,8 @@
-<!-- _______________    MODAL-AJOUTER   _________________-->
+<!-- _______________  BEGIN INCLUDE MODAL-AJOUTER   _________________-->
 <div class="modal fade ModalCadastro" tabindex="-1" role="dialog" 
      aria-labelledby="myLargeModalLabel" aria-hidden="true" id='ModalCadastro'>
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">  
-
        <!--  MODAL HEAD -->
         <div class="modal-header">
             <h5 class="modal-title" id="ModalTitle"></h5>
@@ -18,27 +17,33 @@
         </div>
 
         <!--  MODAL BODY -->
-        <div class="modal-body">
+        <div class="modal-body">            
            <form id="formAjouter">
-
                 <input type="hidden" id="PK_ID_Film" name="PK_ID_Film" readonly="true" >
-                <div class="form-group">
 
-                   <!--  SHOW WHEN INPUT IS EMPTY  -->
-                    <div class="invalid-feedback">
-                        Champs obligatoire!
-                   </div> 
-
-                  <div class="form-group">
-                      <label for="titre">Titre</label>
-                      <input type="text" minlength="1" maxlength="50" class="form-control estVide" id="titre" name="titre"
-                       placeholder="" onkeypress="isItEmpty(this)" size="40" >
-                  </div>
-
-                  <div class="form-group">
-                      <label for="prix">Prix</label>
-                      <input type="text" onkeypress="isItEmpty(this)" class="form-control estVide" id="prix" name="prix" placeholder="" size="40">
-                  </div>
+                    <div class="form-group">
+                        <label for="titre">Titre</label>
+                         <input type="text" minlength="1" maxlength="50" 
+                                class="form-control estVide" id="titre" name="titre" 
+                                onkeypress="isItEmpty(this)"
+                                required> 
+                               <!--  SHOW WHEN INPUT IS EMPTY  -->
+                                <div class="invalid-feedback">
+                                    Champs obligatoire!
+                               </div>                 
+                    </div>
+ 
+                    <div class="form-group">
+                        <label for="prix">Prix</label>
+                         <input type="text" minlength="1" maxlength="50" 
+                                class="form-control estVide" id="prix" name="prix" 
+                                onkeypress="isItEmpty(this)"
+                                required> 
+                               <!--  SHOW WHEN INPUT IS EMPTY  -->
+                                <div class="invalid-feedback">
+                                    Champs obligatoire!
+                               </div>                 
+                    </div>
 
                   <div class="form-group">
                       <label for="categorie">Categorie</label>
@@ -52,22 +57,44 @@
                       </select>
                   </div>
 
-                  <div class="form-group">
-                      <label for=realisateur"">Realisateur</label>
-                      <input type="text" onkeypress="isItEmpty(this)"  class="form-control estVide" id="realisateur" name="realisateur" placeholder="">
-                  </div>
+                    <div class="form-group">
+                        <label for="realisateur">Realisateur</label>
+                         <input type="text" minlength="1" maxlength="50" 
+                                class="form-control estVide" id="realisateur" name="realisateur" 
+                                onkeypress="isItEmpty(this)"
+                                required> 
+                               <!--  SHOW WHEN INPUT IS EMPTY  -->
+                                <div class="invalid-feedback">
+                                    Champs obligatoire!
+                               </div>                 
+                    </div>
 
-                  <div class="form-group">
-                      <label for=description"">Description</label>
-                      <textarea type="textarea" onkeypress="isItEmpty(this)"   class="form-control estVide" id="description" name="description" ></textarea>
-                  </div>
 
-                  <div class="form-group" >                        
-                      <label for="pochette">Pochette</label>
-                      <input type="file" onkeypress="isItEmpty(this)"  class="form-control estVide" id="pochette" name="pochette" >
-                </div>      
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                         <input type="text" minlength="1" maxlength="50" 
+                                class="form-control estVide" id="description" name="description" 
+                                onkeypress="isItEmpty(this)"
+                                required> 
+                               <!--  SHOW WHEN INPUT IS EMPTY  -->
+                                <div class="invalid-feedback">
+                                    Champs obligatoire!
+                               </div>                 
+                    </div>
 
-                </div>
+  
+                      <div class="form-group">
+                        <label for="pochette">Pochette</label>
+                         <input type="file"  
+                                class="form-control estVide" id="pochette" name="pochette" 
+                                onkeypress="isItEmpty(this)"
+                                required> 
+                               <!--  SHOW WHEN INPUT IS EMPTY  -->
+                                <div class="invalid-feedback">
+                                    Champs obligatoire!
+                               </div>                 
+                        </div>
+
             </form>            
         </div>
 

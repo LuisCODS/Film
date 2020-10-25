@@ -1,6 +1,3 @@
-<!-- ========================================================================
- Classe que utilise l'API (PDO): pour communiquer avec la bd.
-======================================================================== -->
 <?php
 	Class Connection
 	{
@@ -20,34 +17,4 @@
 			return $this->cn;
 		}		
 	}
-
-	// TEST CONNECTION : http://localhost/PROJETS/Film_2020_Git/includes/connection.class.php
-// 	try	{
-// 		$pdo = new Connection();
-// 		$cn = $pdo->getConnection();
-
-// 		$requette = $cn->prepare('select * from membre');
-// 		$requette ->execute();
-
-// 		$resultat = $requette->fetchall(PDO:: FETCH_ASSOC);
-// 		foreach($resultat as $row)
-// 		{
-// 			echo $row["nom"];
-// 		}
-//   } 
-//   catch(PDOException $e){
-// 	  echo 'Probleme de connexion au serveur de bd '.$e;
-//   }		
-
-
-
-
-
-
-
-
-
-
-
-
 ?>

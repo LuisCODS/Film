@@ -9,21 +9,13 @@ var strRecherchee = "";
 $(()=>{
 	//alert("Teste");
 	 lister(strRecherchee); //(moduleFunction.js)
-	// validerFormInputs();//(moduleFunction.js)
+	 validerFormInputs();//(moduleFunction.js)
 });
 
-//========================================================================
-//  ZONE DE RECHERCHE: declenchée dès qu'il y a une entrée par l'user.
-//========================================================================
-$('#txtInput').keyup(()=> {
-	//Get textBox value by ID.
-	strRecherchee = $('#txtInput').val();
-	// alert(strRecherchee); //To test
-	lister(strRecherchee);
-});
+
 
 //========================================================================
-// BOUTON (+) : Open a window to add a new Profil member.
+// BOUTON (+) : Open a window to add a new Film.
 //========================================================================
 $('#btnPlus').click(()=>    
 {
@@ -39,16 +31,21 @@ $('#btnPlus').click(()=>
 	//Clean input  filds
 	$("#PK_ID_Film").val("");
 	$("#titre").val("");
+	$("#prix").val("");
+	$("#realisateur").val("");
+	$("#description").val("");
+	$("#pochette").val("");
 });
 
 //========================================================================
+// ROLE: Recupere tous les donnes du form et envois au controlleur.
 // Cette fonction est declenchée dès que le button btnAjouter
 // du modal est appuyé.
 // ========================================================================
 $('#btnAjouter').click(()=>    
 {		
 	//alert("Teste");
-	// Si true
+	// Si le form est bien rempli
 	if( validerEntreeVide() )
 	{
 		//console.log(validerEntreeVide()); //to test
@@ -56,7 +53,7 @@ $('#btnAjouter').click(()=>
 		var champs   = $("#formAjouter").serialize();
 		//Get ID from film
 		var PK_ID_Film = $("#PK_ID_Film").val();	
-		//Si le champ est vide, action = insert, sinon action = update
+		//Si pas de film action = insert, sinon action = update
 		var actionType = (PK_ID_Film=="") ?'action=insert' : 'action=update';
 		//console.log(actionType); //to test!
 
@@ -67,6 +64,7 @@ $('#btnAjouter').click(()=>
 			data: actionType+'&'+champs
 			//CALLBACK: Si l'insertion ou update a été fait, msg = 1
 			}).done((msg)=>	{
+			//si le film a été inseré msn = 1, sinon affiche l'erreur
 			var reponse = (msg == 1) ? "Enregistré avec sucess!" : msg;
 			//console.log(msg); to test
 
@@ -94,38 +92,5 @@ $('#btnAjouter').click(()=>
 
  
 
-//========================================================================
-//   Cette fonction est declenchée dès que le button btnSupprimer
-//   ...( from ajouter.php) du modal est appuyé.
-//========================================================================
-$('#btnSupprimer').click(()=>    
-{	
-	//get all inputs from form (Profil_ID et ProfilNom )
-	var champs   = $("#formAjouter").serialize();
-	var actionType = 'action=delete';
-
-	// REQUISITION asynchrone 
-	$.ajax({
-		method: "POST", 
-		url:filmController,
-		data: actionType+'&'+champs
-		
-		}).done((callBack)=>
-		{
-			var reponse = (callBack == 1) ? "Supprimé avec sucess!" : callBack;
-			//Windos popup du plugin	
-			$.confirm({
-				title: 'Attention!',
-				content: reponse,
-				buttons: {
-					Ok: ()=>{
-				         // Recharge la page actuelle à partir du 
-				         //... serveur, sans utiliser le cache.
-						 location.reload(true);
-					}				
-				}
-			});
-		});
-}); 
 
 

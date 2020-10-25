@@ -14,7 +14,7 @@
         <div class="col-md-3">
                <input type="text" 
                       id="txtInput" 
-                      name="" 
+                      name="txtInput" 
                       value="" 
                       class="form-control" 
                       placeholder="# ID du film"> 
@@ -32,8 +32,10 @@
 
     <!--  RENDER PAGE --> 
     <div class="row">
-        <div class="col-md-12" id="listTemplate">
+        <div  id="listTemplate" class="col-md-12">
+
            <!-- CHARGE LE TEMPLATE ICI !-->
+           
         </div>
     </div>
 

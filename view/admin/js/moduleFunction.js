@@ -4,23 +4,27 @@
 
 
 
-// Methode qui retourn 2 champs(proprieté) du Profil.
+//========================================================================
+// Retourne les films
+//========================================================================
 function lister()
 {
-	//Set la valeur à recuperer par(extract($_POST);) au controlleur(profil.php).
+	//Set la valeur à recuperer par(extract($_POST);) au controlleur
 	var actionType = 'action=getFilm';
 	//La valeur contenant dans txtInput sera recuperée  
 	//...par (extract($_POST);) dans le controlleur (profil.php).
-	var champs  = "txtInput="+txtInput;
+	//var champs  = "txtInput="+txtInput;
 
 	//REQUISITION asynchrone 
 	$.ajax({
 		method:'POST', 
 		url: filmController,
-		data: actionType+'&'+champs
-		//CALLBACK: un array de profil en format json.
-	}).done((jsonData)=>{			
-		//  REQUISITION asynchrone
+		data: actionType
+		//CALLBACK: un array en format json.
+	}).done((jsonData)=>{		
+
+		//alert(jsonData);
+
 		$.ajax({
 			method:'POST', 
 			url: 'template/table-film.php',
@@ -29,7 +33,7 @@ function lister()
 		//CALLBACK: tout le contenu du fichier table-profil.php	
 		}).done((template)=>{
 			//Charge le template, provenant du callback, dans la div 
-			//... listTemplate avec son id,  dans (index.php) du profil.
+			//... listTemplate avec son id,  dans (index.php) du module.
 			$("#listTemplate").html(template);
 			// declenche dès que le button btnEditer(table-profil.php) est appuyé
 			//...ele é pego pela class.
@@ -64,7 +68,7 @@ function validerEntreeVide()
 	//pour chaque INPUT qui a la class "estVide"
 	$(".estVide").each(function()
 	{
-		//If input isen't clean
+		//Si le champ n'est pas vide
 		if ($(this).val() != "" ){
 	    	reponse = true;
 		}else{
