@@ -1,5 +1,5 @@
 <!-- _______________  BEGIN INCLUDE MODAL-AJOUTER   _________________-->
-<div class="modal fade ModalCadastro" tabindex="-1" role="dialog" 
+<div class="modal fade modal_DevenirMembre" tabindex="-1" role="dialog" 
      aria-labelledby="myLargeModalLabel" aria-hidden="true" id='ModalCadastro'>
     <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">  

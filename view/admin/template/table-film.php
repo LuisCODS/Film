@@ -1,7 +1,7 @@
 <!--
  ____________________________________________________________________
   CETTE PAGE EST UN TEMPLATE QUI EST ATTACHÉE À LA PAGE admin/listerFilm.php
-  RECOIT LA  REQUISITION ASSINCRONE AJAX (moduleScript.js) 
+  ELLE RECOIT LA  REQUISITION ASSINCRONE AJAX (moduleScript.js) 
  ... POUR AFFICHER UNE LIST DE FILM .
  ____________________________________________________________________
  -->
@@ -34,7 +34,8 @@
                 <th>
                 <div id="sizeDivImage" >
                     <a href="/w3images/nature.jpg" target="_blank">
-                        <img class="img-thumbnail" src="../../img/avatar.jpg" width=80 height=80 alt="Nature" >
+                        <!-- <img class="img-thumbnail" src="../../img/avatar.jpg" width="80" height="80" alt="Nature" > -->
+                        <img class="img-thumbnail" src="../../img/<?php echo $film->pochette; ?> " width="80" height="80">
                     </a>
                 </div>
                 </th>
@@ -43,9 +44,13 @@
                     <td><?php echo $film->categorie ?></td>
                     <td><?php echo $film->prix ?></td>
                     <td>
-                    <button type="button" class="btn btn-dark btnEditer" obj='<?php echo json_encode($film); ?>'>
-                    <i class="fas fa-user-edit"></i> Editer</button>
-                </td>
+                      <!--Ajoute à chaque bouton  un objet en format Json -->             
+                      <button type="button" 
+                               class="btn btn-dark btnEditer" 
+                               obj='<?php echo json_encode($film); ?>'>
+                            <i class="fas fa-user-edit"></i> Editer
+                      </button>
+                    </td>
             </tr> 
         <?php  } ?>   
 

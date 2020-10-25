@@ -1,3 +1,7 @@
+//  ____________________________________________________________________
+//  PAGE  RESPONSABLE POUR ELABORER LES REQUISITIONS AJAX ASYNCHRONES.
+// ____________________________________________________________________
+
 //  PORTÉE GLOBAL 
 var filmController ='../../controller/film.php';
 var strRecherchee = "";
@@ -15,20 +19,20 @@ $(()=>{
 
 
 //========================================================================
-// BOUTON (+) : Open a window to add a new Film.
+// BOUTON (+) : open a modal(cadastro.php) to add a new Film.
 //========================================================================
 $('#btnPlus').click(()=>    
 {
-	//Open the modal windows
+	//Open the modal cadastro.php
 	$('.ModalCadastro').modal("show");	
 
 	//Cache le boutton Supprimer du modal
-	//on javascript sintax:  document.getElementById("btnSupprimer").hidden = true;
 	$("#btnSupprimer").css("display", "none");
-	//Set title h5 au modal
+
+	//Change le title du modal 
 	$("#ModalTitle").html("Nouveau Film");
 
-	//Clean input  filds
+	//Get input filds by ID and clean all
 	$("#PK_ID_Film").val("");
 	$("#titre").val("");
 	$("#prix").val("");
@@ -38,11 +42,10 @@ $('#btnPlus').click(()=>
 });
 
 //========================================================================
-// ROLE: Recupere tous les donnes du form et envois au controlleur.
-// Cette fonction est declenchée dès que le button btnAjouter
-// du modal est appuyé.
+// BUTTON ADD/EDIT: declenchée dès que le button btnAjouterEditer du modal
+//  est appuyé. Elle sert autant pour l'ajout que pour l'édition.
 // ========================================================================
-$('#btnAjouter').click(()=>    
+$('#btnAjouterEditer').click(()=>    
 {		
 	//alert("Teste");
 	// Si le form est bien rempli
@@ -51,8 +54,10 @@ $('#btnAjouter').click(()=>
 		//console.log(validerEntreeVide()); //to test
 		//get all form inputs  
 		var champs   = $("#formAjouter").serialize();
-		//Get ID from film
-		var PK_ID_Film = $("#PK_ID_Film").val();	
+
+		//Si le form modal catch un ID
+		var PK_ID_Film = $("#PK_ID_Film").val();
+
 		//Si pas de film action = insert, sinon action = update
 		var actionType = (PK_ID_Film=="") ?'action=insert' : 'action=update';
 		//console.log(actionType); //to test!
@@ -75,8 +80,7 @@ $('#btnAjouter').click(()=>
 				buttons: {
 					Ok: ()=>{					
 						 $('#ModalCadastro').modal('toggle');//close modal
-				  //        // Recharge la page actuelle à partir du 
-				  //        //... serveur, sans utiliser le cache.		
+				       // Recharge la page actuelle à partir du serveur, sans utiliser le cache.		
 						// location.reload(true);
 						// // lister(strRecherchee);						 
 					}				
@@ -84,11 +88,43 @@ $('#btnAjouter').click(()=>
 			});		   
 		});
 	}
-	//else{ console.log(validerEntreeVide()); //to test	}	
+	//else{ console.log(validerEntreeVide()); //to test		}	
  });
 	
 
+//========================================================================
+// BUTTON DELETE: Cette fonction est declenchée dès que le button btnSupprimer
+//   ...( from cadastro.php) du modal est appuyé.
+//========================================================================
+$('#btnSupprimer').click(()=>    
+{	
+	//get all inputs from form (Profil_ID et ProfilNom )
+	var champs   = $("#formAjouter").serialize();
+	var actionType = 'action=delete';
 
+	// REQUISITION asynchrone 
+	$.ajax({
+		method: "POST", 
+		url:filmController,
+		data: actionType+'&'+champs
+		
+		}).done((callBack)=>
+		{
+			var reponse = (callBack == 1) ? "Supprimé avec sucess!" : callBack;
+			//Windos popup du plugin	
+			$.confirm({
+				title: 'Attention!',
+				content: reponse,
+				buttons: {
+					Ok: ()=>{
+				         // Recharge la page actuelle à partir du 
+				         //... serveur, sans utiliser le cache.
+						 location.reload(true);
+					}				
+				}
+			});
+		});
+});
 
  
 

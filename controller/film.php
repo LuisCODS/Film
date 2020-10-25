@@ -16,32 +16,42 @@ extract($_POST);
 	switch ($action) 
 	{
 		case 'insert':
-
-			$dossier="../img/";  //Serveur dossier	
-			//$dossier = $_SERVER['DOCUMENT_ROOT'] . "\\FilmPHP__MVC_GIT\\img\\" .$pochette;
+			
+			$dossierPath="img";
+			//$dossierPath = $_SERVER['DOCUMENT_ROOT'].'\FilmPHP__MVC_GIT\img\\'.$pochette;
+			//$dossierPath= dirname(__FILE__).'\\FilmPHP__MVC_GIT\\img\\';					
+			//$dossierPath="../img/";  //Serveur path
 			$nomPochette=sha1($titre.time()); //Create a tolk key unique(new name)	
+			
 			$pochette="avatar.jpg";//Default image si pas de img fournit
-			var_dump($dossier);
+			//var_dump($dossierPath);
+			//print_r($dossierPath);
 
 				//Si une image a été envoyéé
 				if($_FILES['pochette']['tmp_name']!=="")
 				{
 					//Get real name file from server side
 					$filename = $_FILES['pochette']['tmp_name'];
+
 					//Get name file from user side
 					$fichier= $_FILES['pochette']['name'];
+
 					// Get file extension 
 					$extension=strrchr($fichier,'.');
-					//Move file to a new dossier
-					@move_uploaded_file($filename,$dossier.$nomPochette.$extension);//le @ enleve les msn d'erreur cote client
+
+					//Move file to  server path:  filename/img/nomPochette.jpg
+					@move_uploaded_file($filename,$dossierPath.$nomPochette.$extension);//le @ enleve les msn d'erreur cote client
+					
 					//effacer le fichier temporaire
 					@unlink($filename); 
+
 					$pochette=$nomPochette.$extension;//Attache le nom  generé coté serveur avec l'extention obtenu cote client
 				}
 
 				$film = new Film(null,$titre,$prix,$realisateur,$categorie,$pochette,$description);	
 				$filmDAO->insert($film);//Si ok return 1
-			    //header('Location: ../view/film/index.php');
+				//location.reload(true);
+			    //header('Location: ../view/admin/listerFilm.php');
 
 		    break;
 
