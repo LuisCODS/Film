@@ -17,8 +17,8 @@ extract($_POST);
 	{
 		case 'insert':
 			
-			//$dossierPath="../img";
-			$dossierPath = $_SERVER['DOCUMENT_ROOT'].'\\FilmPHP__MVC_GIT\img\\'.$pochette;
+			$dossierPath="../img";
+			//$dossierPath = $_SERVER['DOCUMENT_ROOT'].'\\FilmPHP__MVC_GIT\img\\'.$pochette;
 			//$dossierPath= dirname(__FILE__).'\\FilmPHP__MVC_GIT\\img\\';					
 			//$dossierPath="../img/";  //Serveur path
 			$nomPochette=sha1($titre.time()); //Create a tolk key unique(new name)	

@@ -7,6 +7,8 @@
   display: flex;
   /* background-color: ; */
 }
+
+/* so o primeiro filho vai ser aplicado */
 .flex-container > div {
   background-color: #f1f1f1;
   margin: 10px;
@@ -14,4 +16,7 @@
   font-size: 12px;
 /*  width:33.3%;*/
 /*  height :100px*/
+}
+.card-titler {
+  height :1px;
 }
