@@ -21,7 +21,7 @@
                         Gestion
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="listerMembre.php"><i class="fas fa-users"></i>  Membres</a>
+                        <a class="dropdown-item" href="../membre/index.php"><i class="fas fa-users"></i>  Membres</a>
                         <a class="dropdown-item" href="listerFilm.php"><i class="fas fa-video"></i>  Films</a>
                 </div>
             </li>

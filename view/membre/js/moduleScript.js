@@ -3,14 +3,14 @@
 // ____________________________________________________________________
 
 //  PORTÉE GLOBAL 
-var profilController ='../../controller/profil.php';
+var membreController ='../../controller/membre.php';
 var strRecherchee = "";
 
 //========================================================================
 // Things that should be done every time a page loads
 //========================================================================
 $(()=>{
-	lister(strRecherchee); //(moduleFunction.js)
+	lister(); //(moduleFunction.js)
 	validerFormInputs();//(moduleFunction.js)
 });
 
@@ -26,7 +26,7 @@ $('#txtInput').keyup(()=>
 });
 
 //========================================================================
-// BOUTON (+) : Open a window to add a new Profil member.
+// BOUTON (+) : One a window to add a new Profil member.
 //========================================================================
 $('#btnPlus').click(()=>    
 {
@@ -37,11 +37,11 @@ $('#btnPlus').click(()=>
 	//on javascript sintax:  document.getElementById("btnSupprimer").hidden = true;
 	$("#btnSupprimer").css("display", "none");
 	//Set title h5 au modal
-	$("#ModalTitle").html("Nouveau Pofil");
+	$("#ModalTitle").html("Nouveau membre");
 
 	//Clean input  filds
-	$("#Profil_ID").val("");
-	$("#ProfilNom").val("");
+	$("#PK_ID_Membre").val("");
+	$("#nom").val("");
 });
 
 //========================================================================
@@ -53,20 +53,20 @@ $('#btnAjouter').click(()=>
 	// Si true
 	if( validerEntreeVide() )
 	{
-		//console.log(validerEntreeVide()); //to test
 
 		//get all form inputs  
 		var champs   = $("#formAjouter").serialize();
-		//Get ID from profil
-		var Profil_ID = $("#Profil_ID").val();	
+		//Get ID 
+		var PK_ID_Membre = $("#PK_ID_Membre").val();	
+
 		//Si le champ est vide, action = insert, sinon action = update
-		var actionType = (Profil_ID=="") ?'action=insert' : 'action=update';
+		var actionType = (PK_ID_Membre=="") ?'action=insert' : 'action=update';
 		//console.log(actionType); //to test!
 
 		// REQUISITION asynchrone 
 		$.ajax({
 			method: "POST", 
-			url:profilController,
+			url:membreController,
 			data: actionType+'&'+champs
 			//CALLBACK: Si l'insertion ou update a été fait, msg = 1
 			}).done((msg)=>	{
@@ -79,17 +79,16 @@ $('#btnAjouter').click(()=>
 				content: reponse,
 				buttons: {
 					Ok: ()=>{					
-						$('#ModalCadastro').modal('toggle');//close modal
+						//$('#ModalCadastro').modal('toggle');//close modal
 				         // Recharge la page actuelle à partir du 
 				         //... serveur, sans utiliser le cache.		
-						location.reload(true);
+						  location.reload(true);
 						// lister(strRecherchee);						 
 					}				
 				}
 			});		   
 		});
 	}
-	//else{ console.log(validerEntreeVide()); //to test	}	
 }); 
 
 //========================================================================
@@ -98,14 +97,14 @@ $('#btnAjouter').click(()=>
 //========================================================================
 $('#btnSupprimer').click(()=>    
 {	
-	//get all inputs from form (Profil_ID et ProfilNom )
+
 	var champs   = $("#formAjouter").serialize();
 	var actionType = 'action=delete';
 
 	// REQUISITION asynchrone 
 	$.ajax({
 		method: "POST", 
-		url:profilController,
+		url:membreController,
 		data: actionType+'&'+champs
 		
 		}).done((callBack)=>

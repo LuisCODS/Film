@@ -1,15 +1,15 @@
 <?php include '../../includes/head.php'; ?>
-<?php require_once '../../includes/interfaceVisiteur.php'; ?>
+<?php include '../../includes/interfaceAdmin.php'; ?>
 
 
+    <div class="container">
 
-
-    <div class="container-fluid">
         <!--  ICONE + TITLE -->
         <div class="row mb-3">
             <div class="col-md-8">
-               <h2><i class="far fa-address-card"></i> Profils</h2> 
+               <h2><i class="far fa-address-card"></i> Membre</h2> 
             </div>   
+
             <!--  ZONE RECHERCHE -->         
             <div class="col-md-3">
                    <input type="text" 
@@ -19,6 +19,7 @@
                           class="form-control" 
                           placeholder="Qui cherchez vous?"> 
             </div> 
+
             <!--  BOUTTON + -->
             <div class="col-md-1">
                 <button type="button"
@@ -27,12 +28,15 @@
                 </button>
             </div>        
         </div>       
+
         <!--  RENDER PAGE --> 
         <div class="row">
             <div class="col-md-12" id="listTemplate">
+
                <!-- CHARGE LE TEMPLATE ICI !-->
             </div>
         </div>
-    </div>     
+    </div>    
+
 <?php include 'includes/ajouter.php'; ?>
 <?php include '../../includes/footer.php'; ?>

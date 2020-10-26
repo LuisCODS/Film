@@ -16,7 +16,7 @@
                         <a class="nav-link" href="../../view/film/index.php">Nos films</a>
                     </li>
                     <li class="nav-item">
-                         <a class="nav-link" href="../../view/membre/detailsMembre.php">Mon Profil <i class="far fa-user"></i></a>
+                         <a class="nav-link" href="../../view/membre/editer.php">Editer Profil <i class="far fa-user"></i></a>
                     </li>
                     <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"

@@ -113,13 +113,13 @@ Class MembreDAO
 
 	function getMembre(){
 		try {
-			$sql = "select PK_ID_Membre, nom, courriel  from Membre";			
+			$sql = "select *  from Membre";			
 			$stmt = $this->cn->prepare($sql);
 			$stmt->execute();
 			// $rs = $stmt->fetchall(PDO::FETCH_ASSOC); 
 			// traite comme objt 
 			$rs = $stmt->fetchall(PDO::FETCH_OBJ); 	
-			return $rs;
+			return json_encode($rs);
 
 		} catch (PDOException $e) {
 			echo 'Erro: '. $e;
