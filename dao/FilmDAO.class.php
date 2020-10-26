@@ -95,26 +95,11 @@ Class FilmDAO
         $sql = 'select PK_ID_Film,titre,prix,realisateur,categorie,pochette,description from Film';
 		$stmt = $this->cn->prepare($sql);
 		$stmt->execute();
-		$rs = $stmt->fetchall(PDO::FETCH_ASSOC); 
+		$rs = $stmt->fetchall(PDO::FETCH_OBJ); 
 		// traiter comme objt  $rs = $stmt->fetchall(PDO::FETCH_OBJ); 
 		return json_encode($rs);
+		//return ($rs);
 	}
-
-	
-	// Method that returns a list of Membree in ccategoriecent order.
-	//Retour: tableau en format json.
-	// function getMembre($txtInput)
-	// {
-	// 	$sql = "select PK_ID_Film, nom from Membre WHERE nom like '%$txtInput%'  ORDER BY nom ASC ";
-	// 	$stmt = $this->cn->prepare($sql);
-	// 	$stmt->execute();//Return 1 si ok	
-	// 	// Contient un array de Membre
-	// 	$tableau = $stmt->fetchall(PDO::FETCH_ASSOC); 
-			// traiter comme objt  $rs = $stmt->fetchall(PDO::FETCH_OBJ); 
-
-	// 	//Retourn un array en json,car HTML(browser) only ready string.
-	// 	 return json_encode($tableau);
-	// }
 
 }
 

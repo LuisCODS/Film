@@ -1,7 +1,7 @@
 <?php include '../../includes/head.php'; ?>
 <?php include '../../includes/interfaceAdmin.php'; ?>
 
-<div class="container-fluid">    
+<div class="container">    
       <div class="row mb-3">
                 <!--  ICONE + TITLE -->
               <div class="col-md-8">

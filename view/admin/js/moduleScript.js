@@ -1,9 +1,10 @@
 //  ____________________________________________________________________
-//  PAGE  RESPONSABLE POUR ELABORER LES REQUISITIONS AJAX ASYNCHRONES.
-// ____________________________________________________________________
+//                        SCRIPT ADMIN
+// __________________________ __________________________________________
 
 //  PORTÉE GLOBAL 
 var filmController ='../../controller/film.php';
+var membreController ='../../controller/membre.php';
 var strRecherchee = "";
 
 
@@ -12,7 +13,8 @@ var strRecherchee = "";
 //========================================================================
 $(()=>{
 	//alert("Teste");
-	 lister(strRecherchee); //(moduleFunction.js)
+	 listerFilm(strRecherchee); //(moduleFunction.js)
+	 listerMembre();
 	 validerFormInputs();//(moduleFunction.js)
 });
 

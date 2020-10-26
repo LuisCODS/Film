@@ -1,13 +1,13 @@
 //  ____________________________________________________________________
-//  PAGE QUI FOURNIE LES FUNCTIONS DE SUPPORT AU FICHIER moduleScript.js
-// ____________________________________________________________________
+//                       FUNCTION ADMIN
+// __________________________ __________________________________________
 
 
 
 //========================================================================
 // Retourne les films
 //========================================================================
-function lister()
+function listerFilm()
 {
 	//Set la valeur à recuperer par(extract($_POST);) au controlleur
 	var actionType = 'action=getFilm';
@@ -70,6 +70,66 @@ function lister()
 		})
 	});
 }
+
+//========================================================================
+// Retourne les membres
+//========================================================================
+function listerMembre()
+{
+	var actionType = 'action=getUtilisateur';
+
+	$.ajax({
+		method:'POST', 
+		url: membreController,
+		data: actionType
+	}).done((jsonData)=>{		
+
+		$.ajax({
+			method:'POST', 
+			url: 'template/table-membre.php',
+			//le callback jsonData est envoyée par la variable obj
+			data: "obj="+jsonData
+
+		//CALLBACK: tout le contenu du fichier table-profil.php	
+		}).done((template)=>{
+
+			//Charge le template, provenant du callback, dans la div 
+			//... listTemplate par son id,  dans (listerFilm.php).
+			$("#divTemplateMembre").html(template);
+
+
+			//========================================================================
+			// BUTTON EDIT: declenche dès que le button btnEditer qui est dans(table-film.php)
+			// est appuyé ele é pego pela class.
+			//========================================================================
+			$('.btnEditer').click(function() 
+			{
+				//Abre o mesmo modal mostrando os campos do objeto
+				$('.ModalCadastro').modal("show");	
+
+				//Prend l'attribut (un objet) du button et le convert en json
+				var obj = JSON.parse($(this).attr("obj") );
+				//alert(obj); test
+
+				//Show object propertys on form input
+				$("#PK_ID_Film").val(obj.PK_ID_Film);
+				$("#titre").val(obj.titre);	
+				$("#prix").val(obj.prix);	
+				$("#categorie").val(obj.categorie);	
+				$("#realisateur").val(obj.realisateur);	
+				$("#description").val(obj.description);	
+
+				//Show le boutton Supprimer par son ID: btnSupprimer
+				//on javascript sintax:  document.getElementById("btnSupprimer").hidden = false;
+				$("#btnSupprimer").css("display", "block");	
+				//Change le titre du modal
+				$("#ModalTitle").html("Editer Film");		
+			});
+
+		})
+	});
+}
+
 
 //========================================================================
 // Methode qui valide if textbox input is empty.Return true/false.

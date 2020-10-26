@@ -1,7 +1,7 @@
 <?php
  // --------------------------------------------------------------
  // 				CONTROLLEUR - film  
-//  Recebe os dados  enviado pelo moduloScript.js
+ //  Recebe os dados  enviado pelo moduloScript.js
  //--------------------------------------------------------------- 
 include '../model/Film.class.php';
 include '../dao/FilmDAO.class.php';

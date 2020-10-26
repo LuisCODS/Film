@@ -1,20 +1,43 @@
 <?php include '../../includes/head.php'; ?>
-<?php include '../../includes/interfaceVisiteur.php'; ?>
+<?php include '../../includes/interfaceAdmin.php'; ?>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card" style="width: 12rem;">
-                    <img class="img-fluid" src="../../img/avatar.jpg"  height: auto; alt="Imagem de capa do card">
-                     <div class="card-body">
-                        <h5 class="card-title">Título do card</h5>
-                        <p class="card-text">Um exemplo de texto rápido.</p>
-                        <a href="#" class="btn btn-primary">Visitar</a>
-                        <a href="#" class="card-link">Link do card</a>
-                    </div>
-            </div>
-    </div>
-</div>
+<div class="container-fluid">    
+      <div class="row mb-3">
+                <!--  ICONE + TITLE -->
+              <div class="col-md-8">
+                 <h2> <i class="fas fa-film"></i>   Liste des Film </h2> 
+              </div>  
+              <!--  ZONE RECHERCHE -->         
+              <div class="col-md-3">
+<!--                      <input type="text" 
+                            id="txtInput" 
+                            name="txtInput" 
+                            value="" 
+                            class="form-control" 
+                            placeholder="# ID du film">  -->
+              </div> 
+              <!--  BOUTTON + -->
+              <div class="col-md-1">
+<!--                   <button type="button"
+                          class="btn btn-primary float-right" 
+                          id="btnPlus" ><i class="fas fa-plus"></i> 
+                  </button> -->
+              </div> 
+      </div>    
+        <!--  RENDER PAGE --> 
+      <div class="row">
+          <div  id="listTemplate" class="col-md-12">
 
-<!--  FOOTER  --> 
+             <!-- CHARGE LE TEMPLATE(cards filme) ICI !-->
+             
+          </div>
+      </div>
+      
+</div>     
+
+
+
+
+
+
 <?php include '../../includes/footer.php'; ?>
