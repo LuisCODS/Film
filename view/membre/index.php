@@ -7,7 +7,7 @@
         <!--  ICONE + TITLE -->
         <div class="row mb-3">
             <div class="col-md-8">
-               <h2><i class="far fa-address-card"></i> Membre</h2> 
+               <h2><i class="far fa-address-card"></i> Index Membre</h2> 
             </div>   
 
             <!--  ZONE RECHERCHE -->         
@@ -31,10 +31,10 @@
 
         <!--  RENDER PAGE --> 
         <div class="row">
-            <div class="col-md-12" id="listTemplate">
+<!--             <div class="col-md-12" id="listTemplate">-->
 
                <!-- CHARGE LE TEMPLATE ICI !-->
-            </div>
+            </div> 
         </div>
     </div>    
 
