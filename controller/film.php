@@ -9,7 +9,7 @@ include '../dao/FilmDAO.class.php';
 
 //Pour le CRUD	
 $filmDAO = new FilmDAO();
-//Get all form's inputs
+
 extract($_POST);	
 
 
