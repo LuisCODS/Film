@@ -4,7 +4,8 @@
 }
 */
 .flex-container {
-  display: flex;
+  /* display: flex; */
+  display: inline-block;
   /* background-color: ; */
 }
 
@@ -18,5 +19,5 @@
 /*  height :100px*/
 }
 .card-titler {
-  height :1px;
+  /* height :1px; */
 }
