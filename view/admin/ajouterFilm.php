@@ -4,7 +4,7 @@
 
 <!-- _________________  FORM AJOUTER FILM _________________ --> 
 <div class="container">
-  <form id="formEnreg" enctype="multipart/form-data" action="FilmController.php" method="POST" >
+  <form id="formEnreg" enctype="multipart/form-data" action="filmController.php" method="POST" >
           <!-- FORNECE O TIPO DE ACAO AO CONTROLLER -->
           <div class="form-group">
                 <input type="hidden" class="form-control" 
