@@ -36,5 +36,4 @@
 </div>     
 
 
-<?php include 'includes/cadastro.php'; ?>
-<?php include '../../includes/footer.php'; ?>
+ <?php include '../../includes/footer.php'; ?>

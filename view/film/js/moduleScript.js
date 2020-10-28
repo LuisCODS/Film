@@ -11,7 +11,7 @@ var filmController ='../../controller/film.php';
 //========================================================================
 $(()=>{
 
-	alert("TEste");
+	//alert("TEste");
 	listerFilm();
 
 

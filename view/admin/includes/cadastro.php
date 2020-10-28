@@ -19,9 +19,10 @@
                 </div>
 
                 <!--  MODAL BODY -->
-                <div class="modal-body">            
-                   <form id="formAjouter">
-                          
+                <div class="modal-body">  
+                 <!--  Form -->          
+                   <form id="formAjouter">   
+
                           <input type="hidden" id="PK_ID_Film" name="PK_ID_Film" readonly="true" >
 
                           <div class="form-group">
@@ -103,7 +104,7 @@
                     <button class="btn-success"                   
                             data-toggle="modal" 
                             type="button" 
-                            id="btnAjouterEditer">
+                            id="btnRegistrer">
                             <i class="far fa-save"></i>
                              Enregistrer
                     </button> 

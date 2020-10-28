@@ -24,3 +24,4 @@
 <!--  FIN TEMPLATE CARD FILM -->
 
 <?php  } ?>   
+<!--             src="../../img/"  -->

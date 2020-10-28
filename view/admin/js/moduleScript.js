@@ -13,10 +13,11 @@ var strRecherchee = "";
 //========================================================================
 $(()=>{
 	//alert("Teste");
-	 listerFilm(strRecherchee); //(moduleFunction.js)
+	 listerFilm(); //(moduleFunction.js)
 	 listerMembre();
 	 validerFormInputs();//(moduleFunction.js)
 });
+
 
 
 
@@ -34,7 +35,7 @@ $('#btnPlus').click(()=>
 	//Change le title du modal 
 	$("#ModalTitle").html("Nouveau Film");
 
-	//Get input filds by ID and clean all
+	//clean all form inputs
 	$("#PK_ID_Film").val("");
 	$("#titre").val("");
 	$("#prix").val("");
@@ -47,7 +48,7 @@ $('#btnPlus').click(()=>
 // BUTTON ADD/EDIT: declenchée dès que le button btnAjouterEditer du modal
 //  est appuyé. Elle sert autant pour l'ajout que pour l'édition.
 // ========================================================================
-$('#btnAjouterEditer').click(()=>    
+/*$('#btnEnregistrer').click(()=>    
 {		
 	//alert("Teste");
 	// Si le form est bien rempli
@@ -60,7 +61,7 @@ $('#btnAjouterEditer').click(()=>
 		//Si le form modal catch un ID
 		var PK_ID_Film = $("#PK_ID_Film").val();
 
-		//Si pas de film action = insert, sinon action = update
+		//Si pas de ID l'action = insert, sinon action = update
 		var actionType = (PK_ID_Film=="") ?'action=insert' : 'action=update';
 		//console.log(actionType); //to test!
 
@@ -90,9 +91,51 @@ $('#btnAjouterEditer').click(()=>
 			});		   
 		});
 	}
-	//else{ console.log(validerEntreeVide()); //to test		}	
- });
+ });*/
 	
+$('#btnRegistrer').click(()=>    
+{		
+	//alert("Teste");
+	// CHECK IF INPUTS AREN'T EMPTY
+	if( validerEntreeVide() )
+	{
+		//Ramassa les données du form
+		var champs   = $("#formAjouter").serialize();
+
+		//Si le form modal catch un ID
+		var PK_ID_Film = $("#PK_ID_Film").val();
+		//SI FILM ALORS ON L'ÉDITE, SI VIDE, L'ACTION EST CREATE
+		var actionType = (PK_ID_Film=="") ?'action=insert' : 'action=update';
+
+		// ENVOIE LE FORM AU CONTROLLEUR
+		$.ajax({
+			method: "POST", 
+			url:filmController,
+			data: actionType+'&'+champs
+			//CALLBACK: Si l'insertion ou update a été fait, msg = 1
+			}).done((msg)=>	{
+			//si le film a été inseré msn = 1, sinon affiche l'erreur
+			var reponse = (msg == 1) ? "Enregistré avec sucess!" : msg;
+			//console.log(msg); to test
+
+			//Windos showup	
+			$.confirm({
+				title: 'Enregistré avec sucess!',
+				content: reponse,
+				buttons: {
+					Ok: ()=>{					
+						 $('#ModalCadastro').modal('toggle');//close modal
+				       // Recharge la page actuelle à partir du serveur, sans utiliser le cache.		
+						// location.reload(true);
+						// // lister(strRecherchee);						 
+					}				
+				}
+			});		   
+		});
+	}
+ });
+
+
 
 //========================================================================
 // BUTTON DELETE: Cette fonction est declenchée dès que le button btnSupprimer

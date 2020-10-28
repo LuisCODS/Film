@@ -15,27 +15,26 @@ function listerFilm()
 	//...par (extract($_POST);) dans le controlleur (profil.php).
 	//var champs  = "txtInput="+txtInput;
 
-	//REQUISITION asynchrone 
 	$.ajax({
+
+		//ENVOIE AU CONTROLLEUR
 		method:'POST', 
 		url: filmController,
 		data: actionType
-		//CALLBACK: un array en format json.
+
+		//RECOIT DU CONTROLLEUR LA REQUETTE (CALLBACK): un array OBJET en format json.
 	}).done((jsonData)=>{		
 
-		//alert(jsonData);
-
+		//ENVOIE LES DONNES AU TEMPLATE: UN OBJET JSON
 		$.ajax({
 			method:'POST', 
 			url: 'template/table-film.php',
-			//le callback jsonData est envoyée par la variable obj
 			data: "obj="+jsonData
 
-		//CALLBACK: tout le contenu du fichier table-profil.php	
+		//CALLBACK: LA VUE TEMPLATE DEJA CHARGÉE AVEC LES DONNÉES
 		}).done((template)=>{
 
-			//Charge le template, provenant du callback, dans la div 
-			//... listTemplate par son id,  dans (listerFilm.php).
+			//Charge le template, Dans la div listTemplate au (listerFilm.php).
 			$("#listTemplate").html(template);
 
 
@@ -43,7 +42,7 @@ function listerFilm()
 			// BUTTON EDIT: declenche dès que le button btnEditer qui est dans(table-film.php)
 			// est appuyé ele é pego pela class.
 			//========================================================================
-			$('.btnEditer').click(function() 
+/*			$('.btnEditer').click(function() 
 			{
 				//Abre o mesmo modal mostrando os campos do objeto
 				$('.ModalCadastro').modal("show");	
@@ -65,7 +64,54 @@ function listerFilm()
 				$("#btnSupprimer").css("display", "block");	
 				//Change le titre du modal
 				$("#ModalTitle").html("Editer Film");		
+			});*/
+
+			$('.btnEditerFilm').click(function() 
+			{
+				//Abre o mesmo modal mostrando os campos do objeto
+				$('.ModalCadastro').modal("show");	
+
+				//recupera o obejto dentro do botao Edit
+				var obj = JSON.parse($(this).attr("obj") );
+				//alert(obj); test
+
+				//Fill form inputs with data
+				$("#PK_ID_Film").val(obj.PK_ID_Film);
+				$("#titre").val(obj.titre);	
+				$("#prix").val(obj.prix);	
+				$("#categorie").val(obj.categorie);	
+				$("#realisateur").val(obj.realisateur);	
+				$("#description").val(obj.description);	
+				$("#ModalTitle").html("Editer Film");	
+
+				var champs   = $("#formAjouter").serialize();
+
+				$.ajax({
+					method: "POST", 
+					url:'../editerFilm',
+					data: champs
+					}).done((msg)=>	{
+					var reponse = (msg == 1) ? "Enregistré avec sucess!" : msg;
+
+					//Windos showup	
+					$.confirm({
+						title: 'Enregistré avec sucess!',
+						content: reponse,
+						buttons: {
+							Ok: ()=>{					
+								 $('#ModalCadastro').modal('toggle');//close modal
+						       // Recharge la page actuelle à partir du serveur, sans utiliser le cache.		
+								// location.reload(true);
+								// // lister(strRecherchee);						 
+							}				
+						}
+					});		   
+				});
+
 			});
+
+
+
 
 		})
 	});

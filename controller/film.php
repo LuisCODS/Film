@@ -6,17 +6,17 @@
 include '../model/Film.class.php';
 include '../dao/FilmDAO.class.php';
 
-
-//Pour le CRUD	
-$filmDAO = new FilmDAO();
-
 extract($_POST);	
 
+	//Pour le CRUD	
+	$filmDAO = new FilmDAO();		
 
 	switch ($action) 
 	{
 		case 'insert':
-			$dossier="";
+
+			$dossier="../";
+			//$dossier = $_SERVER['DOCUMENT_ROOT'] . "\\FilmPHP__MVC_GIT\\";
 			$nomPochette=sha1($titre.time());
 			$pochette="avatar.jpg";
 			
@@ -30,6 +30,7 @@ extract($_POST);
 				@unlink($tmp); //effacer le fichier temporaire
 				$pochette=$nomPochette.$extension;
 			}
+
 				$film = new Film(null,$titre,$prix,$realisateur,$categorie,$pochette,$description);	
 				$filmDAO->insert($film);//Si ok return 1
 				//location.reload(true);
@@ -45,7 +46,7 @@ extract($_POST);
 
 		case 'delete':
 
-				echo $filmDAO->delete($PK_ID_Film);//Si ok return 1
+			echo $filmDAO->delete($PK_ID_Film);//Si ok return 1
 			break;
 
 		case 'getFilm':

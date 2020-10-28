@@ -13,8 +13,8 @@
             <tr>
                 <th scope="col">Pochette</th>
                 <th scope="col">Titre</th>
-                <th scope="col">Realisateur</th>
                 <th scope="col">Categorie</th>
+                <th scope="col">Realisateur</th>
                 <th scope="col">Prix</th>
                 <th scope="col">Gestion</th>
             </tr>
@@ -46,10 +46,15 @@
                     <td>
                       <!--Ajoute à chaque bouton  un objet en format Json -->             
                       <button type="button" 
-                               class="btn btn-dark btnEditer" 
+                               class="btn btn-dark btnEditerFilm" 
                                obj='<?php echo json_encode($film); ?>'>
                             <i class="fas fa-user-edit"></i> Editer
                       </button>
+<!--                        <button type="button" 
+                               class="btn btn-dark btnEditerFilm" 
+                               obj='<?php echo json_encode($film); ?>'>
+                            <i class="fas fa-user-edit"></i> btnEditerFilm
+                      </button> -->
                     </td>
             </tr> 
         <?php  } ?>   
