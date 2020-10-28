@@ -37,7 +37,6 @@
 		@unlink($tmp); //effacer le fichier temporaire
 		$pochette=$nomPochette.$extension;
 	}
-	
 
 
 	$requete="INSERT INTO film VALUES(0,?,?,?,?,?,?)";
@@ -48,4 +47,6 @@
 	unset($stmt);
 ?>
 <br><br>
-<a href="../../listerFilm.php">Retour à la page d'accueil</a>
+<!-- <a href="../../listerFilm.php">Retour à la page d'accueil</a> -->
+
+<?php header("location: listerFilm.php"); ?>

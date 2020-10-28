@@ -15,7 +15,7 @@ extract($_POST);
 	{
 		case 'insert':
 
-			$dossier="../";
+			$dossier="../view/film/pochettes/";
 			//$dossier = $_SERVER['DOCUMENT_ROOT'] . "\\FilmPHP__MVC_GIT\\";
 			$nomPochette=sha1($titre.time());
 			$pochette="avatar.jpg";

@@ -27,7 +27,7 @@
           <div class="form-group">
               <label for="categorie">Categorie</label>
               <select class="form-control" id="categorie" name="categorie">
-                  <option selected>Choose...</option>
+                  <option selected></option>
                   <option value="Romance">Romance</option>
                   <option value="Horreur">Horreur</option>
                   <option value="Comedie">Comedie</option>
