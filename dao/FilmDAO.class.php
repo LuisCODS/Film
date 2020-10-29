@@ -90,7 +90,7 @@ Class FilmDAO
 		}
 	}
 
-	function lister()
+	function list()
 	{
         $sql = 'select PK_ID_Film,titre,prix,realisateur,categorie,pochette,description from Film';
 		$stmt = $this->cn->prepare($sql);

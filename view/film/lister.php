@@ -74,10 +74,10 @@ include '../../includes/interfaceAdmin.php';
                            ?>
 
                           <tr>
-                              <td><img src='../../img/".<?php ($ligne->pochette)?>."' width=80 height=80></td>
-                              <td>".<?php ($ligne->titre) ?>."</td>
-                              <td><?php ($ligne->prix)?></td>
-                              <td><?php ($ligne->categorie)?></td>                                
+                              <td><img src='../../img/"<?php echo($ligne->pochette)?>"' width=80 height=80></td>
+                              <td><?php echo($ligne->titre) ?></td>
+                              <td><?php echo($ligne->prix)?></td>
+                              <td><?php echo($ligne->categorie)?></td>                                
                               <td>
                                   <button
                                        type="button" href="#" class="btn btn-outline-primary"><i class="far fa-edit"></i> Editer</button>
