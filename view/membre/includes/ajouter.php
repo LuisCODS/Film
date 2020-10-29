@@ -1,6 +1,6 @@
 <!-- _______________  BEGIN INCLUDE MODAL-AJOUTER   _________________-->
-<div class="modal fade ModalCadastro" tabindex="-1" role="dialog" 
-     aria-labelledby="myLargeModalLabel" aria-hidden="true" id='ModalCadastro'>
+<div class="modal fade ModalFormCreate" tabindex="-1" role="dialog" 
+     aria-labelledby="myLargeModalLabel" aria-hidden="true" id='ModalFormCreate'>
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">  
 

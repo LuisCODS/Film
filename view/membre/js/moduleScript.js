@@ -9,10 +9,10 @@
 // //========================================================================
 // // Things that should be done every time a page loads
 // //========================================================================
-// $(()=>{
-// 	lister(); //(moduleFunction.js)
-// 	validerFormInputs();//(moduleFunction.js)
-// });
+$(()=>{
+	//lister(); //(moduleFunction.js)
+	validerFormInputs();//(moduleFunction.js)
+});
 
 // //========================================================================
 // //  ZONE DE RECHERCHE: declenchée dès qu'il y a une entrée par l'user.
@@ -22,13 +22,13 @@
 // 	//Get textBox value by ID.
 // 	strRecherchee = $('#txtInput').val();
 // 	// alert(strRecherchee); //To test
-// 	lister(strRecherchee);
+// 	//lister(strRecherchee);
 // });
 
 // //========================================================================
 // // BOUTON (+) : One a window to add a new Profil member.
 // //========================================================================
-// $('#btnPlus').click(()=>    
+// $('#btnCreate').click(()=>    
 // {
 // 	//Open the modal windows
 // 	$('.ModalCadastro').modal("show");	
@@ -191,60 +191,60 @@
 // // Methode qui valide if textbox input is empty.Return true/false.
 // // If false, set a new class for textbox input.
 // //========================================================================
-// function validerEntreeVide()
-// {
-// 	var reponse = "";
+function validerEntreeVide()
+{
+	var reponse = "";
 
-// 	//pour chaque INPUT qui a la class "estVide"
-// 	$(".estVide").each(function()
-// 	{
-// 		//If input isen't clean
-// 		if ($(this).val() != "" ){
-// 	    	reponse = true;
-// 		}else{
-// 			$(this).addClass("is-invalid");
-// 			reponse = false;
-// 		}	
-// 	});
-// 	return reponse;
-// }
+	//pour chaque INPUT qui a la class "estVide"
+	$(".estVide").each(function()
+	{
+		//If input isen't clean
+		if ($(this).val() != "" ){
+	    	reponse = true;
+		}else{
+			$(this).addClass("is-invalid");
+			reponse = false;
+		}	
+	});
+	return reponse;
+}
 
 // //========================================================================
 // // Methode qui valide l'entrée de l'utilisateur.
 // // Si le champs est vide, la couleur autours du textbox est à rouge.
 // // Outrement, il est à vert.
 // //========================================================================
-// function validerFormInputs()
-// {
-// 	//For eatch INPUT TEXTBOX with class = estVide
-// 	$(".estVide").each(function()
-// 	{
-// 		//lorsque l'utilisateur relâche une clé
-// 		$(this).keyup(function()
-// 		{
-// 			//Si textbox is empty
-// 			if ($(this).val() == "" )
-// 			 {
-// 			 	//switch class...
-// 				$(this).removeClass("is-valid");
-// 				$(this).addClass("is-invalid");								
-// 			}	
-// 		});
-// 	});
-// }
+function validerFormInputs()
+{
+	//For eatch INPUT TEXTBOX with class = estVide
+	$(".estVide").each(function()
+	{
+		//lorsque l'utilisateur relâche une clé
+		$(this).keyup(function()
+		{
+			//Si textbox is empty
+			if ($(this).val() == "" )
+			 {
+			 	//switch class...
+				$(this).removeClass("is-valid");
+				$(this).addClass("is-invalid");								
+			}	
+		});
+	});
+}
 
-// //========================================================================
-// // Method that changes color of form input.
-// // It's Called in each input field of form:
-// // When input field is empty the red color is shown, 
-// //... once the field is fill, green color appear.
-// //========================================================================
-// function isItEmpty(texte)
-// {
-// 	if($(texte).val().length >= 0)
-// 	{
-// 		 //console.log($(texte).val().length);//to test
-// 		 $(texte).removeClass("is-invalid"); 
-// 		 $(texte).addClass("is-valid");
-// 	}
-// }
+//========================================================================
+// Method that changes color of form input.
+// It's Called in each input field of form:
+// When input field is empty the red color is shown, 
+//... once the field is fill, green color appear.
+//========================================================================
+function isItEmpty(texte)
+{
+	if($(texte).val().length >= 0)
+	{
+		 //console.log($(texte).val().length);//to test
+		 $(texte).removeClass("is-invalid"); 
+		 $(texte).addClass("is-valid");
+	}
+}

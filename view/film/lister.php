@@ -4,6 +4,7 @@
 <div class="container"> 
 
       <div class="row mb-3">
+
             <!--  ICONE + TITLE -->
             <div class="col-md-8">
                <h2> <i class="fas fa-film"></i>   Liste des Film </h2> 
@@ -11,19 +12,20 @@
 
             <!--  ZONE RECHERCHE -->         
             <div class="col-md-3">
-                   <input type="text" 
+    <!--                <input type="text" 
                           id="txtInput" 
                           name="txtInput" 
                           value="" 
                           class="form-control" 
-                          placeholder="# ID du film"> 
+                          placeholder="# ID du film">  -->
             </div> 
+
             <!--  BOUTTON + -->
             <div class="col-md-1">
-                <button type="button"
-                        class="btn btn-primary float-right" 
-                        id="btnPlus" ><i class="fas fa-plus"></i> 
-                </button>
+                  <a class="btn btn-outline-success" 
+                     href="create.php" 
+                     role="button">Nouveau
+                  </a>
             </div> 
       </div>  
 
@@ -47,11 +49,16 @@
                                   <td>titre</td>
                                   <td>prix</td>
                                   <td>categorie</td>
-                                  <td>       
-                                    <button type="button" 
-                                             class="btn btn-secondary" btnDetails"> Details
-                                    </button>
-                                  </td>
+                                  <td>
+                                      <button
+                                           type="button" href="#" class="btn btn-outline-primary"><i class="far fa-edit"></i> Editer</button>
+                                      <button 
+                                          type="button" href="#" class="btn btn-outline-warning">Details
+                                      </button>
+                                      <button 
+                                          type="button" href="#" class="btn btn-outline-danger">Supprimer
+                                      </button>
+                                  </td>                         
                               </tr> 
                           </tbody>
                       </table>                  

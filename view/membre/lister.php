@@ -16,9 +16,9 @@
 				    <table class="table table-hover ">
 				        <thead class="thead-dark">
 				            <tr>
-				                <th scope="col">Nom</th>
-				                <th scope="col">Prenom</th>
-				                <th scope="col">Gestion</th>
+				                <th>Nom</th>
+				                <th>Prenom</th>
+				                <th>Gestion</th>
 				            </tr>
 				        </thead>
 				        <tbody>				        

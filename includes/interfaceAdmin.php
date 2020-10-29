@@ -31,9 +31,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="../home/index.php">Deconnection <i class="fas fa-sign-in-alt"></i></a>
             </li>
-            <li class="nav-item">
+<!--             <li class="nav-item">
                 <a class="nav-link" href="../admin/ajouterFilm.php">Creer Film </a>
-            </li>
+            </li> -->
         </ul>
     </div>
 </nav>

@@ -21,3 +21,9 @@
 .card-titler {
   /* height :1px; */
 }
+
+form{
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+}
