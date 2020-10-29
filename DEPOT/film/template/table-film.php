@@ -1,4 +1,4 @@
-<!-- 
+
 <?php
     extract($_POST);
     foreach( json_decode($obj) as $film)  
@@ -24,4 +24,4 @@
 <!--  FIN TEMPLATE CARD FILM -->
 
 <?php  } ?>   
- -->
+<!--             src="../../img/"  -->
