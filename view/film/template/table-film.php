@@ -8,9 +8,7 @@
 <!-- TEMPLATE CARD FILM -->
 <div class="card flex-container" style="width: 20rem;  ">
         <a href="#" target="_blank">
-            <img class="card-img-top"" 
-            src="../../img/<?php echo $film->pochette; ?> " 
-            width="200" height="300">
+            <img class="card-img-top"  src="../../img/<?php echo $film->pochette; ?>"width="200" height="300">
         </a>
          <div class="card-body">
             <h5 class="card-title">Titre: <?php echo $film->titre; ?></h5>

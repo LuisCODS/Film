@@ -74,7 +74,7 @@ include '../../includes/interfaceAdmin.php';
                            ?>
 
                           <tr>
-                              <td><img src='../../img/"<?php echo($ligne->pochette)?>"' width=80 height=80></td>
+                              <td><img src="../../img/<?php echo($ligne->pochette)?>"   width=80 height=80></td>
                               <td><?php echo($ligne->titre) ?></td>
                               <td><?php echo($ligne->prix)?></td>
                               <td><?php echo($ligne->categorie)?></td>                                
@@ -96,8 +96,10 @@ include '../../includes/interfaceAdmin.php';
                       </table>                  
                 </div>
                 <!-- FIN TABLE -->
+
             </div> 
       </div>      
 </div>     
 
 <?php include '../../includes/footer.php'; ?>
+<?php  header("location: lister.php");  ?>
