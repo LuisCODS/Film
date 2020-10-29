@@ -22,49 +22,20 @@ function listerFilm()
 		url: filmController,
 		data: actionType
 
-		//RECOIT DU CONTROLLEUR LA REQUETTE (CALLBACK): un array OBJET en format json.
-	}).done((jsonData)=>{		
+			//RECOIT DU CONTROLLEUR UN SELECT  d'objet au format json.
+			}).done((jsonData)=>{		
 
-		//ENVOIE LES DONNES AU TEMPLATE: UN OBJET JSON
-		$.ajax({
-			method:'POST', 
-			url: 'template/table-film.php',
-			data: "obj="+jsonData
+				//ENVOIE LES DONNES AU TEMPLATE: UN OBJET JSON
+				$.ajax({
+				method:'POST', 
+				url: 'template/table-film.php',
+				data: "obj="+jsonData
 
-		//CALLBACK: LA VUE TEMPLATE DEJA CHARGÉE AVEC LES DONNÉES
-		}).done((template)=>{
+			//CALLBACK: LA VUE TEMPLATE DEJA CHARGÉE AVEC LES DONNÉES
+			}).done((template)=>{
 
 			//Charge le template, Dans la div listTemplate au (listerFilm.php).
 			$("#listTemplate").html(template);
-
-
-			//========================================================================
-			// BUTTON EDIT: declenche dès que le button btnEditer qui est dans(table-film.php)
-			// est appuyé ele é pego pela class.
-			//========================================================================
-/*			$('.btnEditer').click(function() 
-			{
-				//Abre o mesmo modal mostrando os campos do objeto
-				$('.ModalCadastro').modal("show");	
-
-				//Prend l'attribut (un objet) du button et le convert en json
-				var obj = JSON.parse($(this).attr("obj") );
-				//alert(obj); test
-
-				//Show object propertys on form input
-				$("#PK_ID_Film").val(obj.PK_ID_Film);
-				$("#titre").val(obj.titre);	
-				$("#prix").val(obj.prix);	
-				$("#categorie").val(obj.categorie);	
-				$("#realisateur").val(obj.realisateur);	
-				$("#description").val(obj.description);	
-
-				//Show le boutton Supprimer par son ID: btnSupprimer
-				//on javascript sintax:  document.getElementById("btnSupprimer").hidden = false;
-				$("#btnSupprimer").css("display", "block");	
-				//Change le titre du modal
-				$("#ModalTitle").html("Editer Film");		
-			});*/
 
 			$('.btnEditerFilm').click(function() 
 			{
@@ -84,14 +55,15 @@ function listerFilm()
 				$("#description").val(obj.description);	
 				$("#ModalTitle").html("Editer Film");	
 
+				//Pega o form cerializado com os dados
 				var champs   = $("#formAjouter").serialize();
 
 				$.ajax({
 					method: "POST", 
-					url:'../editerFilm',
+					url:'../admin/filmController.php',
 					data: champs
 					}).done((msg)=>	{
-					var reponse = (msg == 1) ? "Enregistré avec sucess!" : msg;
+					//var reponse = (msg == 1) ? "Enregistré avec sucess!" : msg;
 
 					//Windos showup	
 					$.confirm({
@@ -109,9 +81,6 @@ function listerFilm()
 				});
 
 			});
-
-
-
 
 		})
 	});

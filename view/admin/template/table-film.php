@@ -40,8 +40,8 @@
                 </div>
                 </th>
                     <td><?php echo $film->titre ?></td>
-                    <td><?php echo $film->realisateur ?></td>
                     <td><?php echo $film->categorie ?></td>
+                    <td><?php echo $film->realisateur ?></td>                    
                     <td><?php echo $film->prix ?></td>
                     <td>
                       <!--Ajoute à chaque bouton  un objet en format Json -->             

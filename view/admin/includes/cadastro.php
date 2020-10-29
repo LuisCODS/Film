@@ -23,6 +23,11 @@
                  <!--  Form -->          
                    <form id="formAjouter">   
 
+                          <!-- FORNECE O TIPO DE ACAO AO CONTROLLER -->
+                          <input type="hidden" class="form-group" 
+                           readonly="true" id="action" 
+                           name="action" value="update" >
+
                           <input type="hidden" id="PK_ID_Film" name="PK_ID_Film" readonly="true" >
 
                           <div class="form-group">

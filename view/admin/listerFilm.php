@@ -18,10 +18,10 @@
               </div> 
               <!--  BOUTTON + -->
               <div class="col-md-1">
-<!--                   <button type="button"
+                  <button type="button"
                           class="btn btn-primary float-right" 
                           id="btnPlus" ><i class="fas fa-plus"></i> 
-                  </button> -->
+                  </button>
               </div> 
       </div>    
         <!--  RENDER PAGE --> 

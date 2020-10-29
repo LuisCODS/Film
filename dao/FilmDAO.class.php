@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 /* 
 DAO (Data acce objet): classes responsables de la création du CRUD 
@@ -103,3 +103,4 @@ Class FilmDAO
 
 }
 
+ 
