@@ -15,9 +15,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="../../view/film/index.php">Nos films</a>
                     </li>
-                    <li class="nav-item">
-                         <a class="nav-link" href="../../view/membre/editer.php">Editer Profil <i class="far fa-user"></i></a>
-                    </li>
                     <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                             role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -31,10 +28,13 @@
                         </div>
                     </li>
                     <li class="nav-item">
+                         <a class="nav-link" href="../../view/membre/editer.php">Editer Profil <i class="far fa-user"></i></a>
+                    </li>
+                    <li class="nav-item">
                             <a class="nav-link" href="../membre/panier.php">Panier  <i class="fas fa-shopping-cart"></i></a>
                     </li>
                     <li class="nav-item">
-                            <a class="nav-link" href="../home/index.php">Deconnection <i class="fas fa-sign-in-alt"></i></a>
+                            <a class="nav-link" href="../home/index.php">Quitter <i class="fas fa-sign-in-alt"></i></a>
                     </li>
             </ul>
     </div>

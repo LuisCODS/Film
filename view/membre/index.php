@@ -2,41 +2,17 @@
 <?php include '../../includes/interfaceMembre.php'; ?>
 
 
-    <div class="container">
+<!-- _________________ INDEX-MEMBRE _________________ --> 
+<div class="container">
+      <div class="jumbotron">
+          <h1 class="display-4">Index membre</h1>
+          <p class="lead">Page home.</p>
+          <hr class="my-4">
+          <p>Le menu en haut vous permet de gerer votre location.</p>
 
-        <!--  ICONE + TITLE -->
-        <div class="row mb-3">
-            <div class="col-md-8">
-               <h2><i class="far fa-address-card"></i> Index Membre</h2> 
-            </div>   
+     </div>
+</div>      
+<!-- ___________________________________________________ --> 
 
-            <!--  ZONE RECHERCHE -->         
-            <div class="col-md-3">
-                   <input type="text" 
-                          id="txtInput" 
-                          name="" 
-                          value="" 
-                          class="form-control" 
-                          placeholder="Qui cherchez vous?"> 
-            </div> 
-
-            <!--  BOUTTON + -->
-            <div class="col-md-1">
-                <button type="button"
-                        class="btn btn-primary float-right" 
-                        id="btnPlus" ><i class="fas fa-plus"></i> 
-                </button>
-            </div>        
-        </div>       
-
-        <!--  RENDER PAGE --> 
-        <div class="row">
-<!--             <div class="col-md-12" id="listTemplate">-->
-
-               <!-- CHARGE LE TEMPLATE ICI !-->
-            </div> 
-        </div>
-    </div>    
-
-<?php include 'includes/ajouter.php'; ?>
-<?php include '../../includes/footer.php'; ?>
+<!--  FOOTER  --> 
+<?php require_once '../../includes/footer.php'; ?>

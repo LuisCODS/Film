@@ -33,11 +33,10 @@
                         <a class="nav-link" href="../../view/login/index.php">Connection  <i class="fas fa-sign-in-alt"></i></a>
                   </li>
                   <li class="nav-item">
-                        <a class="nav-link" href="../../view/membre/ajouterMembre.php">Nouveau membre <i class="far fa-user"></i></a>
+                        <a class="nav-link" href="../../view/membre/ajouterMembre.php">Devenir membre <i class="far fa-user"></i></a>
                   </li>
             </ul>
       </div>
 </nav>
-<!-- ______________________________________  fin NAVBAR VISITEUR   ______________________________________-->
-
+<!-- _________________________  fin NAVBAR VISITEUR   ________________________-->
 
