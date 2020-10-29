@@ -2,21 +2,23 @@
 <?php 
 include '../../includes/head.php'; 
 include '../../includes/interfaceAdmin.php';
+include '../../model/Film.class.php';
 // session_start();
+extract($_POST);
+
+
  ?> 
 
-
-<!-- _________________  FORM AJOUTER FILM _________________ --> 
+<!-- _________________  FORM EDITER FILM _________________ --> 
 <div class="container">
-    
-     <form id="formCreate" enctype="multipart/form-data" action="../../controller/film.php" method="POST" >
+     <form id="formEditer" enctype="multipart/form-data" action="../../controller/film.php" method="POST" >
         
-        <h2>Nouveau film</h2>
+        <h2>Editer film</h2>
         <!-- FORNECE O TIPO DE ACAO AO CONTROLLER -->
         <div class="form-group">
               <input type="hidden" class="form-control" 
                readonly="true" id="action" 
-               name="action" value="insert" >
+               name="action" value="upDate" >
         </div>
         <div class="form-group">
             <label for="PK_ID_Film"></label>
@@ -25,7 +27,7 @@ include '../../includes/interfaceAdmin.php';
         <div class="form-group">
             <label for="titre">Titre</label>
             <input type="text" class="form-control" id="titre" name="titre"
-             placeholder="" size="40">
+             value=""  size="40">
         </div>
         <div class="form-group">
             <label for="prix">Prix</label>

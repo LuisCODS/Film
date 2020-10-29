@@ -2,69 +2,108 @@
 //                      FILM SCRIPT
 // ____________________________________________________________________
 
-//  PORTÉE GLOBAL 
-//var filmController ='../../controller/film.php';
 
 
 //========================================================================
 // Things that should be done every time a page loads
 //========================================================================
-$(()=>{
+//$(()=>{
 
 	//alert("TEste");
 	//insert();
 
 
-});
+//});
 
 // //========================================================================
-// // BOUTON (+) : One a window to add a new Movie
+// // BOUTON EDITER: on click, open the modal and  remplie le form
 // //========================================================================
-$('#btnCreate').click(()=>    
-{
+$('.btnEditer').click(function(){    
+
+
+	//alert("Tetse");
+	$('.modalEditer').modal("show");	
+
+	//convert en json l'objet du button
+	var obj = JSON.parse($(this).attr("obj") );
+	//var obj = $(this).attr("obj");
+
+    // alert($(this).attr("obj"));
+	//Show object propertys on form input
+	$("#titre").val(obj.titre);
+	$("#prix").val(obj.prix);		
+	$("#categorie").val(obj.categorie);	
+	$("#realisateur").val(obj.realisateur);
+	$("#description").val(obj.description);
+});
+
+//========================================================================
+// BOUTON AJOUTER: Cette fonction est declenchée dès que le button btnAjouter
+//  ...( from ajouter.php) du modal est appuyé.
+// ========================================================================
+$('#btnEnregistrer').click(()=>    
+{		
+
+		//get all form modal inputs  
+		var champs   = $("#formModalEdit").serialize();
+		var action = 'action=update';
+		//console.log(actionType); //to test!
+
+		// REQUISITION asynchrone 
+		$.ajax({
+			method: "POST", 
+			url:"../../controller/film.php",
+			data: action+'&'+champs
+			//CALLBACK: Si l'insertion ou update a été fait, msg = 1
+			}).done((msg)=>	{
+			var reponse = (msg == 1) ? "Enregistré avec sucess!" : msg;
+			//console.log(msg); to test
+
+			//Windos showup	
+			$.confirm({
+				title: 'Attention!',
+				content: reponse,
+				buttons: {
+					Ok: ()=>{					
+						// $('#modalEditer').modal('toggle');//close modal 
+					}				
+				}
+			});		   
+		});
 	
-	//header("location: create.php"); 
-	//header("location: ../index.php"); 
-	//Open the modal windows
-	// $('.ModalCadastro').modal("show");	
-
-	// //Cache le boutton Supprimer du modal
-	// //on javascript sintax:  document.getElementById("btnSupprimer").hidden = true;
-	// $("#btnSupprimer").css("display", "none");
-	// //Set title h5 au modal
-	// $("#ModalTitle").html("Nouveau membre");
-
-	// //Clean input  filds
-	// $("#PK_ID_Membre").val("");
-	// $("#nom").val("");
-});
+}); 
 
 
+//========================================================================
+//   Cette fonction est declenchée dès que le button btnSupprimer
+//   ...( from ajouter.php) du modal est appuyé.
+//========================================================================
+/*$('#btnSupprimer').click(()=>    
+{	
 
-// Retourne les films
-// function listerFilm()
-// {
-// 	var actionType = 'action=getFilm';
+	var champs   = $("#formAjouter").serialize();
+	var actionType = 'action=delete';
 
-// 	$.ajax({
-// 		method:'POST', 
-// 		url: filmController,
-// 		data: actionType
-// 	}).done((jsonData)=>{		
-
-// 		$.ajax({
-// 			method:'POST', 
-// 			url: 'template/table-film.php',
-// 			//le callback jsonData est envoyée par la variable obj
-// 			data: "obj="+jsonData
-
-// 		//CALLBACK: tout le contenu du fichier table-profil.php	
-// 		}).done((template)=>{
-
-// 			//Charge le template, provenant du callback, dans la div 
-// 			//... listTemplate par son id,  dans (listerFilm.php).
-// 			$("#listTemplate").html(template);
-
-// 		})
-// 	});
-// }
+	// REQUISITION asynchrone 
+	$.ajax({
+		method: "POST", 
+		url:membreController,
+		data: actionType+'&'+champs
+		
+		}).done((callBack)=>
+		{
+			var reponse = (callBack == 1) ? "Supprimé avec sucess!" : callBack;
+			//Windos popup du plugin	
+			$.confirm({
+				title: 'Attention!',
+				content: reponse,
+				buttons: {
+					Ok: ()=>{
+				         // Recharge la page actuelle à partir du 
+				         //... serveur, sans utiliser le cache.
+						 location.reload(true);
+					}				
+				}
+			});
+		});
+});*/
