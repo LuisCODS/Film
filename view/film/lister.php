@@ -1,5 +1,28 @@
-<?php include '../../includes/head.php'; ?>
-<?php include '../../includes/interfaceAdmin.php'; ?>
+<?php 
+
+include '../../includes/head.php'; 
+include '../../includes/interfaceAdmin.php'; 
+
+  define("USAGER","root");
+  define("PASSE","");
+  try {
+    $dns = 'mysql:host=localhost;dbname=bdfilms';
+    $options = array(
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    );
+    $connexion = new PDO( $dns, USAGER, PASSE, $options );
+    } catch ( Exception $e ) {
+        //echo $e->getMessage();
+      echo "Probleme de connexion au serveur de bd";
+      exit();
+    }
+
+
+  $requette="SELECT * FROM film";
+  $stmt = $connexion->prepare($requette);
+  $stmt->execute();
+
+ ?>
 
 <div class="container"> 
 
@@ -43,23 +66,32 @@
                                   <th scope="col">Action</th>
                               </tr>
                           </thead>
-                          <tbody>               
-                              <tr>
-                                  <td>pochette</td>
-                                  <td>titre</td>
-                                  <td>prix</td>
-                                  <td>categorie</td>
-                                  <td>
-                                      <button
-                                           type="button" href="#" class="btn btn-outline-primary"><i class="far fa-edit"></i> Editer</button>
-                                      <button 
-                                          type="button" href="#" class="btn btn-outline-warning">Details
-                                      </button>
-                                      <button 
-                                          type="button" href="#" class="btn btn-outline-danger">Supprimer
-                                      </button>
-                                  </td>                         
-                              </tr> 
+                          <tbody>   
+
+                          <?php 
+                           while($ligne=$stmt->fetch(PDO::FETCH_OBJ))
+                           {
+                           ?>
+
+                          <tr>
+                              <td><img src='../../img/".<?php ($ligne->pochette)?>."' width=80 height=80></td>
+                              <td>".<?php ($ligne->titre) ?>."</td>
+                              <td><?php ($ligne->prix)?></td>
+                              <td><?php ($ligne->categorie)?></td>                                
+                              <td>
+                                  <button
+                                       type="button" href="#" class="btn btn-outline-primary"><i class="far fa-edit"></i> Editer</button>
+                                  <button 
+                                      type="button" href="#" class="btn btn-outline-warning">Details
+                                  </button>
+                                  <button 
+                                      type="button" href="#" class="btn btn-outline-danger">Supprimer
+                                  </button>
+                              </td>                         
+                          </tr>    
+
+                       <?php } ?>
+
                           </tbody>
                       </table>                  
                 </div>
@@ -67,4 +99,5 @@
             </div> 
       </div>      
 </div>     
- <?php include '../../includes/footer.php'; ?>
+
+<?php include '../../includes/footer.php'; ?>

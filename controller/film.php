@@ -35,28 +35,14 @@ if($_POST["action"] == "insert")
 
 }
 
+// if($_POST["action"] == "lister")
+// {
+// 	$filmDAO->lister();//Si ok return 1	
+// }
 
 
-		
 
-	 
-
-	// case 'update':
-
-	// 	// $film = new Film($PK_ID_Film,$titre,$prix,$realisateur,$categorie,$pochette,$description);
-	// 	// echo $filmDAO->update($film);//Si ok return 1
-	// 	break;
-
-	// case 'delete':
-
-	// 	echo $filmDAO->delete($PK_ID_Film);//Si ok return 1
-	// 	break;
-
-	// case 'getFilm':
-
-	// 	echo $filmDAO->getFilm();//Si ok return 1
-	// 	break;	
-
+	//  echo $filmDAO->update($film);//Si ok return 1
 
 
 ?>

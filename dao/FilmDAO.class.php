@@ -90,15 +90,14 @@ Class FilmDAO
 		}
 	}
 
-	function getFilm()
+	function lister()
 	{
         $sql = 'select PK_ID_Film,titre,prix,realisateur,categorie,pochette,description from Film';
 		$stmt = $this->cn->prepare($sql);
 		$stmt->execute();
-		$rs = $stmt->fetchall(PDO::FETCH_OBJ); 
+		$rs = $stmt->fetch(PDO::FETCH_OBJ); 
 		// traiter comme objt  $rs = $stmt->fetchall(PDO::FETCH_OBJ); 
-		return json_encode($rs);
-		//return ($rs);
+		return($rs);
 	}
 
 }
