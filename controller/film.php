@@ -6,11 +6,12 @@
 include '../model/Film.class.php';
 include '../dao/FilmDAO.class.php';
 require_once("../includes/ConnectionPDO.php");
+
 $filmDAO = new FilmDAO();
 extract($_POST);
-//alert($action);
 
-
+	//echo $action;
+	//print_r($action);
 
 	if($_POST["action"] == "insert")
 	{
@@ -41,6 +42,8 @@ extract($_POST);
 
 	if($_POST["action"] == "update")
 	{						
+		//echo($_POST['titre']);
+
 			$PK_ID_Film=$_POST['PK_ID_Film'];
 			$titre=$_POST['titre'];
 			$prix=$_POST['prix'];
@@ -66,6 +69,7 @@ extract($_POST);
 					//print_r($tabFichiers);
 					// parcourir les fichier
 					foreach($tabFichiers as $fichier){
+						//trim: removes whitespace from both sides of a string
 					  if(is_file($fichier) && $fichier==trim($rmPoc)) {
 						// enlever le fichier
 						unlink($fichier);
@@ -86,9 +90,10 @@ extract($_POST);
 			}
 			$requette="UPDATE film set titre=?,prix=?,categorie=?,pochette=?,description=?, realisateur=? WHERE PK_ID_Film=?";
 			$stmt = $connexion->prepare($requette);
-			$stmt->execute(array($titre,$prix,$categorie,$pochette,$PK_ID_Film,$description, $realisateur));
+			$stmt->execute(array($titre,$prix,$categorie,$pochette,$description, $realisateur,$PK_ID_Film));
 			unset($connexion);
 			unset($stmt);
+			  //header("location:../view/film/lister.php");
 	}
 
 

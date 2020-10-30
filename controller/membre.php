@@ -7,7 +7,7 @@
 
 
 	extract($_POST);
-	// echo $_POST["action"];//get hiddin input from form
+	//echo $_POST["action"];//get hiddin input from form
 
 	//CRUD
 	$membreDAO = new MembreDAO();
@@ -18,7 +18,7 @@
 			$membre = new Membre(null,$nom,$prenom,$profil,$courriel,$tel_membre,$MDP_membre);	
 			$membreDAO->insert($membre);//Si ok return 1	
 			// echo $membreDAO->insert($membre);//Si ok return 1
-			   header('Location: ../view/membre/index.php');
+			   header('Location: ../view/membre/lister.php');
 		    break;
 
  		case 'update':

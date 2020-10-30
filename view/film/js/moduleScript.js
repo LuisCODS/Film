@@ -1,7 +1,8 @@
 //  ____________________________________________________________________
 //                      FILM SCRIPT
 // ____________________________________________________________________
-
+//  PORTÉE GLOBAL 
+	var filmController ='../../controller/film.php';
 
 
 //========================================================================
@@ -15,12 +16,13 @@
 
 //});
 
-// //========================================================================
-// // BOUTON EDITER: on click, open the modal and  remplie le form
-// //========================================================================
-$('.btnEditer').click(function(){    
-
-
+//========================================================================
+// BOUTON EDITER:
+// Ce bouton est recuperé par la classe (btnEditer), dans le button Editer
+//de la page lister.php.
+//========================================================================
+$('.btnEditer').click(function()
+{    
 	//alert("Tetse");
 	$('.modalEditer').modal("show");	
 
@@ -35,21 +37,20 @@ $('.btnEditer').click(function(){
 	$("#categorie").val(obj.categorie);	
 	$("#realisateur").val(obj.realisateur);
 	$("#description").val(obj.description);
+	//$("#pochette").val(obj.pochette);
 });
 
 //========================================================================
-// BOUTON AJOUTER: Cette fonction est declenchée dès que le button btnAjouter
-//  ...( from ajouter.php) du modal est appuyé.
+// CREATE
 // ========================================================================
-$('#btnEnregistrer').click(()=>    
+$('#btnEnregistrerFormCreate').click(()=>    
 {		
 
 		//get all form modal inputs  
 		var champs   = $("#formModalEdit").serialize();
 		var action = 'action=update';
-		//console.log(actionType); //to test!
+		//console.log(action); //to test!
 
-		// REQUISITION asynchrone 
 		$.ajax({
 			method: "POST", 
 			url:"../../controller/film.php",
@@ -57,7 +58,7 @@ $('#btnEnregistrer').click(()=>
 			//CALLBACK: Si l'insertion ou update a été fait, msg = 1
 			}).done((msg)=>	{
 			var reponse = (msg == 1) ? "Enregistré avec sucess!" : msg;
-			//console.log(msg); to test
+			console.log(msg); 
 
 			//Windos showup	
 			$.confirm({
@@ -65,7 +66,42 @@ $('#btnEnregistrer').click(()=>
 				content: reponse,
 				buttons: {
 					Ok: ()=>{					
-						// $('#modalEditer').modal('toggle');//close modal 
+						 $('.modalEditer').modal('toggle');//close modal 
+					}				
+				}
+			});		   
+		});
+	
+}); 
+
+//========================================================================
+// EDITER: recupere le clic par l'ID du bouton (Enregistrer) dans le modal 
+// footer,  au lister.php.
+// ========================================================================
+$('#btnEnregistrerFormEdit').click(()=>    
+{		
+
+		//alert("Teste");
+		//get all form modal inputs  
+		var champs   = $("#formModalEdit").serialize();
+		var action = 'action=update';
+		//console.log(action); //to test!
+
+		$.ajax({
+			method: "POST", 
+			url:filmController,
+			data: action+'&'+champs
+			//CALLBACK: Si l'insertion ou update a été fait, msg = 1
+			}).done((msg)=>	{
+			var reponse = (msg == 1) ? "Enregistré avec sucess!" : msg;
+
+			//Windos showup	
+			$.confirm({
+				title: 'Attention!',
+				content: reponse,
+				buttons: {
+					Ok: ()=>{					
+						 $('.modalEditer').modal('toggle');//close modal 
 					}				
 				}
 			});		   

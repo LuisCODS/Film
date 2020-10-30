@@ -29,7 +29,7 @@ require_once("../../includes/ConnectionPDO.php");
       </div>  
       <div class="row">
             <div  class="col-md-12">               
-                <!--TABLE DES MEMBRE-->
+                <!--TABLE DES FILM-->
                 <div class="col-md-12"  >
                       <table class="table table-hover ">
                           <thead class="thead-dark">
@@ -98,14 +98,14 @@ require_once("../../includes/ConnectionPDO.php");
 </div>     
 
 
-<!-- ___________________________   MODAL - CREATE FILM   _________________________________--> 
+<!-- ___________  MODAL - EDITER FILM   _________________--> 
 
 <div class="modal fade modalEditer" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
               <!-- HEAD -->
               <div class="modal-header">
-                  <h5 class="modal-title" id="TituloModalCentralizado">Nouveau Film</h5>
+                  <h5 class="modal-title" id="TituloModalCentralizado">Page edition</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -146,7 +146,7 @@ require_once("../../includes/ConnectionPDO.php");
                                 <label for=description"">Description</label>
                                 <textarea type="textarea" class="form-control" id="description" name="description" ></textarea>
                             </div>
-                            <div class="form-group" >                                                             
+                            <div class="form-group" >     
                                 <label for="pochette">Pochette</label>
                                 <input type="file" class="form-control" id="pochette" name="pochette" >
                             </div>
@@ -155,13 +155,13 @@ require_once("../../includes/ConnectionPDO.php");
               <!-- FOOTER -->
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                  <button type="button" id="btnEnregistrer"  class="btn btn-success"><i class="fas fa-save"></i> Enregistrers</button>
+                  <button type="button" id="btnEnregistrerFormEdit"  class="btn btn-success"><i class="fas fa-save"></i> Enregistrers</button>
               </div>
 
         </div>
     </div>
 </div>
-<!-- ___________________________   FIN MODAL   _________________________________--> 
+<!-- ___________________________   FIN MODAL   _________________________--> 
 
 
 

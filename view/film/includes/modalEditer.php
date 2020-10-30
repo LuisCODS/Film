@@ -56,7 +56,8 @@
               <!-- FOOTER -->
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                  <button type="button" id="btnEnregistrerFilm"  class="btn btn-success"><i class="fas fa-save"></i> Enregistrers</button>
+                  <button type="button" id="btnEnregistrerFilm"  
+                  class="btn btn-success"><i class="fas fa-save"></i> Enregistrers</button>
               </div>
 
         </div>

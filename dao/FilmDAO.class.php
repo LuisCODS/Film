@@ -48,7 +48,7 @@ Class FilmDAO
 	}
 
 
-	function upDate(Film $f)
+	function update(Film $f)
 	{
 		try {
 				$sql =  'update Film set

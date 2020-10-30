@@ -1,6 +1,8 @@
-<?php require_once '../../includes/head.php'; ?>
-<?php require_once '../../includes/interfaceAdmin.php'; ?>
-
+<?php 
+include '../../includes/head.php'; 
+include '../../includes/interfaceAdmin.php'; 
+require_once("../../includes/ConnectionPDO.php");
+?>
 
 <div class="container">    
       <div class="row mb-3">
@@ -12,27 +14,31 @@
       <div class="row">
           <div  class="col-md-12">
 				<!--TABLE DES MEMBRE-->
-				<div class="col-md-12"  >
+				<div class="col-md-12">
 				    <table class="table table-hover ">
 				        <thead class="thead-dark">
 				            <tr>
 				                <th>Nom</th>
 				                <th>Prenom</th>
-				                <th>Gestion</th>
 				            </tr>
 				        </thead>
-				        <tbody>				        
-				            <tr>
-				                <td>Nom</td>
-				                <td>Prenom</td>
-				                <td>       
-				                  <button type="button" 
-				                           class="btn btn-secondary" btnDetails">
-				                         <i class="fas fa-user-edit"></i> Details
-				                  </button>
-				                </td>
-				            </tr> 
-				        </tbody>
+                            <tbody>   
+
+				                <?php 
+				                  $requette="SELECT * FROM membre";
+				                  $stmt = $connexion->prepare($requette);
+				                  $stmt->execute();
+				                 while($ligne=$stmt->fetch(PDO::FETCH_OBJ))
+				                 {
+				                 ?>
+
+				                <tr>
+				                    <td><?php echo($ligne->nom) ?></td>
+				                    <td><?php echo($ligne->prenom)?></td>                        
+				                </tr>    
+				             <?php } ?>
+
+                            </tbody>
 				    </table>
 				</div>
              	<!-- FIN TABLE -->

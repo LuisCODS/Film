@@ -2,13 +2,11 @@
 <?php 
 include '../../includes/head.php'; 
 include '../../includes/interfaceAdmin.php';
-// session_start();
- ?> 
+?> 
 
 
 <!-- _________________  FORM AJOUTER FILM _________________ --> 
-<div class="container">
-    
+<div class="container">    
      <form id="formCreate" enctype="multipart/form-data" action="../../controller/film.php" method="POST" >
         
         <h2>Nouveau film</h2>
@@ -54,7 +52,7 @@ include '../../includes/interfaceAdmin.php';
             <label for="pochette">Pochette</label>
             <input type="file" class="form-control" id="pochette" name="pochette" >
         </div>
-           <button id="btnEnregistrer" type="submit" class="btn btn-primary">Enregistrer</button>
+           <button id="btnEnregistrerFormCreate" type="submit" class="btn btn-primary">Enregistrer</button>
       </form> 
 </div>  
 

@@ -13,7 +13,7 @@
                         <a class="nav-link" href="../../view/membre/index.php"><i class="fas fa-home"></i><span class="sr-only">(Página atual)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../../view/film/index.php">Nos films</a>
+                        <a class="nav-link" href="../../view/membre/listerFilm.php">Nos films</a>
                     </li>
                     <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
