@@ -95,6 +95,7 @@ Class FilmDAO
         $sql = 'select PK_ID_Film,titre,prix,realisateur,categorie,pochette,description from Film';
 		$stmt = $this->cn->prepare($sql);
 		$stmt->execute();
+		//Récupère la prochaine ligne et la retourne en tant qu'objet
 		$rs = $stmt->fetch(PDO::FETCH_OBJ); 
 		return($rs);
 	}

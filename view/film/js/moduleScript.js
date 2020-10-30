@@ -114,16 +114,22 @@ $('#btnEnregistrerFormEdit').click(()=>
 //   Cette fonction est declenchée dès que le button btnSupprimer
 //   ...( from ajouter.php) du modal est appuyé.
 //========================================================================
-/*$('#btnSupprimer').click(()=>    
-{	
+$('#btnSupprimer').click(function() {
 
-	var champs   = $("#formAjouter").serialize();
-	var actionType = 'action=delete';
+	//alert("Tetse");
+	$('.modalDelete').modal("show");	
+	//convert en json l'objet du button
+	var obj = JSON.parse($(this).attr("obj") );
+	$("#titreDelete").val(obj.titre);
+	//var actionType = 'action=delete';
+
+	//alert($id);
+
 
 	// REQUISITION asynchrone 
-	$.ajax({
+/*	$.ajax({
 		method: "POST", 
-		url:membreController,
+		url:filmController,
 		data: actionType+'&'+champs
 		
 		}).done((callBack)=>
@@ -141,5 +147,5 @@ $('#btnEnregistrerFormEdit').click(()=>
 					}				
 				}
 			});
-		});
-});*/
+		});*/
+});

@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="../../view/membre/index.php"><i class="fas fa-home"></i><span class="sr-only">(Página atual)</span></a>
+                        <a class="nav-link" href="../../view/film/index.php"><i class="fas fa-home"></i><span class="sr-only">(Página atual)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../../view/membre/listerFilm.php">Nos films</a>

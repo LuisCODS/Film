@@ -70,6 +70,7 @@ require_once("../../includes/ConnectionPDO.php");
                               Editer
                         </button> 
                         <button        
+                             id="btnSupprimer"
                              type="button"
                              href="#"
                              obj='<?php echo json_encode($ligne); ?>'
@@ -161,8 +162,44 @@ require_once("../../includes/ConnectionPDO.php");
         </div>
     </div>
 </div>
-<!-- ___________________________   FIN MODAL   _________________________--> 
 
+
+<!-- ___________________________    MODAL SUPPRIMER   _________________________--> 
+
+<div class="modal fade modalDelete" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+              <!-- HEAD -->
+              <div class="modal-header">
+                  <h5 class="modal-title" id="TituloModalCentralizado">Page suppresion</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <!-- BODY -->
+              <div class="modal-body">
+                    <!-- FORM -->
+                    <form id="formModalDelete">
+                            <div class="form-group">
+                                <label for="PK_ID_Film"></label>
+                                <input type="hidden" class="form-control" id="PK_ID_Film" name="PK_ID_Film" >
+                            </div>
+                            <div class="form-group">
+                                <label for="titreDelete">Titre</label>
+                                <input type="text" class="form-control" id="titreDelete" name="titreDelete"
+                                 placeholder="" size="40">
+                            </div>
+                    </form>                     
+              </div>
+              <!-- FOOTER -->
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                  <button type="button" id=""  class="btn btn-success"><i class="fas fa-save"></i>Supprimer</button>
+              </div>
+
+        </div>
+    </div>
+</div>
 
 
 <?php include '../../includes/footer.php'; ?>
