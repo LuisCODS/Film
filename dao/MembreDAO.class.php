@@ -6,6 +6,7 @@ et de la persistance des données dans la base de données;
 */
 
 include '../includes/Connection.class.php';
+
 //require_once("../includes/Connection.class.php");
 
 
@@ -113,7 +114,7 @@ Class MembreDAO
 
 	function getMembre(){
 		try {
-			$sql = "select *  from Membre";			
+			$sql = "select * from Membre";			
 			$stmt = $this->cn->prepare($sql);
 			$stmt->execute();
 			// $rs = $stmt->fetchall(PDO::FETCH_ASSOC); 

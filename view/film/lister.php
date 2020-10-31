@@ -1,8 +1,10 @@
 <?php 
-include '../../includes/head.php'; 
-include '../../includes/interfaceAdmin.php'; 
-require_once("../../includes/ConnectionPDO.php");
+  //session_start();
+  include '../../includes/head.php'; 
+  include '../../includes/interfaceAdmin.php'; 
+  require_once("../../includes/ConnectionPDO.php");
 ?>
+
 
 <div class="container"> 
       <div class="row mb-3">
@@ -80,7 +82,7 @@ require_once("../../includes/ConnectionPDO.php");
                           <a 
                             class="btn btn-outline-danger " 
                             href="delete.php?delete=<?php echo ($ligne->PK_ID_Film); ?>"
-                            role="button">Delete
+                            role="button">Supprimer
                           </a> 
                     </td>                         
                 </tr>    

@@ -1,16 +1,57 @@
 <?php 
+	//session_start();
 	include '../../includes/head.php'; 
 	include '../../includes/interfaceAdmin.php'; 
+	// include '../../dao/FilmDAO.class.php';
 	require_once("../../includes/ConnectionPDO.php");
 
+
+	//$filmDAO = new FilmDAO();
+
+	//SI le bouton supprimer est pesé
 	if (isset($_GET['delete'])) 
-	{
-		$id = $_GET['delete'];
-		
-		$requette="DELETE FROM film WHERE PK_ID_Film = $id";
+	{	
+		//Recupere la valeur ID envoyé par GET dans l'url
+		$id_Url = $_GET['delete'];
+		$requette="SELECT * FROM film WHERE PK_ID_Film=?";
 		$stmt = $connexion->prepare($requette);
-		$stmt->execute();
-	    header("location:lister.php");
+		$stmt->execute(array($id_Url));
+		
+		if(!$ligne=$stmt->fetch(PDO::FETCH_OBJ)){
+			echo "Film ".$id_Url." introuvable";
+			unset($connexion);
+			unset($stmt);
+			exit;
+		}
+		$pochette=$ligne->pochette;
+		if($pochette!="avatar.jpg"){
+			$rmPoc='../../img/'.$pochette;
+			$tabFichiers = glob('../../img/*');
+			//print_r($tabFichiers);
+			// parcourir les fichier
+			foreach($tabFichiers as $fichier){
+			  if(is_file($fichier) && $fichier==trim($rmPoc)) {
+				// enlever le fichier
+				unlink($fichier);
+				break;
+			  }
+			}
+		}
+		$requette="DELETE FROM film WHERE PK_ID_Film=?";
+		$stmt = $connexion->prepare($requette);
+		$stmt->execute(array($id_Url));
+		unset($connexion);
+		unset($stmt);
+		header("location:lister.php");
+
+		// $requette="DELETE FROM films WHERE PK_ID_Film=?";
+		// $stmt = $connexion->prepare($requette);
+		// $stmt->execute(array($PK_ID_Film));
+		// unset($connexion);
+		// unset($stmt);
+
+	
+	   
 
 	}
 ?>
