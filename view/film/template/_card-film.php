@@ -16,7 +16,7 @@
              <p class="card-text">Prix: <?php echo $film->prix; ?>$</p>
              <p class="card-text">Categorie: <?php echo $film->categorie; ?></p>
              <p class="card-text">Description: <?php echo $film->description; ?></p>
-             <a href="#" class="btn btn-primary">Details</a>
+             <a href="#" class="btn btn-primary">Ajouter Panier</a>
         </div>
 </div>
 <!--  FIN TEMPLATE CARD FILM -->

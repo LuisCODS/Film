@@ -7,7 +7,7 @@
                   <i class="fas fa-film"></i> 
             </div> 
             <h1 class="mb-4">Page Login</h1>   
-            <form action="/action_page.php" method="post" >
+            <form id="formLogin" action="/action_page.php" method="post" >
                   <input type="text" 
                          placeholder="Courriel" 
                          name="courriel" 
@@ -25,7 +25,14 @@
                           id="btnLogin" 
                           class="form-control btn btn-primary">
                           Login
-                  </button>                   
+                  </button>    
+                  <div 
+                        id="dviAlertLogin"
+                        class="alert alert-danger " 
+                        role="alert"
+                        style="visibility: hidden;">
+                       Courriel ou mot de passe invalide!
+                </div>               
             </form> 
             <!-- <div class="custom-control custom-checkbox my-1 mr-sm-2">
                   <input type="checkbox" class="custom-control-input" id="customControlInline">

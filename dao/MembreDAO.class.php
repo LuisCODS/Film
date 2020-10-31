@@ -112,15 +112,15 @@ Class MembreDAO
 	// 	 return json_encode($tableau);
 	// }
 
-	function getMembre(){
+	function getMembre($courriel, $MDP_membre )
+	{
 		try {
-			$sql = "select * from Membre";			
+			$sql = "select * from Membre WHERE courriel like'$courriel' AND MDP_membre like'$MDP_membre' ";			
 			$stmt = $this->cn->prepare($sql);
 			$stmt->execute();
-			// $rs = $stmt->fetchall(PDO::FETCH_ASSOC); 
-			// traite comme objt 
-			$rs = $stmt->fetchall(PDO::FETCH_OBJ); 	
-			return json_encode($rs);
+			return count($rs = $stmt->fetchall(PDO::FETCH_OBJ));
+			//$rs = $stmt->fetchall(PDO::FETCH_OBJ);// return 1 si ok
+			//return json_encode($rs);	
 
 		} catch (PDOException $e) {
 			echo 'Erro: '. $e;

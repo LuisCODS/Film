@@ -30,9 +30,9 @@
 				echo $membreDAO->delete($PK_ID_Membre);//Si ok return 1
 			break;
 
-		case 'getUtilisateur':
+		case 'select':
 			// echo $membreDAO->getMembre($txtInput);//Si ok return 1
-				echo $membreDAO->getMembre();//Si ok return 1
+				echo $membreDAO->getMembre($courriel, $MDP_membre);//Si ok return 1
 			break;
 			
 		default:
