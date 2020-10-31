@@ -52,7 +52,7 @@ require_once("../../includes/ConnectionPDO.php");
                  ?>
 
                 <tr>
-                    <td><img src="../../img/<?php echo($ligne->pochette)?>"   width=80 height=80></td>
+                    <td><img src="../../img/<?php echo($ligne->pochette)?>" width=80 height=80></td>
                     <td><?php echo($ligne->titre) ?></td>
                     <td><?php echo($ligne->prix)?></td>
                     <td><?php echo($ligne->categorie)?></td>                                
@@ -69,21 +69,19 @@ require_once("../../includes/ConnectionPDO.php");
                               <i class="far fa-edit"></i> 
                               Editer
                         </button> 
-                        <button        
+<!--                         <button        
                              id="btnSupprimer"
                              type="button"
                              href="#"
                              obj='<?php echo json_encode($ligne); ?>'
                              class="btn btn-outline-danger ">
                              Supprimer
-                        </button>
-<!--                           <a 
-                            id="btnEditer"
-                            class="btn btn-outline-success " 
-                           href="editer.php" 
-                           obj='<?php echo($ligne->PK_ID_Film) ?>'
-                           role="button">Editer
-                          </a> -->
+                        </button> -->
+                          <a 
+                            class="btn btn-outline-danger " 
+                            href="delete.php?delete=<?php echo ($ligne->PK_ID_Film); ?>"
+                            role="button">Delete
+                          </a> 
                     </td>                         
                 </tr>    
 
@@ -166,7 +164,10 @@ require_once("../../includes/ConnectionPDO.php");
 
 <!-- ___________________________    MODAL SUPPRIMER   _________________________--> 
 
-<div class="modal fade modalDelete" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade modalDelete" 
+      tabindex="-1" role="dialog"
+      aria-labelledby="myLargeModalLabel"
+      aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
               <!-- HEAD -->
@@ -193,8 +194,19 @@ require_once("../../includes/ConnectionPDO.php");
               </div>
               <!-- FOOTER -->
               <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                  <button type="button" id=""  class="btn btn-success"><i class="fas fa-save"></i>Supprimer</button>
+                  <button 
+                      type="button" 
+                      class="btn btn-secondary" 
+                      data-dismiss="modal">
+                       Fermer
+                   </button>
+                  <button 
+                       type="button"
+                       id="" 
+                       class="btn btn-success">
+                      <i class="fas fa-save"></i>
+                      Confirmer
+                </button>
               </div>
 
         </div>

@@ -17,7 +17,7 @@
 //});
 
 //========================================================================
-// BOUTON EDITER:
+// BOUTON EDITER: open a modal windos
 // Ce bouton est recuperé par la classe (btnEditer), dans le button Editer
 //de la page lister.php.
 //========================================================================
@@ -114,13 +114,13 @@ $('#btnEnregistrerFormEdit').click(()=>
 //   Cette fonction est declenchée dès que le button btnSupprimer
 //   ...( from ajouter.php) du modal est appuyé.
 //========================================================================
-$('#btnSupprimer').click(function() {
+/*$('#btnSupprimer').click(function() {
 
 	//alert("Tetse");
 	$('.modalDelete').modal("show");	
 	//convert en json l'objet du button
 	var obj = JSON.parse($(this).attr("obj") );
-	$("#titreDelete").val(obj.titre);
+	$("#titreDelete").val(obj.titre);*/
 	//var actionType = 'action=delete';
 
 	//alert($id);
@@ -148,4 +148,4 @@ $('#btnSupprimer').click(function() {
 				}
 			});
 		});*/
-});
+//});
