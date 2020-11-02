@@ -7,8 +7,8 @@
     require_once("../../includes/ConnectionPDO.php");
 
     session_start();
-    extract($_POST); 
-
+    //extract($_POST); 
+     // var_dump($id_Url);//to test
     $id_Url= "";
 
     //SI le bouton editer est pesé
@@ -19,25 +19,143 @@
 
         //var_dump($id_Url);//to test
     }
+  
+        //Cherche le film dans la BD
+        $requette="SELECT * FROM film WHERE PK_ID_Film=?";
+        $stmt = $connexion->prepare($requette);
+        $stmt->execute(array($id_Url));
+        $ligne=$stmt->fetch(PDO::FETCH_OBJ);
 
-    var_dump($id_Url);//to test
+        if ($ligne == true) 
+        {
+            //Cree un film avec les infos trouvés
+            $film = new Film(null,$ligne->titre,$ligne->prix,$ligne->realisateur,$ligne->categorie,$ligne->pochette,$ligne->description);
 
-    $requette="SELECT * FROM film WHERE PK_ID_Film=?";
-    $stmt = $connexion->prepare($requette);
-    $stmt->execute(array($id_Url));
-    $ligne=$stmt->fetch(PDO::FETCH_OBJ);
+            //Cree un session 
+            $_SESSION["film"] = $film;
 
-    $film = new Film(null,$ligne->titre,$ligne->prix,$ligne->realisateur,$ligne->categorie,$ligne->pochette,$ligne->description);
+            //$pochette=$film->pochette;
+           // var_dump($film->titre);//to test
+            
+            if (isset($_SESSION["film"]))
+             {
+                $film =$_SESSION["film"];
+?>
 
-    $_SESSION["film"] = serialize($film);
 
-     header("location:edit.php");
+     <!-- _________________  FORM EDITER FILM _________________ --> 
+    <div class="container">
 
-    //$pochette=$film->pochette;
-   // var_dump($film->titre);//to test
-    //echo $film->titre;
+         <form id="formEditer" enctype="multipart/form-data" action="../../controller/film.php" method="POST" >
+                
+                <h2>Editer film</h2>
 
- ?> 
+                <!-- GIVES TYPE OF ACTION TO CONTROLLER -->
+                <div class="form-group">
+                      <input
+                            type="hidden" 
+                            class="form-control" 
+                            readonly="true" 
+                            id="action" 
+                            name="action" 
+                            value="update" >
+                </div>
+
+                <div class="form-group">
+                    <label for="PK_ID_Film"></label>
+                    <input 
+                        type="hidden" 
+                        class="form-control"
+                        id="PK_ID_Film" 
+                        name="PK_ID_Film"
+                        value="<?php echo $film->getFilmID(); ?>"> 
+                </div>
+
+                <div class="form-group">
+                    <label for="titre">Titre</label>
+                    <input 
+                        type="text"
+                        class="form-control" 
+                        id="titre"
+                        name="titre"
+                        value="<?php echo $film->getTitre(); ?>"
+                        size="40">
+                </div>
+
+                <div class="form-group">
+                    <label for="prix">Prix</label>
+                    <input 
+                        type="text" 
+                        class="form-control"
+                        id="prix"
+                        name="prix" 
+                        size="40" 
+                        value="<?php echo $film->getPrix(); ?>">
+                </div>
+
+                <div class="form-group">
+                    <label for="categorie">Categorie</label>
+                    <select class="form-control" id="categorie" name="categorie">
+                        <option selected><?php echo $film->getCategorie(); ?></option>
+                        <option value="Romance">Romance</option>
+                        <option value="Horreur">Horreur</option>
+                        <option value="Comedie">Comedie</option>
+                        <option value="Action">Action</option>
+                        <option value="Pour la famille">Pour la famille</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for=realisateur"">Realisateur</label>
+                    <input
+                        type="text" 
+                        class="form-control"
+                        id="realisateur" 
+                        name="realisateur"
+                        value="<?php echo $film->getRealisateur(); ?>">
+                </div>
+
+                <div class="form-group">
+                    <label for=description"">Description</label>
+                    <textarea 
+                        type="textarea" 
+                        class="form-control"
+                        id="description"
+                        name="description" 
+                        value="<?php echo $film->getDescription(); ?>" >    
+                     </textarea>
+                </div>
+
+                <div class="form-group" >                        
+                    <label for="pochette">Pochette</label>
+                    <input 
+                        type="file" 
+                        class="form-control" 
+                        id="pochette" 
+                        name="pochette"
+                        value="<?php echo $film->getPochette(); ?>">
+                </div>
+
+                   <button
+                         id="btnEnregistrer"
+                         type="submit" 
+                         value="Envoyer"
+                         class="btn btn-primary">Enregistrer
+                 </button>
+
+         </form> 
+    </div>  
+
+    <?php  
+    }        
+    }else{
+            echo "<br><b>LE FILM : ".$id_Url." N'EXISTE PAS!</b>";
+            
+    }?> 
+
+
+
+
 
 
 

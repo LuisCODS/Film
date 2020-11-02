@@ -40,7 +40,7 @@ require_once("../../includes/ConnectionPDO.php");
                          <p class="card-text">Prix: <?php echo $film->prix; ?>$</p>
                          <p class="card-text">Categorie: <?php echo $film->categorie; ?></p>
                          <p class="card-text">Description: <?php echo $film->description; ?></p>
-                         <a href="#" class="btn btn-primary">Ajouter Panier <i class="far fa-heart"></i></a>
+                         <a href="../location/panier.php?add=panier&PK_ID_Film=<?php echo $film->PK_ID_Film; ?> " class="btn btn-primary">Ajouter Panier <i class="far fa-heart"></i></a>
                     </div>
             </div>
             <!--  FIN TEMPLATE CARD FILM -->
