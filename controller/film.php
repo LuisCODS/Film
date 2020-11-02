@@ -2,7 +2,6 @@
  // --------------------------------------------------------------
  // 				CONTROLLEUR - film  
  //--------------------------------------------------------------- 
-
 include '../model/Film.class.php';
 include '../dao/FilmDAO.class.php';
 require_once("../includes/ConnectionPDO.php");
@@ -44,7 +43,8 @@ extract($_POST);
 
 	if($_POST["action"] == "update")
 	{						
-
+		extract($_POST);
+		
 		$PK_ID_Film=$_POST['PK_ID_Film'];
 		$titre=$_POST['titre'];
 		$prix=$_POST['prix'];
@@ -78,6 +78,7 @@ extract($_POST);
 				  }
 				}
 			}
+
 			$nomPochette=sha1($titre.time());
 			//Upload de la photo
 			$tmp = $_FILES['pochette']['tmp_name'];
