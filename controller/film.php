@@ -48,18 +48,19 @@
 		$realisateur=$_POST['realisateur'];
 		$categorie=$_POST['categorie'];
 		$description=$_POST['description'];
-		$pochette=$_POST['pochette'];
 		$url=$_POST['url'];
-		
+
 		$dossier="../img/";
 
-		// $requette="SELECT pochette FROM film WHERE PK_ID_Film=?";
-		// $stmt = $connexion->prepare($requette);
-		// $stmt->execute(array($PK_ID_Film));
-		// $ligne=$stmt->fetch(PDO::FETCH_OBJ);
-		// $pochette=$ligne->pochette;
+		$requette="SELECT pochette FROM film WHERE PK_ID_Film=?";
+		$stmt = $connexion->prepare($requette);
+		$stmt->execute(array($PK_ID_Film));
+		$ligne=$stmt->fetch(PDO::FETCH_OBJ);
 
-		//CAS  IMAGE FOURNIE...
+		//IMG COURRANT
+		$pochette=$ligne->pochette;
+
+		//CAS  AUTRE IMAGE FOURNIE...
 
 		if($_FILES['pochette']['tmp_name']!=="")
 		{

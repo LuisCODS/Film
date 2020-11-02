@@ -20,13 +20,11 @@
                               Categories
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                              <a class="dropdown-item" href="#">Action</a>
-                              <a class="dropdown-item" href="#">Comedie</a>
-                              <a class="dropdown-item" href="#">Romance</a>
-                              <a class="dropdown-item" href="#">Drame</a>
-                              <a class="dropdown-item" href="#">Horreur</a>
-                              <a class="dropdown-item" href="#">Pour la famille</a>
-                              <a class="dropdown-item" href="#">Suspense</a>
+                              <a class="dropdown-item" href="../../view/film/listCategorie.php?cat=action">Action</a>
+                              <a class="dropdown-item" href="../../view/film/listCategorie.php?cat=comedie">Comedie</a>
+                              <a class="dropdown-item" href="../../view/film/listCategorie.php?cat=romance">Romance</a>
+                              <a class="dropdown-item" href="../../view/film/listCategorie.php?cat=drame">Drame</a>
+                              <a class="dropdown-item" href="../../view/film/listCategorie.php?cat=horreur">Horreur</a>
                         </div>
                   </li>
                   <li class="nav-item">                                 

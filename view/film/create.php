@@ -42,7 +42,7 @@ include '../../includes/interfaceAdmin.php';
                 <option value="Horreur">Horreur</option>
                 <option value="Comedie">Comedie</option>
                 <option value="Action">Action</option>
-                <option value="Pour la famille">Pour la famille</option>
+                <option value="Drame">Drame</option>
             </select>
         </div>
 

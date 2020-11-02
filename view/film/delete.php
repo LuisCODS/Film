@@ -23,7 +23,9 @@
 			unset($stmt);
 			exit;
 		}
+
 		$pochette=$ligne->pochette;
+		
 		if($pochette!="avatar.jpg"){
 			$rmPoc='../../img/'.$pochette;
 			$tabFichiers = glob('../../img/*');
@@ -36,6 +38,7 @@
 				break;
 			  }
 			}
+
 		}
 		// $filmDAO->delete($id_Url);//Si ok return 1
 
