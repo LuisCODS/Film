@@ -56,13 +56,11 @@
                 <tr>
                     <td><img src="../../img/<?php echo($ligne->pochette)?>" width=80 height=80></td>
                     <td><?php echo($ligne->titre) ?></td>
-                    <td><?php echo($ligne->prix)?></td>
+                    <td>$ <?php echo($ligne->prix)?></td>
                     <td><?php echo($ligne->categorie)?></td>                                
                     <td>
-                        <!--ATTACHE UN OBJET À CHAQUE BOUTON -->    
-                        <!-- Botão para acionar modal -->
-                              
-                          <button                              
+                        <!--ATTACHE UN OBJET À CHAQUE BOUTON -->                                
+<!--                           <button                              
                               type="button"                              
                               href="editer.php"                           
                               obj='<?php echo json_encode($ligne); ?>'
@@ -70,7 +68,12 @@
                               data-toggle="modal" data-target=".modalEditer">
                               <i class="far fa-edit"></i> 
                               Editer
-                        </button> 
+                        </button>  -->
+                          <a 
+                            class="btn btn-outline-primary " 
+                            href="editer.php?editer=<?php echo ($ligne->PK_ID_Film); ?>"
+                            role="button">Editer
+                          </a> 
                         </button> 
                           <a 
                             class="btn btn-outline-danger " 
@@ -93,21 +96,21 @@
 
 
 <!-- ___________  MODAL - EDITER FILM   _________________--> 
-
+<!-- 
 <div class="modal fade modalEditer" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content">
+        <div class="modal-content"> -->
               <!-- HEAD -->
-              <div class="modal-header">
+<!--               <div class="modal-header">
                   <h5 class="modal-title" id="TituloModalCentralizado">Page edition</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                     <span aria-hidden="true">&times;</span>
                   </button>
-              </div>
+              </div> -->
               <!-- BODY -->
-              <div class="modal-body">
-                    <!-- FORM -->
-                    <form id="formModalEdit" enctype="multipart/form-data">
+<!--               <div class="modal-body">
+ -->                    <!-- FORM -->
+  <!--                   <form id="formModalEdit" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="PK_ID_Film"></label>
                                 <input type="hidden" class="form-control" id="PK_ID_Film" name="PK_ID_Film" >
@@ -145,15 +148,15 @@
                                 <input type="file" class="form-control" id="pochette" name="pochette" >
                             </div>
                     </form>                     
-              </div>
+              </div> -->
               <!-- FOOTER -->
-              <div class="modal-footer">
+<!--               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                   <button type="button" id="btnEnregistrerFormEdit"  class="btn btn-success"><i class="fas fa-save"></i> Enregistrers</button>
               </div>
 
         </div>
     </div>
-</div>
+</div> -->
 
 <?php include '../../includes/footer.php'; ?>

@@ -4,7 +4,7 @@
  //--------------------------------------------------------------- 
  include '../model/Membre.class.php';
  include '../dao/MembreDAO.class.php';
-
+session_start();
 
 	extract($_POST);
 	//echo $_POST["action"];//get hiddin input from form

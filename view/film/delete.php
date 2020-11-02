@@ -2,11 +2,11 @@
 	//session_start();
 	include '../../includes/head.php'; 
 	include '../../includes/interfaceAdmin.php'; 
-	// include '../../dao/FilmDAO.class.php';
+    // include '../../dao/FilmDAO.class.php';
 	require_once("../../includes/ConnectionPDO.php");
 
 
-	//$filmDAO = new FilmDAO();
+	// $filmDAO = new FilmDAO();
 
 	//SI le bouton supprimer est pesé
 	if (isset($_GET['delete'])) 
@@ -37,20 +37,14 @@
 			  }
 			}
 		}
+		// $filmDAO->delete($id_Url);//Si ok return 1
+
 		$requette="DELETE FROM film WHERE PK_ID_Film=?";
 		$stmt = $connexion->prepare($requette);
 		$stmt->execute(array($id_Url));
 		unset($connexion);
 		unset($stmt);
 		header("location:lister.php");
-
-		// $requette="DELETE FROM films WHERE PK_ID_Film=?";
-		// $stmt = $connexion->prepare($requette);
-		// $stmt->execute(array($PK_ID_Film));
-		// unset($connexion);
-		// unset($stmt);
-
-	
 	   
 
 	}

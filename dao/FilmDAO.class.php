@@ -78,17 +78,19 @@ Class FilmDAO
 		}
 	}
 
-	function delete($PK_ID_Film)
+/*	function delete($PK_ID_Film)
 	{
 		try {
 				$sql = 'delete from Film where PK_ID_Film = ? ';
 				$stmt = $this->cn->prepare($sql);
 				$stmt->bindValue(1, $PK_ID_Film);					
-				return $stmt->execute();// true/False					
+				//return $stmt->execute();// true/False
+				$stmt->execute();// true/False
+								
 		} catch (PDOException $e) {
 			echo "Erro: ". $e;
 		}
-	}
+	}*/
 
 	function list()
 	{

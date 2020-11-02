@@ -1,5 +1,22 @@
-<?php include '../../includes/head.php'; ?>
-<?php include '../../includes/interfaceMembre.php'; ?>
+<?php 
+// session_start();
+include '../../includes/head.php'; 
+include '../../includes/interfaceMembre.php'; 
+// require_once("../../model/membre.class.php");
+
+// $membre = new Membre(null,null,null,null,null,null,null);
+
+// if (isset ($_SESSION["membre"]) ) {
+	
+// 	$membre = unserialize($_SESSION["membre"]);
+// }
+
+
+
+ ?>
+
+
+
 
 
 <!-- _________________ INDEX-MEMBRE _________________ --> 
@@ -9,6 +26,7 @@
           <p class="lead">Page index membre.</p>
           <hr class="my-4">
           <p>Le menu en haut vous permet de gerer votre location.</p>
+ 
 
      </div>
 </div>      

@@ -26,13 +26,13 @@
                           class="form-control btn btn-primary">
                           Login
                   </button>    
-                  <div 
+<!--                   <div 
                         id="dviAlertLogin"
                         class="alert alert-danger " 
                         role="alert"
                         style="visibility: hidden;">
                        Courriel ou mot de passe invalide!
-                </div>               
+                </div>  -->              
             </form> 
             <!-- <div class="custom-control custom-checkbox my-1 mr-sm-2">
                   <input type="checkbox" class="custom-control-input" id="customControlInline">

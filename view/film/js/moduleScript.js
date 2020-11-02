@@ -21,24 +21,22 @@
 // Ce bouton est recuperé par la classe (btnEditer), dans le button Editer
 //de la page lister.php.
 //========================================================================
-$('.btnEditer').click(function()
+/*$('.btnEditer').click(function()
 {    
 	//alert("Tetse");
 	$('.modalEditer').modal("show");	
 
-	//convert en json l'objet du button
+	//Recuperer l'objet qui est attaché au attribut du bouton edit, dans lister.php
 	var obj = JSON.parse($(this).attr("obj") );
-	//var obj = $(this).attr("obj");
 
-    // alert($(this).attr("obj"));
-	//Show object propertys on form input
+	//Remplis les champs du form modal avec les infos du film à editer
 	$("#titre").val(obj.titre);
 	$("#prix").val(obj.prix);		
 	$("#categorie").val(obj.categorie);	
 	$("#realisateur").val(obj.realisateur);
 	$("#description").val(obj.description);
 	//$("#pochette").val(obj.pochette);
-});
+});*/
 
 //========================================================================
 // CREATE
@@ -75,15 +73,14 @@ $('#btnEnregistrerFormCreate').click(()=>
 }); 
 
 //========================================================================
-// EDITER: recupere le clic par l'ID du bouton (Enregistrer) dans le modal 
-// footer,  au lister.php.
+// EDITER: prend le click du bouton Enregistrer dans form formEditer au edit.php
 // ========================================================================
-$('#btnEnregistrerFormEdit').click(()=>    
+$('#btnEnregistrer').click(()=>    
 {		
 
 		//alert("Teste");
 		//get all form modal inputs  
-		var champs   = $("#formModalEdit").serialize();
+		var champs   = $("#formEditer").serialize();
 		var action = 'action=update';
 		//console.log(action); //to test!
 
@@ -93,10 +90,10 @@ $('#btnEnregistrerFormEdit').click(()=>
 			data: action+'&'+champs
 			//CALLBACK: Si l'insertion ou update a été fait, msg = 1
 			}).done((msg)=>	{
-			var reponse = (msg == 1) ? "Enregistré avec sucess!" : msg;
+			//var reponse = (msg == 1) ? "Enregistré avec sucess!" : msg;
 
 			//Windos showup	
-			$.confirm({
+/*			$.confirm({
 				title: 'Attention!',
 				content: reponse,
 				buttons: {
@@ -104,48 +101,9 @@ $('#btnEnregistrerFormEdit').click(()=>
 						 $('.modalEditer').modal('toggle');//close modal 
 					}				
 				}
-			});		   
+			});	*/	   
 		});
 	
 }); 
 
 
-//========================================================================
-//   Cette fonction est declenchée dès que le button btnSupprimer
-//   ...( from ajouter.php) du modal est appuyé.
-//========================================================================
-/*$('#btnSupprimer').click(function() {
-
-	//alert("Tetse");
-	$('.modalDelete').modal("show");	
-	//convert en json l'objet du button
-	var obj = JSON.parse($(this).attr("obj") );
-	$("#titreDelete").val(obj.titre);*/
-	//var actionType = 'action=delete';
-
-	//alert($id);
-
-
-	// REQUISITION asynchrone 
-/*	$.ajax({
-		method: "POST", 
-		url:filmController,
-		data: actionType+'&'+champs
-		
-		}).done((callBack)=>
-		{
-			var reponse = (callBack == 1) ? "Supprimé avec sucess!" : callBack;
-			//Windos popup du plugin	
-			$.confirm({
-				title: 'Attention!',
-				content: reponse,
-				buttons: {
-					Ok: ()=>{
-				         // Recharge la page actuelle à partir du 
-				         //... serveur, sans utiliser le cache.
-						 location.reload(true);
-					}				
-				}
-			});
-		});*/
-//});

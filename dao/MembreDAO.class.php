@@ -1,13 +1,6 @@
 <?php
-
-/* 
-DAO (Data acce objet): classes responsables de la création du CRUD 
-et de la persistance des données dans la base de données; 
-*/
-
 include '../includes/Connection.class.php';
-
-//require_once("../includes/Connection.class.php");
+include '../model/membre.class.php';
 
 
 Class MembreDAO 
@@ -112,7 +105,7 @@ Class MembreDAO
 	// 	 return json_encode($tableau);
 	// }
 
-	function getMembre($courriel, $MDP_membre )
+/*	function getMembre($courriel, $MDP_membre )
 	{
 		try {
 			$sql = "select * from Membre WHERE courriel like'$courriel' AND MDP_membre like'$MDP_membre' ";			
@@ -125,5 +118,22 @@ Class MembreDAO
 		} catch (PDOException $e) {
 			echo 'Erro: '. $e;
 		}
+	}*/
+
+	function getMembre($courriel, $MDP_membre )
+	{
+		try {
+			$sql = "select * from Membre WHERE courriel like'$courriel' AND MDP_membre like'$MDP_membre' ";			
+			$stmt = $this->cn->prepare($sql);
+			$stmt->execute();
+			//return count($rs = $stmt->fetchall(PDO::FETCH_OBJ));
+			$rs = $stmt->fetchall(PDO::FETCH_OBJ);// return 1 si ok
+			return ($rs);	
+
+		} catch (PDOException $e) {
+			echo 'Erro: '. $e;
+		}
 	}
+
+
 }

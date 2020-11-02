@@ -1,5 +1,5 @@
 // //  ____________________________________________________________________
-// //  PAGE  RESPONSABLE POUR ELABORER LES REQUISITIONS AJAX ASYNCHRONES.
+// //  SCRIPT MEMBRE
 // // ____________________________________________________________________
 
 // //  PORTÉE GLOBAL 
