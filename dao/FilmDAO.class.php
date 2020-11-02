@@ -38,7 +38,7 @@ Class FilmDAO
 				$stmt->bindValue(5, $f->getPochette() );
 				$stmt->bindValue(6, $f->getDescription() );
 
-				return $stmt->execute();
+				 return $stmt->execute();
 				unset($cn);//close  connexion
 				unset($stmt);//libere la memoire
 
@@ -57,7 +57,8 @@ Class FilmDAO
 						realisateur = ?,
 						categorie = ?,
 						pochette = ?,	
-						description = ?													
+						description = ?,
+						url = ?								
 						where PK_ID_Film = ?';
 
 				$stmt = $this->cn->prepare($sql);
@@ -70,9 +71,11 @@ Class FilmDAO
 				$stmt->bindValue(5, $f->getPochette() );
 				$stmt->bindValue(6, $f->getDescription() );
 				$stmt->bindValue(7, $f->getFilmID() );
+				$stmt->bindValue(8, $f->getUrl() );
 
 				return $stmt->execute();
-
+				unset($cn);//close  connexion
+				unset($stmt);//libere la memoire
 		} catch (PDOException $e) {
 			echo "Erro: ". $e;
 		}

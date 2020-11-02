@@ -77,21 +77,20 @@ $('#btnEnregistrerFormCreate').click(()=>
 // ========================================================================
 $('#btnEnregistrer').click(()=>    
 {		
-
 		//alert("Teste");
 		//get all form modal inputs  
 		var champs   = $("#formEditer").serialize();
 		var action = 'action=update';
-		//console.log(action); //to test!
+		//alert(champs);
 
 		$.ajax({
-			method: "POST", 
+			method: 'POST', 
 			url:filmController,
 			data: action+'&'+champs
 			//CALLBACK: Si update a été fait, msg = 1
 			}).done((msg)=>	{
-			var reponse = (msg == 1) ? "Edité avec sucess!" : msg;
-			alert(reponse);
+			//var reponse = (msg == 1) ? "Edité avec sucess!" : msg;
+			//alert(msg);
    
 		});
 	

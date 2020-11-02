@@ -40,6 +40,7 @@
                                     <th scope="col">Titre</th>
                                     <th scope="col">Prix</th>
                                     <th scope="col">Categorie</th>
+                                    <th scope="col">Realisateur</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -57,7 +58,8 @@
                     <td><img src="../../img/<?php echo($ligne->pochette)?>" width=80 height=80></td>
                     <td><?php echo($ligne->titre) ?></td>
                     <td>$ <?php echo($ligne->prix)?></td>
-                    <td><?php echo($ligne->categorie)?></td>                                
+                    <td><?php echo($ligne->categorie)?></td>  
+                    <td><?php echo($ligne->realisateur)?></td>                                
                     <td>
                         <!--ATTACHE UN OBJET À CHAQUE BOUTON -->                                
 <!--                           <button                              

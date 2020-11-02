@@ -15,24 +15,21 @@
     if (isset($_GET['editer'])) 
     {   
         //Recupere la valeur ID envoyé par GET dans l'url
-        $id_Url = $_GET['editer'];
+         $id_Url = $_GET['editer'];
 
-        //var_dump($id_Url);//to test
-    }
-  
         //Cherche le film dans la BD
         $requette="SELECT * FROM film WHERE PK_ID_Film=?";
         $stmt = $connexion->prepare($requette);
         $stmt->execute(array($id_Url));
         $ligne=$stmt->fetch(PDO::FETCH_OBJ);
 
-
         //Cree un film avec les infos trouvés
-        $film = new Film(null,$ligne->titre,$ligne->prix,$ligne->realisateur,$ligne->categorie,$ligne->pochette,$ligne->description);
+        $film = new Film($ligne->PK_ID_Film,$ligne->titre,$ligne->prix,$ligne->realisateur,$ligne->categorie,$ligne->pochette,$ligne->description,$ligne->url);
 
         //Cree un session 
         $_SESSION["film"] = $film;
-
+    }
+  
         //$pochette=$film->pochette;
        // var_dump($film->titre);//to test
         
@@ -47,13 +44,12 @@
      <!-- _________________  FORM EDITER FILM _________________ --> 
 <div class="container">
 
-<!--  <form id="formEditer" enctype="multipart/form-data" action="../../controller/film.php" method="POST" > -->     
-<form id="formEditer" enctype="multipart/form-data"  >
+ <form id="formEditer" enctype="multipart/form-data" action="../../controller/film.php" method="POST" >     
   
             <h2>Editer film</h2>
 
             <!-- GIVES TYPE OF ACTION TO CONTROLLER -->
-<!--                 <div class="form-group">
+                <div class="form-group">
                   <input
                         type="hidden" 
                         class="form-control" 
@@ -61,7 +57,7 @@
                         id="action" 
                         name="action" 
                         value="update" >
-            </div> -->
+            </div>
 
             <div class="form-group">
                 <label for="PK_ID_Film"></label>
@@ -137,6 +133,16 @@
                     name="pochette"
                     value="<?php echo $film->getPochette(); ?>">
             </div>
+
+                <div class="form-group">
+                  <input
+                        type="hidden" 
+                        class="form-control" 
+                        readonly="true" 
+                        id="url" 
+                        name="url" 
+                        value="<?php echo $film->getUrl(); ?>">
+               </div>
 
                <button
                      id="btnEnregistrer"

@@ -10,8 +10,9 @@
 		private $categorie;
 		private $pochette;
         private $description;
+        private $url;
 
-		function __Construct($PK_ID_Film,$titre,$prix,$realisateur,$categorie,$pochette,$description)
+		function __Construct($PK_ID_Film,$titre,$prix,$realisateur,$categorie,$pochette,$description,$url)
 		{
 			$this->PK_ID_Film 		= $PK_ID_Film;
             $this->titre 	        = $titre;
@@ -20,6 +21,7 @@
 			$this->categorie	    = $categorie;
             $this->pochette         = $pochette;
             $this->description      = $description;
+            $this->url      		= $url;
 		}
 
 		
@@ -66,7 +68,12 @@
 		function setDescription($description){
 			 $this->description = $description;
 		}
-
+		function getUrl(){
+			return $this->url;
+		}
+		function setUrl($url){
+			 $this->url = $url;
+		}
 
 
 	}//fin class
