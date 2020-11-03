@@ -1,12 +1,11 @@
-/*
-#sizeDivImage {
-  width: 100px;
-}
-*/
+
+/*.card-body{
+  height: 20px;
+}*/
+
 .flex-container {
-  /* display: flex; */
   display: inline-block;
-  /* background-color: ; */
+
 }
 
 /* so o primeiro filho vai ser aplicado */

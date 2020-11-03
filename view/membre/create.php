@@ -2,9 +2,15 @@
 <?php include '../../includes/head.php'; ?>
 <?php include '../../includes/interfaceVisiteur.php'; ?> 
 
+
+
 <!-- _________________  FORM ADOUTER MEMBRE _________________ --> 
 <div class="container">
+
+
+
       <form id="formCreate"  action="../../controller/membre.php" method="POST"  >
+             <h2>Formulaire d'inscription</h2>
             <div class="form-group">
                   <label for="profil"></label>
                   <input type="hidden" class="form-control" id="profil" name="profil" value="membre">

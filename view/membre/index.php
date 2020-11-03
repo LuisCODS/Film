@@ -1,15 +1,15 @@
 <?php 
-// session_start();
+session_start();
 include '../../includes/head.php'; 
 include '../../includes/interfaceMembre.php'; 
 // require_once("../../model/membre.class.php");
 
 // $membre = new Membre(null,null,null,null,null,null,null);
 
-// if (isset ($_SESSION["membre"]) ) {
-	
-// 	$membre = unserialize($_SESSION["membre"]);
-// }
+if (isset ($_SESSION["courriel"]) )
+ {
+	echo '<label> Bienvenue '.$_SESSION["courriel"].'</label>';
+ }
 
 
 

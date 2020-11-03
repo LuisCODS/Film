@@ -1,5 +1,7 @@
-<?php require_once '../../includes/head.php'; ?>
-<?php require_once '../../includes/interfaceVisiteur.php'; ?>
+<?php
+require_once '../../includes/head.php'; 
+require_once '../../includes/interfaceVisiteur.php';
+?>
 
 <!-- _________________ PRINCIPAL-HOME _________________ --> 
 <div class="container">

@@ -1,5 +1,40 @@
 <!--  HEAD  --> 
-<?php include '../../includes/head.php'; ?>
+<?php
+include '../../includes/head.php';
+require_once("../../includes/ConnectionPDO.php");
+session_start();
+
+  if (isset($_POST["login"]) )
+  {
+       if (empty($_POST["MDP_membre"])  || empty($_POST["courriel"]) )
+       {
+         $message = '<label> Tous les champs sont requis!</label>';
+       }
+       else
+       {
+          $requette="SELECT * FROM membre WHERE MDP_membre = :MDP_membre AND courriel = :courriel";
+          $stmt = $connexion->prepare($requette);    
+          $stmt->execute(
+                            array(
+                                'MDP_membre' => $_POST["MDP_membre"],
+                                'courriel'   => $_POST["courriel"]
+                            )
+                        );
+          $count = $stmt->rowCount();
+          if ($count > 0) 
+          {
+              $_SESSION["courriel"] = $_POST["courriel"];
+              header("location:../membre/index.php");
+          }
+           else 
+           {
+             $message = '<label> Courriel ou mot de passe invalide!</label>';
+           }
+       }
+  } 
+?>
+
+
 
 <body class="text-center">
       <div class="container">    
@@ -9,12 +44,14 @@
             <h1 class="mb-4">Page Login</h1>   
             <form id="formLogin" action="/action_page.php" method="post" >
                   <input type="text" 
+                         required
                          placeholder="Courriel" 
                          name="courriel" 
                          id="courriel"
                          class="form-control mb-4">  
                          
                   <input type="password"
+                         required
                          autocomplete ="on"
                          placeholder="Mot de passe" 
                          class="form-control mb-4"
