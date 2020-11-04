@@ -2,14 +2,16 @@
 session_start();
 include '../../includes/head.php'; 
 include '../../includes/interfaceMembre.php'; 
-// require_once("../../model/membre.class.php");
 
-// $membre = new Membre(null,null,null,null,null,null,null);
 
-if (isset ($_SESSION["courriel"]) )
+if (isset ($_SESSION["membreID"]) )
  {
-	echo '<label> Bienvenue '.$_SESSION["courriel"].'</label>';
+	echo '<label> Bienvenue '.$_SESSION["membreID"].'</label>';
+ }else {
+	header("location: ../../controller/login.php");
+	exit();
  }
+
 
 
 

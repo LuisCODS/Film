@@ -32,10 +32,10 @@
                   <label for="courriel">Courriel</label>
                   <input type="email" class="form-control" id="courriel" name="courriel" placeholder="">
             </div>
-            <div class="form-group">
+<!--             <div class="form-group">
                   <label for="tel_membre">Telephone</label>
                   <input type="number" class="form-control" id="tel_membre" name="tel_membre" placeholder="">
-            </div> 
+            </div>  -->
             <div class="form-group">
                   <label for="MDP_membre">Mot de passe</label>
                   <input type="password" class="form-control" id="MDP_membre" name="MDP_membre" placeholder="">

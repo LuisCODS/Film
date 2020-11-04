@@ -38,6 +38,19 @@
 	//$("#pochette").val(obj.pochette);
 });*/
 
+
+//========================================================================
+// Cache les elements
+//==================================================================
+// function hideAll()
+// {
+// 	document.getElementById("FormSup").style.visibility = "hidden";
+// 	document.getElementById("FormEnr").style.visibility = "hidden";
+// 	document.getElementById("FormModi").style.visibility = "hidden";
+// 	document.getElementById("nouvMembre").style.visibility = "hidden";
+// 	document.getElementById("membreActif").style.visibility = "hidden";
+// }
+
 //========================================================================
 // CREATE
 // ========================================================================

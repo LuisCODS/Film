@@ -1,16 +1,17 @@
   <?php
+  session_start();
  // --------------------------------------------------------------
  // CONTROLLEUR - MEMBRE  
  //--------------------------------------------------------------- 
- include '../model/Membre.class.php';
- include '../dao/MembreDAO.class.php';
-session_start();
+include '../model/Membre.class.php';
+include '../dao/MembreDAO.class.php';
+
 
 	extract($_POST);
-	//echo $_POST["action"];//get hiddin input from form
-
+	//var_dump($action);
 	//CRUD
 	$membreDAO = new MembreDAO();
+
 
 	switch ($action) //get hiddin input from form
 	{
@@ -26,18 +27,20 @@ session_start();
 			echo $membreDAO->update($membre);//Si ok return 1
 			break;
 
-		case 'delete':
+/*		case 'delete':
 				echo $membreDAO->delete($PK_ID_Membre);//Si ok return 1
-			break;
+			break;*/
 
-		case 'select':
-			// echo $membreDAO->getMembre($txtInput);//Si ok return 1
-				echo $membreDAO->getMembre($courriel, $MDP_membre);//Si ok return 1
+		case 'login':
+				// echo $membreDAO->getMembre($courriel, $MDP_membre);//Si ok return 1
 			break;
 			
 		default:
 			//echo "Aucun action trouvée";					
 			break; 
 	 } 
+
+
+
 
 ?>
