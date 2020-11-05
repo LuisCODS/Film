@@ -1,36 +1,48 @@
 <?php
 session_start();
 require_once("../includes/ConnectionPDO.php");
+include '../model/Membre.class.php';
 
-
-
-// =============================== CONTROLEUR LOGIN ===============================
+// =================== CONTROLEUR LOGIN =======================
 
 extract($_POST);
 
 // LOGIN
 
-if ($_POST["action"] == "login")
+//Evite de tricher le url
+if (  isset($_POST["action"])   &  $_POST["action"] == "login")
  {
 		//echo "test envois form";
 		$requette="SELECT * FROM membre WHERE courriel=? AND MDP_membre=? ";
 		$stmt = $connexion->prepare($requette);
 		$stmt->execute(array($courriel, $MDP_membre));
 		$user=$stmt->fetch(PDO::FETCH_OBJ);
-		//echo $user->MDP_membre;  //1234
+		//echo $user->MDP_membre;  
 		//print_r($user);
 
 		//Le membre existe
 		if ($user == true)
 		{		
-			//echo $user->MDP_membre;//to test
-			//Create a session
-			$_SESSION["membreID"] = $user->MDP_membre;
-			header("location: ../view/membre/index.php");
+			$membre = new Membre($user->PK_ID_Membre,$user->nom,$user->prenom,$user->profil,$user->courriel,$user->tel_membre,$user->MDP_membre);
+
+			//CREE LA SESSION AVCE L'OBJET MEMBRE
+			$_SESSION["membre"] = serialize($membre);
+
+
+			if ($user->profil == "admin")
+			{
+				header("location: ../view/admin/index.php");
+			}else{
+				header("location: ../view/membre/index.php");
+			}			
 
 		}else{
-			echo "Courriel ou mot de passe invalide";
+
+			
 		}
+
+}else{
+	header("location: ../view/login/index.php");
 }
 
 

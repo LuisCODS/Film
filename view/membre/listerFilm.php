@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../../includes/head.php'; 
 include '../../includes/interfaceMembre.php'; 
 require_once("../../includes/ConnectionPDO.php");

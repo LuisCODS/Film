@@ -2,37 +2,44 @@
 session_start();
 include '../../includes/head.php'; 
 include '../../includes/interfaceMembre.php'; 
-
-
-if (isset ($_SESSION["membreID"]) )
- {
-	echo '<label> Bienvenue '.$_SESSION["membreID"].'</label>';
- }else {
-	header("location: ../../controller/login.php");
-	exit();
- }
-
-
-
-
+include '../../model/Membre.class.php';
  ?>
 
 
+<?php 
+// =============  INDEX MEMBRE ======================
 
 
+	// GESTION SESSION
+	$membre = new Membre(null,null,null,null,null,null,null,);
 
-<!-- _________________ INDEX-MEMBRE _________________ --> 
+	if (isset ($_SESSION["membre"]) )
+	 {
+		$membre = unserialize($_SESSION["membre"]);		
+	 }
+	else {
+		header("location: ../../controller/login.php");
+		exit();
+	 }
+ ?>
+
+
+<!-- MSN DE BIENVENUE -->
+<div class="alert alert-success " role="alert">
+ 	Bienvenue : <strong><?php  echo $membre->getCourriel();?></strong>
+</div>
+
+
 <div class="container">
       <div class="jumbotron">
           <h1 class="display-4">Index membre</h1>
-          <p class="lead">Page index membre.</p>
+          <p class="lead"></p>
           <hr class="my-4">
           <p>Le menu en haut vous permet de gerer votre location.</p>
- 
-
      </div>
 </div>      
-<!-- ___________________________________________________ --> 
+
 
 <!--  FOOTER  --> 
-<?php require_once '../../includes/footer.php'; ?>
+<?php require_once '../../includes/footer.php';?>
+

@@ -30,10 +30,10 @@ require_once("../../includes/ConnectionPDO.php");
                   </a>
                    <div class="card-body">
                       <h5 class="card-title">Titre: <?php echo $film->titre; ?></h5>
-                       <p class="card-text" >Realisateur: <?php echo $film->realisateur; ?></p>
-                       <p class="card-text">Prix: <?php echo $film->prix; ?>$</p>
-                       <p class="card-text">Categorie: <?php echo $film->categorie; ?></p>
-                       <p class="card-text">Description: <?php echo $film->description; ?></p>
+                       <p class="card-text" ><strong>Realisateur: <?php echo $film->realisateur; ?></strong></p>
+                       <p class="card-text"><strong>Prix: <?php echo $film->prix; ?>$</strong></p>
+                       <p class="card-text"><strong>Categorie: <?php echo $film->categorie; ?></strong></p>
+                       <p class="card-text"><strong>Description: <?php echo $film->description; ?></strong></p>
                        <a href="../location/panier.php?add=panier&PK_ID_Film=<?php echo $film->PK_ID_Film; ?> " class="btn btn-primary">Ajouter Panier <i class="far fa-heart"></i></a>
                   </div>
           </div>

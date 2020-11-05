@@ -1,36 +1,11 @@
-//  PORTÉE GLOBAL 
-	var membreController ='../../controller/membre.php';
-
-
-
 
 //========================================================================
-// Things that should be done every time a page loads
+// ERREUR LOGIN
 //========================================================================
-// $(()=>{
-// 	//$( ".target" ).hide();
-// });
-
-
-
-//========================================================================
-// BOUTON LOGIN: onClick="envoyerDonnees('formLogin')"
-// ========================================================================
-// $('#btnLogin').click(()=>    
-// {	
-// 	//alert("get clik button");
-
-// 	var champs   = $("#formLogin").serialize();
-// 	var action = 'action=login';
-
-// 	$.ajax({
-// 		method: 'POST',  
-// 		url:'../../controller/login.php',
-// 		data: action+'&'+champs
-		
-// 		}).done((msn)=>{
-
-// 			alert(msn);
-
-// 		});
-// }); 
+// function msgErreurLogin( )
+// {
+// 	document.getElementById("erreurLogin").style.display='block';
+// 	document.getElementById("msgErreurLogin").innerHTML="Mot de passe ou courriel invalide!";
+// 	//document.getElementById("alertPassword").style.display='none';
+// }
+	

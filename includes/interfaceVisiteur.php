@@ -1,4 +1,4 @@
-<!-- ______________________________________  NAVBAR VISITEUR   ______________________________________-->
+<!-- ______________________  NAVBAR VISITEUR   ______________________-->
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">        
       <a class="navbar-brand" href="#">Films</a>
@@ -36,5 +36,4 @@
             </ul>
       </div>
 </nav>
-<!-- _________________________  fin NAVBAR VISITEUR   ________________________-->
 

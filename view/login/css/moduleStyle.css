@@ -1,4 +1,4 @@
-html, body{	  
+/*html, body{	  
 	height: 100%; /* occupe tout le espace en haut et en bas de l'ecrant*/  
 }
 
@@ -9,11 +9,13 @@ body{
 }
 
 form{
-    width: 100%;
+    width: 50%;
     max-width: 330px;
     margin: auto;
 }
 
+
 .iconeBlog{
    font-size: 150px;
+    margin: auto;
 }

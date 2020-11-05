@@ -1,4 +1,4 @@
-<!-- ______________________________________  BEGIN INCLUDE FOOTER   ______________________________________-->
+<!-- ______________________ BEGIN INCLUDE FOOTER   _____________________________-->
 
         <script src="../../plugins/jquery/jquery-3.5.1.min.js"></script>
         <script src="../../plugins/popper.min.js"></script>        
@@ -11,6 +11,4 @@
         
     </body>
 </html>
-<!-- ______________________________________  END INCLUDE FOOTER   ______________________________________-->
-
 

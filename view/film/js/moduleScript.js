@@ -54,36 +54,36 @@
 //========================================================================
 // CREATE
 // ========================================================================
-$('#btnEnregistrerFormCreate').click(()=>    
-{		
+// $('#btnEnregistrerFormCreate').click(()=>    
+// {		
 
-		//get all form modal inputs  
-		var champs   = $("#formModalEdit").serialize();
-		var action = 'action=update';
-		//console.log(action); //to test!
+// 		//get all form modal inputs  
+// 		var champs   = $("#formModalEdit").serialize();
+// 		var action = 'action=update';
+// 		//console.log(action); //to test!
 
-		$.ajax({
-			method: "POST", 
-			url:"../../controller/film.php",
-			data: action+'&'+champs
-			//CALLBACK: Si l'insertion ou update a été fait, msg = 1
-			}).done((msg)=>	{
-			var reponse = (msg == 1) ? "Enregistré avec sucess!" : msg;
-			console.log(msg); 
+// 		$.ajax({
+// 			method: "POST", 
+// 			url:"../../controller/film.php",
+// 			data: action+'&'+champs
+// 			//CALLBACK: Si l'insertion ou update a été fait, msg = 1
+// 			}).done((msg)=>	{
+// 			var reponse = (msg == 1) ? "Enregistré avec sucess!" : msg;
+// 			//console.log(msg); 
 
-			//Windos showup	
-			$.confirm({
-				title: 'Attention!',
-				content: reponse,
-				buttons: {
-					Ok: ()=>{					
-						 $('.modalEditer').modal('toggle');//close modal 
-					}				
-				}
-			});		   
-		});
+// 			//Windos showup	
+// 			$.confirm({
+// 				title: 'Attention!',
+// 				content: reponse,
+// 				buttons: {
+// 					Ok: ()=>{					
+// 						 $('.modalEditer').modal('toggle');//close modal 
+// 					}				
+// 				}
+// 			});		   
+// 		});
 	
-}); 
+// }); 
 
 //========================================================================
 // EDITER: prend le click du bouton Enregistrer dans form formEditer au edite.php

@@ -26,7 +26,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">admin@gmail.com</a>
+                <a id="emailShowUp" class="nav-link" href="#"></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../home/index.php">Deconnection <i class="fas fa-sign-in-alt"></i></a>
@@ -37,4 +37,4 @@
         </ul>
     </div>
 </nav>
-<!-- ________________________________  FIN NAVBAR VISITEUR ________________________________-->
+

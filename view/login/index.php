@@ -1,18 +1,22 @@
-<!--  INDEX LOGIN   --> 
 <?php
 include '../../includes/head.php';
-require_once("../../includes/ConnectionPDO.php");
+include '../../includes/interfaceVisiteur.php'; 
 ?>
 
-<body class="text-center">
-      <div class="container">    
+
+
+<!-- =======================  FORM LOGIN ========================== -->
+
+<div class="container"> 
+      <form id="formLogin" method="POST" action="../../controller/login.php" >
+
             <div class="iconeBlog">  
                   <i class="fas fa-film"></i> 
             </div> 
-            <h1 class="mb-4">Page Login</h1>   
-            <form id="formLogin" method="POST" action="../../controller/login.php" >
 
-            <!-- FORNECE O TIPO DE ACAO AO CONTROLLER -->
+            <h1 class="mb-4">Page Login</h1> 
+
+                  <!-- FORNECE O TIPO DE ACAO AO CONTROLLER -->
                   <input 
                       type="hidden"
                       readonly="true"
@@ -35,14 +39,23 @@ require_once("../../includes/ConnectionPDO.php");
                          name="MDP_membre" 
                          id="MDP_membre">
 
+                    <!-- GESTION ERREUR LOGIN -->
+                    <div 
+                        id="erreurLogin" 
+                        class="alert alert-warning" 
+                        role="alert" 
+                        style="display:none;">
+                        <p id="msgErreurLogin"></p>
+                    </div>
+
                   <button type="submit" 
                           id="btnLogin"                          
                           class="form-control btn btn-primary">
                           Login
                   </button>                  
-            </form> 
-      </div> 
+      </form> 
 </div> 
-      
+
+
 <!--  FOOTER  --> 
 <?php include '../../includes/footer.php'; ?>
