@@ -5,6 +5,7 @@ include '../model/Membre.class.php';
 
 // =================== CONTROLEUR LOGIN =======================
 
+//GET ALL INPUTS FROM FORM
 extract($_POST);
 
 // LOGIN

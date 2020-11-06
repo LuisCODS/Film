@@ -1,23 +1,21 @@
 <?php
-session_start();
-include '../../includes/head.php'; 
-include '../../includes/interfaceMembre.php'; 
-include '../../model/Membre.class.php';
-require_once("../../includes/ConnectionPDO.php");
+    session_start();
+    include '../../includes/head.php'; 
+    include '../../includes/interfaceMembre.php'; 
+    include '../../model/Membre.class.php';
+    require_once("../../includes/ConnectionPDO.php");
 
-// GESTION SESSION
-$membre = new Membre(null,null,null,null,null,null,null);
+    // GESTION SESSION
+    $membre = new Membre(null,null,null,null,null,null,null);
 
-if (isset ($_SESSION["membre"]) )
- {
-    $membre = unserialize($_SESSION["membre"]);   
- }
-else {
-    header("location: ../../controller/login.php");
-    exit();
- }
-
-
+    if (isset ($_SESSION["membre"]) )
+     {
+        $membre = unserialize($_SESSION["membre"]);   
+     }
+    else {
+        header("location: ../../controller/login.php");
+        exit();
+     }
 ?>
 
 <!-- SHOW SESSION -->

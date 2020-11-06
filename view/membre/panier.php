@@ -6,6 +6,7 @@ require_once("../../includes/ConnectionPDO.php");
 include '../../model/Membre.class.php';
 
 
+
   // GESTION SESSION MEMBRE
   $membre = new Membre(null,null,null,null,null,null,null);
 
@@ -20,7 +21,7 @@ include '../../model/Membre.class.php';
 
  ?>
  
-<!-- SHOW SESSION -->
+<!-- SHOW SESSION MEMBRE -->
 <div class="alert alert-success " role="alert">
   Session : <strong><?php  echo $membre->getCourriel();?></strong>
 </div>
@@ -28,16 +29,17 @@ include '../../model/Membre.class.php';
 
 
 <?php
-// =============== GESTION PANIER ===============
+// =============== GESTION SESSION  PANIER ===============
 
    //Premiere fois sur la page 
    if (!isset ($_SESSION['itens']) )
    {
+      //Cree un session array
       $_SESSION['itens'] = array();
    }
 
 
-    // ADD AU PANIER
+    // Si l'url (add==panir)  a été envoyée 
    if (isset($_GET['add']) && $_GET['add'] == "panier")
    {  
       
@@ -74,14 +76,18 @@ include '../../model/Membre.class.php';
                       <tbody> 
 <?php
  // =========================== DEBUT PHP ZONE ===========================
+    /* portée globale */
+    $subtotal=0; ; 
+
    //Si pas de film ajouté
-   if (count($_SESSION['itens']) == 0) {
-
+   if (count($_SESSION['itens']) == 0) 
+   {
         //echo "est vide!";
-
-   }else {
+          $subtotal = 0;
+      }else {
 
            // var_dump($_SESSION['itens']);
+           global  $subtotal;
 
              foreach ( $_SESSION['itens'] as $idFilm => $quantite) 
              {
@@ -91,8 +97,22 @@ include '../../model/Membre.class.php';
                 $stmt->execute();
                 //$films = $stmt-> fetchall();
                 $films  = $stmt->fetch(PDO::FETCH_OBJ);
+
                 //var_dump($films); 
-                $total = $quantite * $films->prix;
+
+                $prix = $quantite * $films->prix;
+                $subtotal = $prix + $subtotal;
+               // $subtotal = $subtotal+$subtotal;
+
+                //print_r($subtotal);
+                // $TPS = $quantite * $films->prix;
+                // $TVQ = $quantite * $films->prix;
+/*
+La nouvelle formule du calcul de la TPS(5%) et TVQ(9,975%)
+Montant avant taxes x (Taux de TPS/100) = Montant TPS
+Montant hors taxes x  (Taux de TVQ/100) = Montant TVQ
+Montant hors taxes +  Montant TPS + Montant TVQ = Montant avec taxes
+*/
 // =========================== FIN  PHP ZONE ===========================
 ?> 
   
@@ -100,14 +120,15 @@ include '../../model/Membre.class.php';
           <td><img src="../../img/<?php echo $films->pochette ?>" width=80 height=80></td>
           <td><?php  echo$films->titre ?></td>
           <td><?php  echo $quantite    ?></td>  
-          <td>$<?php echo $total       ?></td>
+          <td>$<?php echo $prix       ?></td>
           <td>
            <a href="deleteItem.php?remove=panier&id=<?php echo $films->PK_ID_Film; ?> " 
             class="btn btn-danger">Enlever</a>
           </td>                         
       </tr> 
-
-        <?php } ?>  
+              <!-- foreach -->
+              <?php } ?>  
+              <?php echo $subtotal ?>
 
 <?php } ?>
 
@@ -127,7 +148,7 @@ include '../../model/Membre.class.php';
           
       </div> 
       <div  class="col-md-3">  
-          Subtotal: $ <br/>
+          Subtotal: $ <?php echo $subtotal ?> <br/>
           TVQ: $<br/>
           TPS: $<br/>
           Total: $<br/>
