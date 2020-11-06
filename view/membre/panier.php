@@ -82,8 +82,11 @@ include '../../model/Membre.class.php';
    //Si pas de film ajouté
    if (count($_SESSION['itens']) == 0) 
    {
-        //echo "est vide!";
           $subtotal = 0;
+          $TPS = 0;
+          $TVQ = 0;
+          $total = 0;
+
       }else {
 
            // var_dump($_SESSION['itens']);
@@ -102,17 +105,20 @@ include '../../model/Membre.class.php';
 
                 $prix = $quantite * $films->prix;
                 $subtotal = $prix + $subtotal;
-               // $subtotal = $subtotal+$subtotal;
 
-                //print_r($subtotal);
-                // $TPS = $quantite * $films->prix;
-                // $TVQ = $quantite * $films->prix;
-/*
-La nouvelle formule du calcul de la TPS(5%) et TVQ(9,975%)
-Montant avant taxes x (Taux de TPS/100) = Montant TPS
-Montant hors taxes x  (Taux de TVQ/100) = Montant TVQ
-Montant hors taxes +  Montant TPS + Montant TVQ = Montant avec taxes
-*/
+                //Gestion TPS
+
+                $TPS_Full = $subtotal * 1.05;
+                $TPS      = $TPS_Full - $subtotal;
+
+                //Gestion TVQ
+
+                $TVQ_Full = $subtotal * 1.10;
+                $TVQ      = $TVQ_Full - $subtotal;
+
+                $total = $subtotal + $TPS + $TVQ;
+
+
 // =========================== FIN  PHP ZONE ===========================
 ?> 
   
@@ -128,7 +134,7 @@ Montant hors taxes +  Montant TPS + Montant TVQ = Montant avec taxes
       </tr> 
               <!-- foreach -->
               <?php } ?>  
-              <?php echo $subtotal ?>
+
 
 <?php } ?>
 
@@ -149,9 +155,9 @@ Montant hors taxes +  Montant TPS + Montant TVQ = Montant avec taxes
       </div> 
       <div  class="col-md-3">  
           Subtotal: $ <?php echo $subtotal ?> <br/>
-          TVQ: $<br/>
-          TPS: $<br/>
-          Total: $<br/>
+          TPS: $<?php echo $TPS ?><br/>
+          TVQ: $<?php echo $TVQ ?><br/>
+          Total: $<?php echo $total ?><br/>
       </div>       
 </div>        
 
