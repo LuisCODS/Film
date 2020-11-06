@@ -25,14 +25,7 @@ include '../../model/Membre.class.php';
   Session : <strong><?php  echo $membre->getCourriel();?></strong>
 </div>
 
-<div class="container">
-      <div class="jumbotron">
-          <h1 class="display-4">Votre panier</h1>
-          <p class="lead">Page panier.</p>
-          <hr class="my-4">
 
-     </div>
-</div>    
 
 <?php
 // =============== GESTION PANIER ===============
@@ -60,36 +53,76 @@ include '../../model/Membre.class.php';
             $_SESSION['itens'][$idFilm] += 1;
        } 
    }
-
-   //DISPLAY PANIER
-
+// =========================== FIN  PHP ZONE ===========================
+?>
+<div class="container"> 
+    <h2>Votre panier</h2> 
+<div class="row">
+      <div  class="col-md-12">               
+          <!--TABLE DES FILM-->
+          <div class="col-md-12"  >
+                <table class="table table-hover ">
+                    <thead class="thead-dark">
+                          <tr>
+                              <th>Pochette</th>
+                              <th>Titre</th>
+                              <th>Quantite</th>
+                              <th>Prix</th>
+                              <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tbody> 
+<?php
+ // =========================== DEBUT PHP ZONE ===========================
    //Si pas de film ajouté
-   if (count($_SESSION['itens']) == 0) 
-   {
-    echo "Panier vide!";
+   if (count($_SESSION['itens']) == 0) {
+
+        echo "est vide!";
+
    }else {
-             foreach ( $_SESSION['itens'] as $idFilm => $prix) 
+
+           // var_dump($_SESSION['itens']);
+
+             foreach ( $_SESSION['itens'] as $idFilm => $quantite) 
              {
                 $requette="SELECT * FROM film WHERE PK_ID_Film =?";
                 $stmt = $connexion->prepare($requette);
                 $stmt->bindParam(1, $idFilm);
                 $stmt->execute();
-                $films = $stmt-> fetchall();
+                //$films = $stmt-> fetchall();
+                $films  = $stmt->fetch(PDO::FETCH_OBJ);
+                //var_dump($films);
+                $total = $quantite * $films->prix;
+// =========================== FIN  PHP ZONE ===========================
+?> 
+  
+        <tr>
+          <td><img src="../../img/<?php echo($films->pochette)?>" width=80 height=80></td>
+          <td><?php echo($films->titre) ?></td>
+          <td><?php echo $quantite ?> </td>  
+          <td>$<?php echo $total ?></td>
+          <td>
+              <a 
+                class="btn btn-outline-danger " 
+                href="#"
+                role="button">Supprimer
+              </a> 
+          </td>                         
+      </tr> 
 
-                echo 
+        <?php } ?>  
 
-                $films[0]["titre"].'<br/>';
-                 $prix.'<br/><hr/>';
-             }         
-    }
+<?php } ?>
 
 
-?>
+                            </tbody>
+                      </table>                  
+                </div>
+                <!-- FIN TABLE -->
 
-
- 
-
-
+            </div> 
+      </div>      
+</div>  
 
 
 <!--  FOOTER  --> 

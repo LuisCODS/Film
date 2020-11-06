@@ -28,7 +28,8 @@
                      role="button">Nouveau
                   </a>
             </div> 
-      </div>  
+      </div> 
+
       <div class="row">
             <div  class="col-md-12">               
                 <!--TABLE DES FILM-->
@@ -62,7 +63,7 @@
                     <td><?php echo($ligne->realisateur)?></td>                                
                     <td>
                         <!--ATTACHE UN OBJET À CHAQUE BOUTON -->                                
-<!--                           <button                              
+<!--                     <button                              
                               type="button"                              
                               href="editer.php"                           
                               obj='<?php echo json_encode($ligne); ?>'
@@ -76,7 +77,7 @@
                             href="editer.php?editer=<?php echo ($ligne->PK_ID_Film); ?>"
                             role="button">Editer
                           </a> 
-                        </button> 
+                       <!--  </button>  -->
                           <a 
                             class="btn btn-outline-danger " 
                             href="delete.php?delete=<?php echo ($ligne->PK_ID_Film); ?>"
