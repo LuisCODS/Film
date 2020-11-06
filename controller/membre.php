@@ -21,8 +21,10 @@ include '../dao/MembreDAO.class.php';
 
 			$membre = new Membre(null,$nom,$prenom,$profil,$courriel,null,$MDP_membre);
 			$membreDAO->insert($membre);//Si ok return 1	
-			header('Location: ../view/login/index.php');
+			header('Location: ../view/login/index.php');				
+			
 			break;
+
 
  		case 'update':
 			// $membre = new Membre($PK_ID_Membre,$nom,$prenom,$profil,$courriel,$tel_membre,$MDP_membre);
