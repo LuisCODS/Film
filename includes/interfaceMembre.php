@@ -21,23 +21,23 @@
                             Categories
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                              <a class="dropdown-item" href="../../view/film/listCategorie.php?cat=action">Action</a>
-                              <a class="dropdown-item" href="../../view/film/listCategorie.php?cat=comedie">Comedie</a>
-                              <a class="dropdown-item" href="../../view/film/listCategorie.php?cat=romance">Romance</a>
-                              <a class="dropdown-item" href="../../view/film/listCategorie.php?cat=drame">Drame</a>
-                              <a class="dropdown-item" href="../../view/film/listCategorie.php?cat=horreur">Horreur</a>
+                              <a class="dropdown-item" href="../../view/membre/listCategorie.php?cat=action">Action</a>
+                              <a class="dropdown-item" href="../../view/membre/listCategorie.php?cat=comedie">Comedie</a>
+                              <a class="dropdown-item" href="../../view/membre/listCategorie.php?cat=romance">Romance</a>
+                              <a class="dropdown-item" href="../../view/membre/listCategorie.php?cat=drame">Drame</a>
+                              <a class="dropdown-item" href="../../view/membre/listCategorie.php?cat=horreur">Horreur</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                         <a class="nav-link" href="../../view/membre/editer.php">Editer Profil <i class="far fa-user"></i></a>
+                         <a class="nav-link" href="../../view/membre/editer.php">Profil <i class="far fa-user"></i></a>
                     </li>
                     <li class="nav-item">
-                            <a class="nav-link" href="../../location/panier.php">Panier  <i class="fas fa-shopping-cart"></i></a>
+                            <a class="nav-link" href="../../view/membre/panier.php">Panier  <i class="fas fa-shopping-cart"></i></a>
                     </li>
                     <li class="nav-item">
                             <a class="nav-link" href="../../view/login/logout.php">Quitter <i class="fas fa-sign-in-alt"></i></a>
                     </li>
-    
+
             </ul>
     </div>
 </nav>

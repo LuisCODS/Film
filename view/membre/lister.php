@@ -20,6 +20,7 @@ require_once("../../includes/ConnectionPDO.php");
 				            <tr>
 				                <th>Nom</th>
 				                <th>Prenom</th>
+				                <th>Profil</th>
 				            </tr>
 				        </thead>
                             <tbody>   
@@ -34,7 +35,8 @@ require_once("../../includes/ConnectionPDO.php");
 
 				                <tr>
 				                    <td><?php echo($ligne->nom) ?></td>
-				                    <td><?php echo($ligne->prenom)?></td>                        
+				                    <td><?php echo($ligne->prenom)?></td>
+				                    <td><?php echo($ligne->profil)?></td>                        
 				                </tr>    
 				             <?php } ?>
 

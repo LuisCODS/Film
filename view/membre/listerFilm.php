@@ -2,8 +2,31 @@
 session_start();
 include '../../includes/head.php'; 
 include '../../includes/interfaceMembre.php'; 
+include '../../model/Membre.class.php';
 require_once("../../includes/ConnectionPDO.php");
+
+// GESTION SESSION
+$membre = new Membre(null,null,null,null,null,null,null,);
+
+if (isset ($_SESSION["membre"]) )
+ {
+    $membre = unserialize($_SESSION["membre"]);   
+ }
+else {
+    header("location: ../../controller/login.php");
+    exit();
+ }
+
+
 ?>
+<!-- MSN DE BIENVENUE -->
+<div class="alert alert-success " role="alert">
+  Session : <strong><?php  echo $membre->getCourriel();?></strong>
+</div>
+
+
+
+
 <div class="container">  
     <div class="row mb-5">
               <!--  ICONE + TITLE -->
@@ -12,15 +35,9 @@ require_once("../../includes/ConnectionPDO.php");
             </div>  
             <!--  ZONE RECHERCHE -->         
             <div class="col-md-3">
-              <!--<input type="text" 
-                          id="txtInput" 
-                          name="txtInput" 
-                          value="" 
-                          class="form-control" 
-                          placeholder="# ID du film">  -->
             </div> 
     </div> 
-    <!--  RENDER PAGE -->
+
          <div class="flex-container" id="listTemplate">
              <!-- CARDS--> 
             <?php 

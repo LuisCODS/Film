@@ -11,7 +11,7 @@ extract($_POST);
 
 //Evite de tricher le url
 if (  isset($_POST["action"])   &  $_POST["action"] == "login")
- {
+{
 		//echo "test envois form";
 		$requette="SELECT * FROM membre WHERE courriel=? AND MDP_membre=? ";
 		$stmt = $connexion->prepare($requette);
@@ -21,16 +21,16 @@ if (  isset($_POST["action"])   &  $_POST["action"] == "login")
 		//print_r($user);
 
 		//Le membre existe
-		if ($user == true)
-		{		
+		// if(!empty($user))
+		if ($user == true) 
+		{
 			$membre = new Membre($user->PK_ID_Membre,$user->nom,$user->prenom,$user->profil,$user->courriel,$user->tel_membre,$user->MDP_membre);
 
-			//CREE LA SESSION AVCE L'OBJET MEMBRE
+			//CREE LA SESSION AVCE L'OBJET EDITÉ
 			$_SESSION["membre"] = serialize($membre);
 
-
-			if ($user->profil == "admin")
-			{
+			//GESTION INTERFACE
+			if ($user->profil == "admin"){
 				header("location: ../view/admin/index.php");
 			}else{
 				header("location: ../view/membre/index.php");
@@ -38,7 +38,8 @@ if (  isset($_POST["action"])   &  $_POST["action"] == "login")
 
 		}else{
 
-			
+			//$_SESSION['loginErreur'] = "Courriel ou mot de passe invalide!"
+			header("location: ../view/login/index.php");
 		}
 
 }else{

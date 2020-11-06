@@ -1,20 +1,50 @@
-
-<?php 
+<?php
+session_start(); 
 include '../../includes/head.php'; 
-include '../../includes/interfaceVisiteur.php';
-?> 
+include '../../includes/interfaceMembre.php';
+include '../../model/Membre.class.php';
 
 
+    // GESTION SESSION
+    $membre = new Membre(null,null,null,null,null,null,null,);
 
-<!-- _________________  FORM AJOUTER MEMBRE _________________ --> 
+    if (isset ($_SESSION["membre"]) )
+     {
+      $membre = unserialize($_SESSION["membre"]);   
+     } else {
+      header("location: ../../controller/login.php");
+      exit();
+     }
+ ?>
+
+
+<!-- SHOW SESSION -->
+<div class="alert alert-success " role="alert">
+  Session : <strong><?php  echo $membre->getCourriel();?></strong>
+</div>
+
+<!-- _________________  FORM EDITER MEMBRE _________________ --> 
 <div class="container">
 
 <!-- onSubmit="return validerEmail('email'); -->
  <form id="formCreate" action="../../controller/membre.php" method="POST" ">
 
-           <h2>Formulaire d'inscription</h2>
+           <h2>Formulaire d'édition</h2>
 
-          <div class="form-group">
+                <input
+                 type="hidden" 
+                 id="PK_ID_Membre" 
+                 value="<?php  echo $membre->getMembreID();?>"
+                 name="PK_ID_Membre" >
+
+
+                <input
+                 type="hidden" 
+                 id="profil" 
+                 value="<?php  echo $membre->getProfil();?>"
+                 name="profil" >
+
+           <div class="form-group">
                 <label for="profil"></label>
                 <input
                  type="hidden" 
@@ -32,13 +62,13 @@ include '../../includes/interfaceVisiteur.php';
                 readonly="true" 
                 id="action" 
                 name="action" 
-                value="insert" >
+                value="update" >
           </div>
 
           <div class="form-group">
                 <label for="nom">Nom</label>
                 <input
-                autofocus
+                 value="<?php  echo $membre->getNom();?>"
                  size="40"
                  type="text" 
                  class="form-control" 
@@ -51,6 +81,7 @@ include '../../includes/interfaceVisiteur.php';
           <div class="form-group">
                 <label for="prenom">Prenom</label>
                 <input 
+                value="<?php  echo $membre->getPrenom();?>"
                 size="40"
                 type="text" 
                 class="form-control" 
@@ -60,7 +91,8 @@ include '../../includes/interfaceVisiteur.php';
 
           <div class="form-group">
                 <label for="courriel">Courriel</label>
-                <input 
+                <input
+                value="<?php  echo $membre->getCourriel();?>" 
                 required
                 id="courriel"
                 size="40"
@@ -68,6 +100,18 @@ include '../../includes/interfaceVisiteur.php';
                 class="form-control" 
                 name="courriel"
                 >
+          </div>
+
+            <div class="form-group">
+                <label for="telephone">Telephone</label>
+                <input 
+                size=""
+                value="<?php  echo $membre->getTelMembre();?>"
+                class="form-control" 
+                id="tel_membre" 
+                name="tel_membre" 
+                >
+                <p id="erreurPassword" style='color:red'></p>
           </div>
 
           <div class="form-group">
@@ -98,11 +142,13 @@ include '../../includes/interfaceVisiteur.php';
               type="submit" 
               onclick="return validerForm( )" 
               class="btn btn-primary">
-              Enregistrer
+              Editer
           </button>
     </form> 
 </div>  
 
 
 <!--  FOOTER  --> 
-<?php include '../../includes/footer.php'; ?> 
+<?php 
+include '../../includes/footer.php'; 
+?> 

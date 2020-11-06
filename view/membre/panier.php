@@ -1,9 +1,32 @@
 <?php
+session_start(); 
 require_once '../../includes/head.php'; 
-require_once '../../includes/interfaceVisiteur.php';
+require_once '../../includes/interfaceMembre.php';
 require_once("../../includes/ConnectionPDO.php");
+include '../../model/Membre.class.php';
+
+
+// GESTION SESSION
+$membre = new Membre(null,null,null,null,null,null,null,);
+
+if (isset ($_SESSION["membre"]) ){
+    $membre = unserialize($_SESSION["membre"]);   
+ }
+else {
+    header("location: ../../controller/login.php");
+    exit();
+ }
+
+
+
 ?>
-<!-- _________________ PRINCIPAL-HOME _________________ --> 
+
+<!-- MSN DE BIENVENUE -->
+<div class="alert alert-success " role="alert">
+  Session : <strong><?php  echo $membre->getCourriel();?></strong>
+</div>
+
+<!-- _________________ PANIER MEMBRE _________________ --> 
 <div class="container">
       <div class="jumbotron">
           <h1 class="display-4">Votre panier</h1>
@@ -35,29 +58,6 @@ require_once("../../includes/ConnectionPDO.php");
                             </thead>
                             <tbody>   
 
-                <?php 
-                  $requette="SELECT * FROM film WHERE  PK_ID_Film = ? ";
-                  $stmt = $connexion->prepare($requette);
-                  $stmt->execute();
-                 while($ligne=$stmt->fetch(PDO::FETCH_OBJ))
-                 {
-                 ?>
-
-                <tr>
-                    <td><img src="../../img/<?php echo($ligne->pochette)?>" width=80 height=80></td>
-                    <td><?php echo($ligne->titre) ?></td>
-                    <td></td>
-                    <td>$ <?php echo($ligne->prix)?></td>
-                    <td>
-                      <a 
-                        class="btn btn-outline-danger " 
-                        href="delete.php?delete=<?php echo ($ligne->PK_ID_Film); ?>"
-                        role="button">Supprimer
-                      </a> 
-                    </td>                         
-                </tr>    
-
-             <?php } ?>
 
                             </tbody>
                       </table>                  
@@ -67,24 +67,6 @@ require_once("../../includes/ConnectionPDO.php");
             </div> 
       </div>      
 </div>   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

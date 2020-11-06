@@ -24,9 +24,9 @@ include '../../model/Membre.class.php';
  ?>
 
 
-<!-- MSN DE BIENVENUE -->
+<!-- SHOW SESSION -->
 <div class="alert alert-success " role="alert">
- 	Bienvenue : <strong><?php  echo $membre->getCourriel();?></strong>
+ 	Session : <strong><?php  echo $membre->getCourriel();?></strong>
 </div>
 
 
