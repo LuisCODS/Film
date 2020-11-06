@@ -54,7 +54,7 @@ include '../../model/Membre.class.php';
                        <p class="card-text"><strong>Prix: <?php echo $film->prix; ?></strong></p>
                        <p class="card-text"><strong>Categorie: <?php echo $film->categorie; ?></strong></p>
                        <p class="card-text"><strong>Description: <?php echo $film->description; ?></strong></p>
-                       <a href="../location/panier.php?add=panier&PK_ID_Film=<?php echo $film->PK_ID_Film; ?> " 
+                       <a href="panier.php?add=panier&id=<?php echo $film->PK_ID_Film; ?> " 
                         class="btn btn-primary">Ajouter Panier <i class="far fa-heart"></i></a>
                   </div>
           </div>

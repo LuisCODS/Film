@@ -56,7 +56,7 @@ include '../../model/Membre.class.php';
 // =========================== FIN  PHP ZONE ===========================
 ?>
 <div class="container"> 
-    <h2>Votre panier</h2> 
+    <h2>Votre panier(<?php echo count($_SESSION['itens']); ?>)</h2>
 <div class="row">
       <div  class="col-md-12">               
           <!--TABLE DES FILM-->
@@ -77,7 +77,7 @@ include '../../model/Membre.class.php';
    //Si pas de film ajouté
    if (count($_SESSION['itens']) == 0) {
 
-        echo "est vide!";
+        //echo "est vide!";
 
    }else {
 
@@ -91,22 +91,19 @@ include '../../model/Membre.class.php';
                 $stmt->execute();
                 //$films = $stmt-> fetchall();
                 $films  = $stmt->fetch(PDO::FETCH_OBJ);
-                //var_dump($films);
+                //var_dump($films); 
                 $total = $quantite * $films->prix;
 // =========================== FIN  PHP ZONE ===========================
 ?> 
   
         <tr>
-          <td><img src="../../img/<?php echo($films->pochette)?>" width=80 height=80></td>
-          <td><?php echo($films->titre) ?></td>
-          <td><?php echo $quantite ?> </td>  
-          <td>$<?php echo $total ?></td>
+          <td><img src="../../img/<?php echo $films->pochette ?>" width=80 height=80></td>
+          <td><?php  echo$films->titre ?></td>
+          <td><?php  echo $quantite    ?></td>  
+          <td>$<?php echo $total       ?></td>
           <td>
-              <a 
-                class="btn btn-outline-danger " 
-                href="#"
-                role="button">Supprimer
-              </a> 
+           <a href="deleteItem.php?remove=panier&id=<?php echo $films->PK_ID_Film; ?> " 
+            class="btn btn-danger">Enlever</a>
           </td>                         
       </tr> 
 
@@ -121,9 +118,21 @@ include '../../model/Membre.class.php';
                 <!-- FIN TABLE -->
 
             </div> 
-      </div>      
+      </div>  
+      <hr>    
 </div>  
 
+<div class="row">
+      <div  class="col-md-9">  
+          
+      </div> 
+      <div  class="col-md-3">  
+          Subtotal: $ <br/>
+          TVQ: $<br/>
+          TPS: $<br/>
+          Total: $<br/>
+      </div>       
+</div>        
 
 <!--  FOOTER  --> 
 <?php require_once '../../includes/footer.php'; ?>
