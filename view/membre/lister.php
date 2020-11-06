@@ -41,10 +41,14 @@ require_once("../../includes/ConnectionPDO.php");
 				             <?php } ?>
 
                             </tbody>
+
 				    </table>
+				    <hr>  
 				</div>
              	<!-- FIN TABLE -->
           </div>
-      </div>      
-</div>     
+      </div>    
+
+</div> 
+
  <?php include '../../includes/footer.php'; ?>
