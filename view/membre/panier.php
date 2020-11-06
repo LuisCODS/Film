@@ -6,27 +6,25 @@ require_once("../../includes/ConnectionPDO.php");
 include '../../model/Membre.class.php';
 
 
-// GESTION SESSION
-$membre = new Membre(null,null,null,null,null,null,null,);
+  // GESTION SESSION MEMBRE
+  $membre = new Membre(null,null,null,null,null,null,null);
 
-if (isset ($_SESSION["membre"]) ){
+  if (isset ($_SESSION["membre"]) )
+   {
     $membre = unserialize($_SESSION["membre"]);   
- }
-else {
+   }
+  else {
     header("location: ../../controller/login.php");
     exit();
- }
+   }
 
-
-
-?>
-
-<!-- MSN DE BIENVENUE -->
+ ?>
+ 
+<!-- SHOW SESSION -->
 <div class="alert alert-success " role="alert">
   Session : <strong><?php  echo $membre->getCourriel();?></strong>
 </div>
 
-<!-- _________________ PANIER MEMBRE _________________ --> 
 <div class="container">
       <div class="jumbotron">
           <h1 class="display-4">Votre panier</h1>
@@ -34,43 +32,65 @@ else {
           <hr class="my-4">
 
      </div>
-</div>      
+</div>    
+
+<?php
+// =============== GESTION PANIER ===============
+
+   //Premiere fois sur la page 
+   if (!isset ($_SESSION['itens']) )
+   {
+      $_SESSION['itens'] = array();
+   }
 
 
-<div class="container"> 
-      <div class="row mb-3">
+    // ADD AU PANIER
+   if (isset($_GET['add']) && $_GET['add'] == "panier")
+   {  
+      
+       $idFilm = $_GET['id'];
+
+       //Si pas encore de produit au panier
+       if (!isset ($_SESSION['itens'][$idFilm]) )
+       {  
+            //first time itens is added
+            $_SESSION['itens'][$idFilm] = 1;
+       }else{
+            //more itens
+            $_SESSION['itens'][$idFilm] += 1;
+       } 
+   }
+
+   //DISPLAY PANIER
+
+   //Si pas de film ajouté
+   if (count($_SESSION['itens']) == 0) 
+   {
+    echo "Panier vide!";
+   }else {
+             foreach ( $_SESSION['itens'] as $idFilm => $prix) 
+             {
+                $requette="SELECT * FROM film WHERE PK_ID_Film =?";
+                $stmt = $connexion->prepare($requette);
+                $stmt->bindParam(1, $idFilm);
+                $stmt->execute();
+                $films = $stmt-> fetchall();
+
+                echo 
+
+                $films[0]["titre"].'<br/>';
+                 $prix.'<br/><hr/>';
+             }         
+    }
 
 
-      </div>  
-      <div class="row">
-            <div  class="col-md-12">               
-                <!--TABLE DES FILM-->
-                <div class="col-md-12"  >
-                      <table class="table table-hover ">
-                          <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">Pochette</th>
-                                    <th scope="col">Titre</th>
-                                    <th scope="col">Quantité</th>
-                                    <th scope="col">Prix</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>   
+?>
 
 
-                            </tbody>
-                      </table>                  
-                </div>
-                <!-- FIN TABLE -->
-
-            </div> 
-      </div>      
-</div>   
+ 
 
 
 
-<!-- ___________________________________________________ --> 
 
 <!--  FOOTER  --> 
 <?php require_once '../../includes/footer.php'; ?>

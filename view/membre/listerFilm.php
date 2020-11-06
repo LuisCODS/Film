@@ -6,7 +6,7 @@ include '../../model/Membre.class.php';
 require_once("../../includes/ConnectionPDO.php");
 
 // GESTION SESSION
-$membre = new Membre(null,null,null,null,null,null,null,);
+$membre = new Membre(null,null,null,null,null,null,null);
 
 if (isset ($_SESSION["membre"]) )
  {
@@ -19,11 +19,11 @@ else {
 
 
 ?>
-<!-- MSN DE BIENVENUE -->
+
+<!-- SHOW SESSION -->
 <div class="alert alert-success " role="alert">
   Session : <strong><?php  echo $membre->getCourriel();?></strong>
 </div>
-
 
 
 
@@ -58,7 +58,8 @@ else {
                          <p class="card-text">Prix: <?php echo $film->prix; ?>$</p>
                          <p class="card-text">Categorie: <?php echo $film->categorie; ?></p>
                          <p class="card-text">Description: <?php echo $film->description; ?></p>
-                         <a href="#" class="btn btn-primary">Ajouter Panier <i class="far fa-heart"></i></a>
+                       <a href="panier.php?add=panier&id=<?php echo $film->PK_ID_Film; ?> " 
+                        class="btn btn-primary">Ajouter Panier <i class="far fa-heart"></i></a>
 
                     </div>
             </div>

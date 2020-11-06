@@ -52,15 +52,6 @@ include '../../includes/head.php';
                     class="form-control btn btn-primary">
                     Login
             </button>  
-            <p class="text-center text-danger">
-              <?php
-                 if(isset($_SESSION['loginErreur'])) 
-                 {
-                    echo $_SESSION['loginErreur'];
-                    session_destroy($_SESSION['loginErreur']);
-                 }
-                ?>                     
-             </p>
               <a href="../membre/create.php">Pas encore membre?</a>
                    
       </form> 

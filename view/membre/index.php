@@ -3,15 +3,12 @@ session_start();
 include '../../includes/head.php'; 
 include '../../includes/interfaceMembre.php'; 
 include '../../model/Membre.class.php';
- ?>
 
 
-<?php 
 // =============  INDEX MEMBRE ======================
 
-
 	// GESTION SESSION
-	$membre = new Membre(null,null,null,null,null,null,null,);
+	$membre = new Membre(null,null,null,null,null,null,null);
 
 	if (isset ($_SESSION["membre"]) )
 	 {
@@ -23,10 +20,9 @@ include '../../model/Membre.class.php';
 	 }
  ?>
 
-
 <!-- SHOW SESSION -->
 <div class="alert alert-success " role="alert">
- 	Session : <strong><?php  echo $membre->getCourriel();?></strong>
+  Session : <strong><?php  echo $membre->getCourriel();?></strong>
 </div>
 
 
