@@ -33,7 +33,6 @@
             <div class="col-md-8">
                <h2> <i class="fas fa-film"></i>   Liste des Films </h2> 
             </div>  
-            <!--  ZONE RECHERCHE -->         
             <div class="col-md-3">
             </div> 
     </div> 

@@ -26,7 +26,6 @@ include '../../model/Membre.class.php';
   Session : <strong><?php  echo $membre->getCourriel();?></strong>
 </div>
 
-<!-- ============= FIN  GESTION SESSION MEMBRE============= -->
 
 
 
@@ -58,11 +57,30 @@ include '../../model/Membre.class.php';
    //     } 
    // }
 
-
+  // print_r($_SESSION['panier']);
 
 ?>
 <div class="container"> 
-    <h2>Votre panier(<?php echo count($_SESSION['panier']); ?>)</h2>
+
+  <!--   LIGNE 1 -->
+  <div class="row mb-5">
+
+          <!--  ICONE + TITLE -->
+        <div class="col-md-10">
+           <h2>Votre panier(<?php echo count($_SESSION['panier']); ?>)</h2>
+        </div>  
+
+        <div class="col-md-2">
+            <!-- VIDER PANIER -->         
+            <form method='post' action=''>
+                <input type='hidden' name='action'  value='remove'/>
+                <button type='submit' class='btn btn-danger'>Vider panier</button>
+            </form>
+        </div> 
+
+</div>
+
+<!--   LIGNE 2 -->
 <div class="row">
       <div  class="col-md-12">  
 
@@ -165,6 +183,23 @@ include '../../model/Membre.class.php';
           Total: $<?php echo $total ?><br/>
       </div>       
 </div>        
+
+
+
+
+<?php 
+$status="";
+//SI boutton remove pesé
+if (isset($_POST['action']) && $_POST['action'] =="remove")
+{
+    //Si pas vide 
+    if(!empty($_SESSION["panier"])) 
+    {
+      unset($_SESSION["panier"]);      
+      echo("<meta http-equiv='refresh' content='0'>"); 
+    }
+}
+?>
 
 <!--  FOOTER  --> 
 <?php require_once '../../includes/footer.php'; ?>
