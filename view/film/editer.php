@@ -1,18 +1,19 @@
 
 <?php 
-    include '../../includes/head.php'; 
-    include '../../includes/interfaceAdmin.php';
-    include '../../model/Film.class.php';
-    // include '../../dao/FilmDAO.class.php';
-    require_once("../../includes/ConnectionPDO.php");
+ session_start();
+include '../../includes/head.php'; 
+include '../../includes/interfaceAdmin.php';
+include '../../model/Film.class.php';
+// include '../../dao/FilmDAO.class.php';
+require_once("../../includes/ConnectionPDO.php");
 
-    session_start();
+   
     //extract($_POST); 
      // var_dump($id_Url);//to test
     $id_Url= "";
 
     //SI le bouton editer est pesé
-    if (isset($_GET['editer'])) 
+    if (isset($_GET['editer']) && $_GET['editer'] != "") 
     {   
         //Recupere la valeur ID envoyé par GET dans l'url
          $id_Url = $_GET['editer'];

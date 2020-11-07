@@ -21,11 +21,11 @@
                             Categories
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                              <a class="dropdown-item" href="../../view/membre/listCategorie.php?cat=action">Action</a>
-                              <a class="dropdown-item" href="../../view/membre/listCategorie.php?cat=comedie">Comedie</a>
-                              <a class="dropdown-item" href="../../view/membre/listCategorie.php?cat=romance">Romance</a>
-                              <a class="dropdown-item" href="../../view/membre/listCategorie.php?cat=drame">Drame</a>
-                              <a class="dropdown-item" href="../../view/membre/listCategorie.php?cat=horreur">Horreur</a>
+                              <a class="dropdown-item" href="../../view/membre/listerFilm.php?cat=action">Action</a>
+                              <a class="dropdown-item" href="../../view/membre/listerFilm.php?cat=comedie">Comedie</a>
+                              <a class="dropdown-item" href="../../view/membre/listerFilm.php?cat=romance">Romance</a>
+                              <a class="dropdown-item" href="../../view/membre/listerFilm.php?cat=drame">Drame</a>
+                              <a class="dropdown-item" href="../../view/membre/listerFilm.php?cat=horreur">Horreur</a>
                         </div>
                     </li>
                     <li class="nav-item">

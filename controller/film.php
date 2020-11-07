@@ -34,7 +34,7 @@
 
 		$film = new Film($PK_ID_Film,$titre,$prix,$realisateur,$categorie,$pochette,$description,$url);
 		$filmDAO->insert($film);//Si ok return 1	
-	    header("location:../view/film/lister.php");
+	    header("location:../view/admin/listerFilm.php");
 	}
 
 
@@ -98,7 +98,7 @@
 		$stmt->execute(array($titre,$prix,$realisateur,$categorie,$description,$url,$pochette, $PK_ID_Film));
 		unset($connexion);
 		unset($stmt);
-	    header("location:../view/film/lister.php");
+	    header("location:../view/admin/listerFilm.php");
 
 		// echo "<br><b>LE FILM : ".$PK_ID_Film." A ETE MODIFIE</b>";
 	}

@@ -10,7 +10,7 @@ if ( isset($_GET['remove'])   &  $_GET['remove'] == "panier")
 	//Get id film inside url
 	$idFilm = $_GET['id'];
 	//Delete seulement la session que contient l'id do film
-	unset($_SESSION['itens'][$idFilm]);
+	unset($_SESSION['panier'][$idFilm]);
 	//echo '<META HTTP-EQUIV="REFRESH" CONTENT="0; URL=panie.php"/> ';
 	header("location: panier.php");
 }

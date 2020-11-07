@@ -6,19 +6,19 @@ require_once("../../includes/ConnectionPDO.php");
 include '../../model/Membre.class.php';
 
 
+// =================== GESTION SESSION MEMBRE ===========
 
-  // GESTION SESSION MEMBRE
   $membre = new Membre(null,null,null,null,null,null,null);
 
-  if (isset ($_SESSION["membre"]) )
+  if (isset ($_SESSION["membre"]) ) 
+  {
+      $membre = unserialize($_SESSION["membre"]);   
+  }
+   else 
    {
-    $membre = unserialize($_SESSION["membre"]);   
+      header("location: ../../controller/login.php");
+      exit();
    }
-  else {
-    header("location: ../../controller/login.php");
-    exit();
-   }
-
  ?>
  
 <!-- SHOW SESSION MEMBRE -->
@@ -26,41 +26,46 @@ include '../../model/Membre.class.php';
   Session : <strong><?php  echo $membre->getCourriel();?></strong>
 </div>
 
+<!-- ============= FIN  GESTION SESSION MEMBRE============= -->
+
 
 
 <?php
 // =============== GESTION SESSION  PANIER ===============
 
-   //Premiere fois sur la page 
-   if (!isset ($_SESSION['itens']) )
+   //Premiere fois sur la page (panier vide)
+   if (!isset ($_SESSION['panier']) )
    {
       //Cree un session array
-      $_SESSION['itens'] = array();
+      $_SESSION['panier'] = array();
    }
 
 
-    // Si l'url (add==panir)  a été envoyée 
-   if (isset($_GET['add']) && $_GET['add'] == "panier")
-   {  
-      
-       $idFilm = $_GET['id'];
+   //  // Si le boutton (Ajouter Panier) a été pesé
+   // if (isset($_GET['add']) && $_GET['add'] == "panier")
+   // {  
+   //     //Get id from film
+   //     $idFilm = $_GET['id'];
 
-       //Si pas encore de produit au panier
-       if (!isset ($_SESSION['itens'][$idFilm]) )
-       {  
-            //first time itens is added
-            $_SESSION['itens'][$idFilm] = 1;
-       }else{
-            //more itens
-            $_SESSION['itens'][$idFilm] += 1;
-       } 
-   }
-// =========================== FIN  PHP ZONE ===========================
+   //     //Si panier vide
+   //     if (!isset ($_SESSION['itens'][$idFilm]) )
+   //     {  
+   //          //First time iten added
+   //          $_SESSION['itens'][$idFilm] = 1;
+   //     }else{
+   //          //more itens
+   //          $_SESSION['itens'][$idFilm] += 1;
+   //     } 
+   // }
+
+
+
 ?>
 <div class="container"> 
-    <h2>Votre panier(<?php echo count($_SESSION['itens']); ?>)</h2>
+    <h2>Votre panier(<?php echo count($_SESSION['panier']); ?>)</h2>
 <div class="row">
-      <div  class="col-md-12">               
+      <div  class="col-md-12">  
+
           <!--TABLE DES FILM-->
           <div class="col-md-12"  >
                 <table class="table table-hover ">
@@ -80,7 +85,7 @@ include '../../model/Membre.class.php';
     $subtotal=0; ; 
 
    //Si pas de film ajouté
-   if (count($_SESSION['itens']) == 0) 
+   if (count($_SESSION['panier']) == 0) 
    {
           $subtotal = 0;
           $TPS = 0;
@@ -89,10 +94,10 @@ include '../../model/Membre.class.php';
 
       }else {
 
-           // var_dump($_SESSION['itens']);
+           // var_dump($_SESSION['panier']);
            global  $subtotal;
 
-             foreach ( $_SESSION['itens'] as $idFilm => $quantite) 
+             foreach ( $_SESSION['panier'] as $idFilm => $quantite) 
              {
                 $requette="SELECT * FROM film WHERE PK_ID_Film =?";
                 $stmt = $connexion->prepare($requette);

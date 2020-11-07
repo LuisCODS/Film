@@ -51,7 +51,10 @@ function validerForm( )
 
 }//fin if
 
-
+function changeCouleurCoeur(coeurPanier)
+{
+	document.getElementById("coeurPanier").style.color = 'red';
+}
 
 
 
