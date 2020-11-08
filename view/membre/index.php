@@ -28,7 +28,7 @@ include '../../model/Membre.class.php';
 
 <div class="container">
       <div class="jumbotron">
-          <h1 class="display-4">Index membre</h1>
+          <h1 class="display-4">Bienvenue  <strong><?php  echo $membre->getNom();?></strong> </h1>
           <p class="lead"></p>
           <hr class="my-4">
           <p>Le menu en haut vous permet de gerer votre location.</p>

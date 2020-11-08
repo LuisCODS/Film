@@ -14,7 +14,7 @@ require_once("../../includes/ConnectionPDO.php");
 
 
     
-     <div class="flex-container" id="listTemplate">
+     <div class="flex-container" >
           <?php 
              // ===============  GESTION LISTAGE DES FILMS ===============
 
@@ -46,14 +46,10 @@ require_once("../../includes/ConnectionPDO.php");
                        <p class="card-text"><strong>Prix: <?php echo $film->prix; ?>$</strong></p>
                        <p class="card-text"><strong>Categorie: <?php echo $film->categorie; ?></strong></p>
                        <p class="card-text"><strong>Description: <?php echo $film->description; ?></strong></p>
-<!--                        <a href="../location/panier.php?add=panier&PK_ID_Film=<?php echo $film->PK_ID_Film; ?> " class="btn btn-primary">Ajouter Panier <i class="far fa-heart"></i></a> -->
                   </div>
-          </div>
+           </div>
 
           <?php  } ?>
-
-
-<!--          </div>    -->
-
+    </div>
 </div>  
 <?php include '../../includes/footer.php'; ?>

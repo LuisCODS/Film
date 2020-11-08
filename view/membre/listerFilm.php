@@ -40,7 +40,9 @@
          <div class="flex-container" >
              
             <?php 
-             // ===============  GESTION LISTAGE DES FILMS ===============
+           // ===============  GESTION LISTAGE DES FILMS ===============
+
+            // select par categorie
 
             if (isset($_GET['cat']) && $_GET['cat'] != "") {
                     //Get categorie name
@@ -49,6 +51,7 @@
                     $stmt = $connexion->prepare($requette);
                     $stmt->execute(array($nomCat));
             }else{
+                  //select normal
 
                   $requette="SELECT * FROM film";
                   $stmt = $connexion->prepare($requette);
@@ -60,9 +63,16 @@
              ?>      
             <!--  CARD FILM -->
             <div class="card flex-container" style="width: 20rem;  ">
-                    <a href="#" target="_blank">
-                        <img class="card-img-top"  src="../../img/<?php echo $film->pochette; ?>"width="200" height="300">
-                    </a>
+
+                    <!-- Botão para acionar modal -->
+                    <button type="button"  data-toggle="modal" data-target="#modalPreview">
+                            <img class="card-img-top"
+                             src="../../img/<?php echo $film->pochette; ?>"
+                             width="200"
+                             height="300"
+                             id="preview">
+                    </button>
+
                      <div class="card-body">
                         <h5 class="card-title">Titre: <?php echo $film->titre; ?></h5>
                          <p class="card-text" >Realisateur: <?php echo $film->realisateur; ?></p>
@@ -77,17 +87,44 @@
                         <input type='hidden' name='id_film' value="<?php echo $film->PK_ID_Film; ?>" />
                         <input type='hidden' name='action' value="ajouter" />
                         <button 
-                          type='submit' 
-                          onclick="changeCouleurCoeur('coeurPanier')" 
-                          class='btn btn-primary'>
-                          Panier 
-                          <i class="far fa-heart" id="coeurPanier"></i>
+                            type='submit' 
+                            class='btn btn-primary'>
+                            Panier 
+                            <i class="far fa-heart"></i>
                        </button>
                     </form>
 
                     </div>
             </div>
-            <!--  FIN TEMPLATE CARD FILM -->
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="modalPreview" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="TituloModalCentralizado"><?php echo $film->titre; ?></h5>
+        </div>
+        <div class="modal-body">
+
+            <video controls autoplay width="250"  poster="../../img/<?php echo $film->pochette; ?>">
+                  <source src="../../apercus/test.mp4" type="video/mp4">
+                  Sorry, your browser doesn't support embedded videos.
+          </video>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+            <!--  FIN while -->
             <?php  } ?> 
          </div>       
 </div>  
@@ -125,4 +162,9 @@
    }
 ?>
 
+
+
 <?php include '../../includes/footer.php'; ?>
+
+
+

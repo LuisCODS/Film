@@ -63,13 +63,10 @@ include '../../model/Membre.class.php';
 <div class="container"> 
 
   <!--   LIGNE 1 -->
-  <div class="row mb-5">
-
-          <!--  ICONE + TITLE -->
+  <div class="row ">
         <div class="col-md-10">
-           <h2>Votre panier(<?php echo count($_SESSION['panier']); ?>)</h2>
+            <h2>Votre panier(<?php echo count($_SESSION['panier']); ?>)</h2>
         </div>  
-
         <div class="col-md-2">
             <!-- VIDER PANIER -->         
             <form method='post' action=''>
@@ -77,10 +74,16 @@ include '../../model/Membre.class.php';
                 <button type='submit' class='btn btn-danger'>Vider panier</button>
             </form>
         </div> 
-
 </div>
-
-<!--   LIGNE 2 -->
+<!--  LIGNE 2 -->
+<div class="row mb-3"> 
+      <div class="col-md-10">
+      </div>  
+      <div class="col-md-2">
+        <a class="btn btn-primary" href="index.php" role="button"><i class="fas fa-backward"></i></a>
+      </div> 
+</div> 
+<!--   LIGNE 3 -->
 <div class="row">
       <div  class="col-md-12">  
 
@@ -188,6 +191,7 @@ include '../../model/Membre.class.php';
 
 
 <?php 
+// ======================= VIDER PANIER =======================
 $status="";
 //SI boutton remove pesé
 if (isset($_POST['action']) && $_POST['action'] =="remove")

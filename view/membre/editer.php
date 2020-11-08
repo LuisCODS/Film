@@ -23,27 +23,30 @@ include '../../model/Membre.class.php';
   Session : <strong><?php  echo $membre->getCourriel();?></strong>
 </div>
 
-<!-- _________________  FORM EDITER MEMBRE _________________ --> 
+<!-- CONTAINER -->
 <div class="container">
+       <!--  LIGNE 1 -->
+        <div class="row mb-3">
+            <div class="col-md-8">
+            </div>  
+            <div class="col-md-3">
+              <a class="btn btn-primary" href="index.php" role="button"><i class="fas fa-backward"></i></a>
+            </div> 
+      </div> 
 
-<!-- onSubmit="return validerEmail('email'); -->
+  <!-- _________________  FORM EDITER MEMBRE _________________ --> 
  <form id="formCreate" action="../../controller/membre.php" method="POST" ">
-
            <h2>Formulaire d'édition</h2>
-
                 <input
                  type="hidden" 
                  id="PK_ID_Membre" 
                  value="<?php  echo $membre->getMembreID();?>"
                  name="PK_ID_Membre" >
-
-
                 <input
                  type="hidden" 
                  id="profil" 
                  value="<?php  echo $membre->getProfil();?>"
                  name="profil" >
-
            <div class="form-group">
                 <label for="profil"></label>
                 <input
@@ -53,7 +56,6 @@ include '../../model/Membre.class.php';
                  name="profil" 
                  value="membre">
           </div>
-
           <!-- FORNECE O TIPO DE ACAO AO CONTROLLER -->
           <div class="form-group">
                 <input 
@@ -64,7 +66,6 @@ include '../../model/Membre.class.php';
                 name="action" 
                 value="update" >
           </div>
-
           <div class="form-group">
                 <label for="nom">Nom</label>
                 <input
@@ -77,7 +78,6 @@ include '../../model/Membre.class.php';
                  required>
                 <p id="erreurNom"></p>
           </div>
-
           <div class="form-group">
                 <label for="prenom">Prenom</label>
                 <input 
@@ -88,7 +88,6 @@ include '../../model/Membre.class.php';
                 name="prenom" 
                 required>
           </div>
-
           <div class="form-group">
                 <label for="courriel">Courriel</label>
                 <input
@@ -98,22 +97,18 @@ include '../../model/Membre.class.php';
                 size="40"
                 type="email" 
                 class="form-control" 
-                name="courriel"
-                >
+                name="courriel">
           </div>
-
-            <div class="form-group">
+          <div class="form-group">
                 <label for="telephone">Telephone</label>
                 <input 
                 size=""
                 value="<?php  echo $membre->getTelMembre();?>"
                 class="form-control" 
                 id="tel_membre" 
-                name="tel_membre" 
-                >
+                name="tel_membre">
                 <p id="erreurPassword" style='color:red'></p>
           </div>
-
           <div class="form-group">
                 <label for="MDP_membre">Mot de passe</label>
                 <input 
@@ -125,7 +120,6 @@ include '../../model/Membre.class.php';
                 required>
                 <p id="erreurPassword" style='color:red'></p>
           </div>
-
           <div class="form-group">
                 <label for="MDP_membreConfirm">Confirmation mot de passe</label>
                 <input 
@@ -137,7 +131,6 @@ include '../../model/Membre.class.php';
                 required>
                  <p id="erreurPasswordConfirm" style='color:red'></p>
           </div> 
-
           <button             
               type="submit" 
               onclick="return validerForm( )" 
@@ -146,7 +139,7 @@ include '../../model/Membre.class.php';
           </button>
     </form> 
 </div>  
-
+<!-- FIN CONTAINER -->
 
 <!--  FOOTER  --> 
 <?php 
