@@ -37,9 +37,7 @@ Class FilmDAO
 				$stmt->bindValue(4, $f->getCategorie() );
 				$stmt->bindValue(5, $f->getPochette() );
 				$stmt->bindValue(6, $f->getDescription() );
-
-				 return $stmt->execute();
-				unset($cn);//close  connexion
+				$stmt->execute();
 				unset($stmt);//libere la memoire
 
 		} catch (PDOException $e) {
@@ -72,16 +70,15 @@ Class FilmDAO
 				$stmt->bindValue(6, $f->getDescription() );
 				$stmt->bindValue(7, $f->getFilmID() );
 				$stmt->bindValue(8, $f->getUrl() );
-
-				return $stmt->execute();
-				unset($cn);//close  connexion
+				$stmt->execute();
 				unset($stmt);//libere la memoire
+
 		} catch (PDOException $e) {
 			echo "Erro: ". $e;
 		}
 	}
 
-/*	function delete($PK_ID_Film)
+	function delete($PK_ID_Film)
 	{
 		try {
 				$sql = 'delete from Film where PK_ID_Film = ? ';
@@ -89,18 +86,18 @@ Class FilmDAO
 				$stmt->bindValue(1, $PK_ID_Film);					
 				//return $stmt->execute();// true/False
 				$stmt->execute();// true/False
+				unset($stmt);
 								
 		} catch (PDOException $e) {
 			echo "Erro: ". $e;
 		}
-	}*/
+	}
 
 	function list()
 	{
         $sql = 'select PK_ID_Film,titre,prix,realisateur,categorie,pochette,description from Film';
 		$stmt = $this->cn->prepare($sql);
 		$stmt->execute();
-		//Récupère la prochaine ligne et la retourne en tant qu'objet
 		$rs = $stmt->fetch(PDO::FETCH_OBJ); 
 		return($rs);
 	}

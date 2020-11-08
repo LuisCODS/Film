@@ -37,7 +37,7 @@ require_once("../../includes/ConnectionPDO.php");
 
           <!--  CARD FILM -->
           <div class="card flex-container" style="width: 20rem;  ">
-                  <a href="#" target="_blank">
+                  <a href="">
                       <img class="card-img-top"  src="../../img/<?php echo $film->pochette; ?>"width="200" height="300">
                   </a>
                    <div class="card-body">

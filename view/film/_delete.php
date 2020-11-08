@@ -47,7 +47,7 @@
 		$stmt->execute(array($id_Url));
 		unset($connexion);
 		unset($stmt);
-		header("location:lister.php");
+		header("location:../admin/listerFilm.php");
 	   
 
 	}

@@ -26,7 +26,6 @@
 
 <!-- ========================= CARD ZONE ========================== -->
 
-
 <div class="container">  
     <div class="row mb-5">
               <!--  ICONE + TITLE -->
@@ -107,10 +106,10 @@
         </div>
         <div class="modal-body">
 
-            <video controls autoplay width="250"  poster="../../img/<?php echo $film->pochette; ?>">
-                  <source src="../../apercus/test.mp4" type="video/mp4">
+            <video controls autoplay preload width="250"  >
+                  <source src="<?php echo $film->url; ?>" type="video/mp4">
                   Sorry, your browser doesn't support embedded videos.
-          </video>
+            </video>
           
         </div>
         <div class="modal-footer">

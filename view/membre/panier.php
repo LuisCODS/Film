@@ -79,8 +79,12 @@ include '../../model/Membre.class.php';
 <div class="row mb-3"> 
       <div class="col-md-10">
       </div>  
+     <!--  Retour page -->
       <div class="col-md-2">
-        <a class="btn btn-primary" href="index.php" role="button"><i class="fas fa-backward"></i></a>
+           <a class="btn btn-primary"
+           href="index.php" 
+           role="button">
+           <i class="fas fa-backward"></i>  Retourner  </a>
       </div> 
 </div> 
 <!--   LIGNE 3 -->

@@ -18,7 +18,8 @@ include '../../includes/interfaceAdmin.php';
                 class="form-control" 
                 readonly="true"
                 id="action" 
-                name="action" value="insert" >
+                name="action"
+                value="insert" >
         </div>
 
         <div class="form-group">

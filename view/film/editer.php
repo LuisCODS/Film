@@ -8,15 +8,22 @@ include '../../model/Film.class.php';
 require_once("../../includes/ConnectionPDO.php");
 
    
+
+/*
+CETTE PARTIE DU CODE EST NECESSAIRE POUR REMPLIR LES CHAMPS DU FORM EDITER
+EN CREANT UNE SESSION DU FILM ET AINSIN POUVOIR CHARGER LA PAGE AVEC TOUS LES
+INFO ET ENSUITE LES ENVOYER AU CONTROLLEUR FILM.PHP.
+*/
+
     //extract($_POST); 
      // var_dump($id_Url);//to test
     $id_Url= "";
 
     //SI le bouton editer est pesé
-    if (isset($_GET['editer']) && $_GET['editer'] != "") 
+    if (isset($_GET['id']) && $_GET['id'] != "") 
     {   
         //Recupere la valeur ID envoyé par GET dans l'url
-         $id_Url = $_GET['editer'];
+         $id_Url = $_GET['id'];
 
         //Cherche le film dans la BD
         $requette="SELECT * FROM film WHERE PK_ID_Film=?";
@@ -40,6 +47,8 @@ require_once("../../includes/ConnectionPDO.php");
         }
         
 ?>
+
+
 
 
      <!-- _________________  FORM EDITER FILM _________________ --> 
