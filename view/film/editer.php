@@ -15,36 +15,36 @@ EN CREANT UNE SESSION DU FILM ET AINSIN POUVOIR CHARGER LA PAGE AVEC TOUS LES
 INFO ET ENSUITE LES ENVOYER AU CONTROLLEUR FILM.PHP.
 */
 
-    //extract($_POST); 
-     // var_dump($id_Url);//to test
-    $id_Url= "";
+//extract($_POST); 
+ // var_dump($id_Url);//to test
+$id_Url= "";
 
-    //SI le bouton editer est pesé
-    if (isset($_GET['id']) && $_GET['id'] != "") 
-    {   
-        //Recupere la valeur ID envoyé par GET dans l'url
-         $id_Url = $_GET['id'];
+//SI le bouton editer est pesé
+if (isset($_GET['id']) && $_GET['id'] != "") 
+{   
+    //Recupere la valeur ID envoyé par GET dans l'url
+     $id_Url = $_GET['id'];
 
-        //Cherche le film dans la BD
-        $requette="SELECT * FROM film WHERE PK_ID_Film=?";
-        $stmt = $connexion->prepare($requette);
-        $stmt->execute(array($id_Url));
-        $ligne=$stmt->fetch(PDO::FETCH_OBJ);
+    //Cherche le film dans la BD
+    $requette="SELECT * FROM film WHERE PK_ID_Film=?";
+    $stmt = $connexion->prepare($requette);
+    $stmt->execute(array($id_Url));
+    $ligne=$stmt->fetch(PDO::FETCH_OBJ);
 
-        //Cree un film avec les infos trouvés
-        $film = new Film($ligne->PK_ID_Film,$ligne->titre,$ligne->prix,$ligne->realisateur,$ligne->categorie,$ligne->pochette,$ligne->description,$ligne->url);
+    //Cree un film avec les infos trouvés
+    $film = new Film($ligne->PK_ID_Film,$ligne->titre,$ligne->prix,$ligne->realisateur,$ligne->categorie,$ligne->pochette,$ligne->description,$ligne->url);
 
-        //Cree un session 
-        $_SESSION["film"] = $film;
+    //Cree un session 
+    $_SESSION["film"] = $film;
+}
+
+    //$pochette=$film->pochette;
+   // var_dump($film->titre);//to test
+    
+    if (isset($_SESSION["film"]))
+    {
+        $film =$_SESSION["film"];
     }
-  
-        //$pochette=$film->pochette;
-       // var_dump($film->titre);//to test
-        
-        if (isset($_SESSION["film"]))
-        {
-            $film =$_SESSION["film"];
-        }
         
 ?>
 
@@ -53,8 +53,19 @@ INFO ET ENSUITE LES ENVOYER AU CONTROLLEUR FILM.PHP.
 
      <!-- _________________  FORM EDITER FILM _________________ --> 
 <div class="container">
-
- <form id="formEditer" enctype="multipart/form-data" action="../../controller/film.php" method="POST" >     
+    <!--  LIGNE 2 -->
+    <div class="row mb-3"> 
+          <div class="col-md-10">
+          </div>  
+         <!--  Retour page -->
+          <div class="col-md-2">
+               <a class="btn btn-primary"
+               href="../admin/listerFilm.php" 
+               role="button">
+               <i class="fas fa-backward"></i>  Retourner  </a>
+          </div> 
+    </div> 
+    <form id="formEditer" enctype="multipart/form-data" action="../../controller/film.php" method="POST" >     
   
             <h2>Editer film</h2>
 

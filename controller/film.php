@@ -45,7 +45,7 @@ if($action == "insert")
 
 
 // =================== UPDATE ===================
-
+// essa acao nao passa oelo DAO
 if($action == "update")
 {					
 	//GET ALL FORM DATA
@@ -57,38 +57,35 @@ if($action == "update")
 	$categorie=$_POST['categorie'];
 	$description=$_POST['description'];
 	$url=$_POST['url'];
-
 	$dossier="../img/";
 
+	// ce select est necessaire pour recuperer la pochette courrante
 	$requette="SELECT pochette FROM film WHERE PK_ID_Film=?";
 	$stmt = $connexion->prepare($requette);
 	$stmt->execute(array($PK_ID_Film));
 	$ligne=$stmt->fetch(PDO::FETCH_OBJ);
-
-	//IMG COURRANT
 	$pochette=$ligne->pochette;
+   
 
-	//CAS  AUTRE IMAGE FOURNIE...
-
+	//CAS NOUVELLE IMAGE
 	if($_FILES['pochette']['tmp_name']!=="")
 	{
 		//enlever ancienne pochette
-		if($pochette!="avatar.jpg"){
+		if($pochette!="avatar.jpg")
+		{
 			$rmPoc='../img/'.$pochette;
 			$tabFichiers = glob('../img/*');
 			//print_r($tabFichiers);
 			// parcourir les fichier
-			foreach($tabFichiers as $fichier){
+			foreach($tabFichiers as $fichier)
+			{
 			  if(is_file($fichier) && $fichier==trim($rmPoc)) {
 				// enlever le fichier
 				unlink($fichier);
 				break;
-				//
 			  }
 			}
 		}
-        
-        //CAS NOUVELLE IMAGE
 
 		$nomPochette=sha1($titre.time());
 		//Upload de la photo
@@ -101,13 +98,23 @@ if($action == "update")
 		@unlink($tmp); //effacer le fichier temporaire
 	}
 
-	$requette="UPDATE film set titre=?,prix=?,realisateur=?,categorie=?, description=?, url=?,pochette=? WHERE PK_ID_Film=?";
+	$requette="UPDATE film set 
+					titre=?,
+					prix=?,
+					realisateur=?,
+					categorie=?,
+					description=?,
+					url=?,
+					pochette=?
+			   WHERE PK_ID_Film=?";
+
 	$stmt = $connexion->prepare($requette);
 	$stmt->execute(array($titre,$prix,$realisateur,$categorie,$description,$url,$pochette, $PK_ID_Film));
 	unset($connexion);
 	unset($stmt);
-    header("location:../view/admin/listerFilm.php");
 
+	//$filmDAO->update($film);//Si ok return 1
+    header("location:../view/admin/listerFilm.php");
 	// echo "<br><b>LE FILM : ".$PK_ID_Film." A ETE MODIFIE</b>";
 }
 
@@ -153,12 +160,5 @@ if (isset($_GET['delete']))
 	// unset($connexion);
 	// unset($stmt);
 	header("location:../view/admin/listerFilm.php");
-   
-
-}
-
-
-
-
-
+ }
 ?>
