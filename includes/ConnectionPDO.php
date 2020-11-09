@@ -3,7 +3,7 @@
 	define("USAGER","root");
 	define("PASSE","");
 	try {
-	  $dns = 'mysql:host=localhost;dbname=bdfilms';
+	  $dns = 'mysql:host=localhost;dbname=bdfilmsvs_luis';
 	  $options = array(
 		PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
 	  );

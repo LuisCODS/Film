@@ -30,7 +30,7 @@
     <div class="row mb-5">
               <!--  ICONE + TITLE -->
             <div class="col-md-8">
-               <h2> <i class="fas fa-film"></i>   Liste des Films </h2> 
+               <h2> <i class="fas fa-film"></i>   Nos Films </h2> 
             </div>  
             <div class="col-md-3">
             </div> 
@@ -81,24 +81,24 @@
                          <!--  <a href="panier.php?add=panier&id=<?php echo $film->PK_ID_Film; ?> " 
                             class="btn btn-primary">Ajouter Panier <i class="far fa-heart"></i></a> -->
 
-                    <!-- BUTTON AJOUTER PANIER -->         
-                    <form method='post' action=''>
-                        <input type='hidden' name='id_film' value="<?php echo $film->PK_ID_Film; ?>" />
-                        <input type='hidden' name='action' value="ajouter" />
-                        <button 
-                            type='submit' 
-                            class='btn btn-primary'>
-                            Panier 
-                            <i class="far fa-heart"></i>
-                       </button>
-                    </form>
+                        <!-- BUTTON AJOUTER PANIER -->         
+                        <form method='post' action=''>
+                            <input type='hidden' name='id_film' value="<?php echo $film->PK_ID_Film; ?>" />
+                            <input type='hidden' name='action' value="ajouter" />
+                            <button 
+                                type='submit' 
+                                class='btn btn-primary'>
+                                Panier 
+                                <i class="far fa-heart"></i>
+                           </button>
+                        </form>
 
                     </div>
             </div>
 
 
   <!-- Modal -->
-  <div class="modal fade" id="modalPreview" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+<!--   <div class="modal fade" id="modalPreview" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -117,7 +117,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
 

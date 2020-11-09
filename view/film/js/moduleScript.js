@@ -2,8 +2,37 @@
 //                      FILM SCRIPT
 // ____________________________________________________________________
 //  PORTÉE GLOBAL 
-	var filmController ='../../controller/film.php';
+	//var filmController ='../../controller/film.php';
 
+
+var polystar = $('#btlOpenPreview');
+
+$polystar.on('mouseenter', function(){
+	$polystar.get(0).play();
+})
+//========================================================================
+// EDITER: prend le click du bouton Enregistrer dans form formEditer au edite.php
+// ========================================================================
+// $('#btnEnregistrer').click(()=>    
+// {		
+// 		//alert("Teste");
+// 		//get all form modal inputs  
+// 		var champs   = $("#formEditer").serialize();
+// 		var action = 'action=update';
+// 		//alert(champs);
+
+// 		$.ajax({
+// 			method: 'POST', 
+// 			url:filmController,
+// 			data: action+'&'+champs
+// 			//CALLBACK: Si update a été fait, msg = 1
+// 			}).done((msg)=>	{
+// 			//var reponse = (msg == 1) ? "Edité avec sucess!" : msg;
+// 			//alert(msg);
+   
+// 		});
+	
+// }); 
 
 //========================================================================
 // Things that should be done every time a page loads
@@ -85,28 +114,6 @@
 	
 // }); 
 
-//========================================================================
-// EDITER: prend le click du bouton Enregistrer dans form formEditer au edite.php
-// ========================================================================
-$('#btnEnregistrer').click(()=>    
-{		
-		//alert("Teste");
-		//get all form modal inputs  
-		var champs   = $("#formEditer").serialize();
-		var action = 'action=update';
-		//alert(champs);
 
-		$.ajax({
-			method: 'POST', 
-			url:filmController,
-			data: action+'&'+champs
-			//CALLBACK: Si update a été fait, msg = 1
-			}).done((msg)=>	{
-			//var reponse = (msg == 1) ? "Edité avec sucess!" : msg;
-			//alert(msg);
-   
-		});
-	
-}); 
 
 

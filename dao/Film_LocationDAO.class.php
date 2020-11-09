@@ -1,6 +1,6 @@
 <?php
 
-require_once '../includes/Connection.class.php';
+require_once '../../includes/Connection.class.php';
 
 Class Film_LocationDAO 
 {
@@ -14,16 +14,20 @@ Class Film_LocationDAO
 
 	// ______________________________ CDRUD ___________________________
 
-	function insert(Film_Location $fl)
+	function insert( $idFilm, $idMembre)
 	{
 		try {
 				$sql = 'insert into Film_Location 
-						(PK_ID_Film, PK_ID_Location)
+						fk_id_film, 
+						fk_id_membre
 						values(?,?)';
+
 				$stmt = $this->cn->prepare($sql);
-				$stmt->bindValue(1, $fl->getFilmID() );
-				$stmt->bindValue(2, $fl->getLocationID() );
-				return $stmt->execute();
+				$stmt->bindValue(1, $idFilm);
+				$stmt->bindValue(2, $idMembre);
+				$stmt->execute();
+				unset($cn);//close  connexion
+				unset($stmt);//libere la memoire					
 
 		} catch (PDOException $e) {
 			echo 'Erro: '. $e;

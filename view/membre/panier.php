@@ -12,6 +12,7 @@ include '../../model/Membre.class.php';
 
   if (isset ($_SESSION["membre"]) ) 
   {
+     //Charge la session
       $membre = unserialize($_SESSION["membre"]);   
   }
    else 
@@ -21,52 +22,34 @@ include '../../model/Membre.class.php';
    }
  ?>
  
-<!-- SHOW SESSION MEMBRE -->
+<!-- DISPLAY SESSION MEMBRE -->
 <div class="alert alert-success " role="alert">
   Session : <strong><?php  echo $membre->getCourriel();?></strong>
 </div>
 
 
 
-
 <?php
 // =============== GESTION SESSION  PANIER ===============
 
-   //Premiere fois sur la page (panier vide)
+   //Si pas de session panier (panier vide)
    if (!isset ($_SESSION['panier']) )
    {
-      //Cree un session array
+      //Cree un session 
       $_SESSION['panier'] = array();
    }
 
-
-   //  // Si le boutton (Ajouter Panier) a été pesé
-   // if (isset($_GET['add']) && $_GET['add'] == "panier")
-   // {  
-   //     //Get id from film
-   //     $idFilm = $_GET['id'];
-
-   //     //Si panier vide
-   //     if (!isset ($_SESSION['itens'][$idFilm]) )
-   //     {  
-   //          //First time iten added
-   //          $_SESSION['itens'][$idFilm] = 1;
-   //     }else{
-   //          //more itens
-   //          $_SESSION['itens'][$idFilm] += 1;
-   //     } 
-   // }
-
-  // print_r($_SESSION['panier']);
 
 ?>
 <div class="container"> 
 
   <!--   LIGNE 1 -->
   <div class="row ">
+
         <div class="col-md-10">
             <h2>Votre panier(<?php echo count($_SESSION['panier']); ?>)</h2>
         </div>  
+        
         <div class="col-md-2">
             <!-- VIDER PANIER -->         
             <form method='post' action=''>
@@ -75,6 +58,7 @@ include '../../model/Membre.class.php';
             </form>
         </div> 
 </div>
+
 <!--  LIGNE 2 -->
 <div class="row mb-3"> 
       <div class="col-md-10">
@@ -87,6 +71,7 @@ include '../../model/Membre.class.php';
            <i class="fas fa-backward"></i>  Retourner  </a>
       </div> 
 </div> 
+
 <!--   LIGNE 3 -->
 <div class="row">
       <div  class="col-md-12">  
@@ -117,7 +102,7 @@ include '../../model/Membre.class.php';
           $TVQ = 0;
           $total = 0;
 
-      }else {
+   }else {
 
            // var_dump($_SESSION['panier']);
            global  $subtotal;
@@ -154,19 +139,21 @@ include '../../model/Membre.class.php';
   
         <tr>
           <td><img src="../../img/<?php echo $films->pochette ?>" width=80 height=80></td>
-          <td><?php  echo$films->titre ?></td>
-          <td><?php  echo $quantite    ?></td>  
-          <td>$<?php echo $prix       ?></td>
+          <td><?php  echo $films->titre ?></td>
+          <td><?php  echo $quantite     ?></td>  
+          <td>$<?php echo $prix         ?></td>
           <td>
            <a href="deleteItem.php?remove=panier&id=<?php echo $films->PK_ID_Film; ?> " 
             class="btn btn-danger">Enlever</a>
           </td>                         
       </tr> 
-              <!-- foreach -->
-              <?php } ?>  
 
 
-<?php } ?>
+                  <!-- foreach -->
+                  <?php } ?>  
+
+          <!--else -->
+          <?php } ?>
 
 
                             </tbody>
@@ -179,16 +166,36 @@ include '../../model/Membre.class.php';
       <hr>    
 </div>  
 
+ <?php 
+  if (isset ($_SESSION["membre"]) ) 
+  {
+     //Charge la session
+      $membre = unserialize($_SESSION["membre"]);   
+  }
+ ?>
+
 <div class="row">
-      <div  class="col-md-9">  
-          
-      </div> 
-      <div  class="col-md-3">  
-          Subtotal: $ <?php echo $subtotal ?> <br/>
-          TPS: $<?php echo $TPS ?><br/>
-          TVQ: $<?php echo $TVQ ?><br/>
-          Total: $<?php echo $total ?><br/>
-      </div>       
+
+        <div class="col-md-9">
+
+        </div> 
+
+        <div  class="col-md-3">            
+            Subtotal: $ <?php echo $subtotal ?> <br/>
+            TPS: $<?php echo $TPS ?><br/>
+            TVQ: $<?php echo $TVQ ?><br/>
+            Total: $<?php echo $total ?><br/>
+
+
+           <!-- BOUTTON PAYER LOCATION -->         
+<!--             <form method='post' action='payerLocation.php'>
+                <input type='hidden' name='idFilm'    value='<?php  echo $films->PK_ID_Film; ?>'/>
+                <input type='hidden' name='idMembre'  value='<?php  echo $membre->getMembreID();?>'/>
+                <button type='submit' class='btn btn-success'>Finalizer et payer</button>
+            </form> -->
+             
+
+        </div>       
 </div>        
 
 
@@ -204,6 +211,7 @@ if (isset($_POST['action']) && $_POST['action'] =="remove")
     if(!empty($_SESSION["panier"])) 
     {
       unset($_SESSION["panier"]);      
+      //refresh page
       echo("<meta http-equiv='refresh' content='0'>"); 
     }
 }
