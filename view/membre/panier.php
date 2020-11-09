@@ -188,11 +188,11 @@ include '../../model/Membre.class.php';
 
 
            <!-- BOUTTON PAYER LOCATION -->         
-<!--             <form method='post' action='payerLocation.php'>
-                <input type='hidden' name='idFilm'    value='<?php  echo $films->PK_ID_Film; ?>'/>
+            <form method='post' action='payerLocation.php'>
+                <input type='hidden' name='idFilm'    value='<?php if(isset( $films->PK_ID_Film)) ?>'/>
                 <input type='hidden' name='idMembre'  value='<?php  echo $membre->getMembreID();?>'/>
                 <button type='submit' class='btn btn-success'>Finalizer et payer</button>
-            </form> -->
+            </form>
              
 
         </div>       
