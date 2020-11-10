@@ -1,7 +1,7 @@
 <?php
 session_start(); 
 require_once("../../includes/ConnectionPDO.php");
-include '../../dao/Film_LocationDAO.class.php';
+include_once '../../dao/Film_LocationDAO.class.php';
 
 /*GLOBAL*/
 $locationDAO = new Film_LocationDAO();

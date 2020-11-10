@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../../includes/head.php';
+include_once '../../includes/head.php';
 ?>
 
 <!-- =======================  FORM LOGIN ========================== -->

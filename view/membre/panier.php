@@ -3,9 +3,7 @@ session_start();
 require_once '../../includes/head.php'; 
 require_once '../../includes/interfaceMembre.php';
 require_once("../../includes/ConnectionPDO.php");
-include '../../model/Membre.class.php';
-include '../../dao/Film_LocationDAO.class.php';
-include '../../model/Film_Location.class.php';
+include_once '../../model/Membre.class.php';
 
 
 // =================== SESSION MEMBRE ===========

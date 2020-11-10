@@ -1,6 +1,6 @@
 <?php
-include '../../includes/head.php'; 
-include '../../includes/interfaceVisiteur.php'; 
+include_once '../../includes/head.php'; 
+include_once '../../includes/interfaceVisiteur.php'; 
 require_once("../../includes/ConnectionPDO.php");
 ?>
 <div class="container">  

@@ -1,8 +1,8 @@
 <?php
     session_start();
-    include '../../includes/head.php'; 
-    include '../../includes/interfaceMembre.php'; 
-    include '../../model/Membre.class.php';
+    include_once '../../includes/head.php'; 
+    include_once '../../includes/interfaceMembre.php'; 
+    include_once '../../model/Membre.class.php';
     require_once("../../includes/ConnectionPDO.php");
 
 // =================== GESTION SESSION MEMBRE ===========
