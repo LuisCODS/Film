@@ -5,11 +5,11 @@
 	//var filmController ='../../controller/film.php';
 
 
-var polystar = $('#btlOpenPreview');
+// var polystar = $('#btlOpenPreview');
 
-$polystar.on('mouseenter', function(){
-	$polystar.get(0).play();
-})
+// $polystar.on('mouseenter', function(){
+// 	$polystar.get(0).play();
+// })
 //========================================================================
 // EDITER: prend le click du bouton Enregistrer dans form formEditer au edite.php
 // ========================================================================

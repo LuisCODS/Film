@@ -7,8 +7,6 @@
 		private $PK_ID_Location;
 		private $PK_ID_Membre;
 
-        private $description;
-
 		function __Construct($PK_ID_Film, $PK_ID_Location, $PK_ID_Membre)
 		{
 			$this->PK_ID_Film 	   = $PK_ID_Film;
