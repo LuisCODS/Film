@@ -22,7 +22,8 @@
 			$this->MDP_membre = $MDP_membre;
 		}
 
-		
+
+
 		function getMembreID(){
 			return $this->PK_ID_Membre;
 		}

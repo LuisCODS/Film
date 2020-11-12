@@ -2,36 +2,9 @@
 session_start();
 include_once '../../includes/head.php'; 
 include_once '../../includes/interfaceAdmin.php';
-include_once '../../dao/FilmDAO.class.php'; 
 include_once '../../model/Membre.class.php';
-
-
-// =================== SESSION MEMBRE ===========
-
-  $membre = new Membre(null,null,null,null,null,null,null);
-
-  if (isset ($_SESSION["membre"]) ) 
-  {
-     //Charge la session
-      $membre = unserialize($_SESSION["membre"]);   
-  }
-   else 
-   {
-      header("location: ../view/login/index.php");
-      exit();
-   }
-
 ?>
-<!-- _________________ PRINCIPAL-HOME _________________ --> 
-<!-- <div class="container">
-      <div class="jumbotron">
-          <h1 class="display-4">Bienvenue, page administrative.</h1>
-          <p class="lead">Page home admin.</p>
-          <hr class="my-4">
-          <p>Le menu en haut vous permet de gerer votre location.</p>
-
-     </div>
-</div>   -->    
+ 
 
   <main role="main">
     <div class="col main pt-5 mt-3">
@@ -90,4 +63,4 @@ include_once '../../model/Membre.class.php';
   </main>
 
 
-<?php require_once '../../includes/footer.php'; ?></body>
+<?php include_once '../../includes/footer.php'; ?></body>
