@@ -11,6 +11,8 @@
 		private $pochette;
         private $description;
         private $url;
+		//le nombre de membre crees par chaque instance.
+		private $totalObjets;
 
 		function __Construct($PK_ID_Film,$titre,$prix,$realisateur,$categorie,$pochette,$description,$url)
 		{
@@ -22,9 +24,13 @@
             $this->pochette         = $pochette;
             $this->description      = $description;
             $this->url      		= $url;
+			$this->totalObjets = $totalObjets + 1;
+
 		}
 
-		
+		static function getTotalObjet(){
+			return $this->totalObjets;
+		}
 
 		function getFilmID(){
 			return $this->PK_ID_Film;

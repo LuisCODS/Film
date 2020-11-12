@@ -2,7 +2,7 @@
 <!-- ________________________________  NAVBAR ADMIN ________________________________-->
 
 <nav class="navbar navbar-expand-lg navbar-light  bg-light  mb-5">        
-<a class="navbar-brand" href="#">Films</a>
+<a class="navbar-brand" href="index.php">Films</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
 <span class="navbar-toggler-icon"></span>

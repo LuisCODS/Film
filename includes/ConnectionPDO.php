@@ -14,4 +14,19 @@
 		exit();
 	}
 
+
+
+
+  // function getAllMovies($connexion)  
+  // {
+  //       $sql = 'select PK_ID_Film,titre,prix,realisateur,categorie,pochette,description from Film';
+		// $stmt = $this->cn->prepare($sql);
+		// $stmt->execute();
+		// $rs = $stmt->fetch(PDO::FETCH_OBJ); 
+		// return($rs);
+  // }
+
+
+
+
 ?>

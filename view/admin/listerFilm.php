@@ -1,7 +1,7 @@
 <?php 
   //session_start();
-  include '../../includes/head.php'; 
-  include '../../includes/interfaceAdmin.php'; 
+  include_once '../../includes/head.php'; 
+  include_once '../../includes/interfaceAdmin.php'; 
   require_once("../../includes/ConnectionPDO.php");
 ?>
 

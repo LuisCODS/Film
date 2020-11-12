@@ -5,7 +5,8 @@ DAO (Data acce objet): classes responsables de la création du CRUD
 et de la persistance des données dans la base de données; 
 */
 
-include '../includes/Connection.class.php';
+include_once '../includes/Connection.class.php';
+
 
 Class FilmDAO 
 {

@@ -23,7 +23,6 @@
 		}
 
 		
-
 		function getMembreID(){
 			return $this->PK_ID_Membre;
 		}

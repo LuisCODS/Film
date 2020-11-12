@@ -11,7 +11,7 @@ extract($_POST);
 // LOGIN
 
 //Evite de tricher le url
-if (  isset($_POST["action"])   &  $_POST["action"] == "login")
+if (  isset($_POST["action"]) &&  $_POST["action"] == "login")
 {
 		//echo "test envois form";
 		$requette="SELECT * FROM membre WHERE courriel=? AND MDP_membre=? ";
@@ -27,7 +27,7 @@ if (  isset($_POST["action"])   &  $_POST["action"] == "login")
 		{
 			$membre = new Membre($user->PK_ID_Membre,$user->nom,$user->prenom,$user->profil,$user->courriel,$user->tel_membre,$user->MDP_membre);
 
-			//CREE LA SESSION AVCE L'OBJET EDITÉ
+			//CREE LA SESSION AVCE L'OBJET 
 			$_SESSION["membre"] = serialize($membre);
 
 			//GESTION INTERFACE
