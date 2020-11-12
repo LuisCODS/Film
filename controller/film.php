@@ -38,7 +38,7 @@ if($action == "insert")
 		$pochette=$nomPochette.$extension;
 	}
 
-	$film = new Film($PK_ID_Film,$titre,$prix,$realisateur,$categorie,$pochette,$description,$url);
+	$film = new Film($PK_ID_Film,$titre,$prix,$realisateur,$categorie,$pochette,trim($description),$url);
 	$filmDAO->insert($film);//Si ok return 1	
     header("location:../view/admin/listerFilm.php");
 }
@@ -109,7 +109,7 @@ if($action == "update")
 			   WHERE PK_ID_Film=?";
 
 	$stmt = $connexion->prepare($requette);
-	$stmt->execute(array($titre,$prix,$realisateur,$categorie,$description,$url,$pochette, $PK_ID_Film));
+	$stmt->execute(array($titre,$prix,$realisateur,$categorie,trim($description),$url,$pochette, $PK_ID_Film));
 	unset($connexion);
 	unset($stmt);
 
