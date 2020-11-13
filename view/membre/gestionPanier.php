@@ -19,7 +19,7 @@ $locationDAO = new Film_LocationDAO();
        if (!isset ($_SESSION['panier'][$idFilm]) )
        {  
             //Affecte l'indice(idFilm) à 1(premiere fois intem ajouté)
-            $_SESSION['panier'][$idFilm] = 1;
+            $_SESSION['panier'][$idFilm] = 1;            
             header("location: listerFilm.php");
        }else{
             //increment la quantité

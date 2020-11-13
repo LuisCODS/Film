@@ -4,7 +4,7 @@ require_once '../../includes/head.php';
 require_once '../../includes/interfaceMembre.php';
 require_once("../../includes/ConnectionPDO.php");
 include_once '../../model/Membre.class.php';
-include_once '../../dao/Film_LocationDAO.class.php';
+include_once '../../model/Film_Location.class.php';
 
 
 // =================== SESSION MEMBRE ===========
@@ -101,6 +101,9 @@ include_once '../../dao/Film_LocationDAO.class.php';
 
               ///PARCOUR LA SESSION DU PANIER
              global  $subtotal;
+             $arrayFilms = array();
+             //Cree location
+             $location = new Film_Location(null,$membre->getMembreID());
 
              foreach ( $_SESSION['panier'] as $idFilm => $quantite) 
              {
@@ -139,14 +142,27 @@ include_once '../../dao/Film_LocationDAO.class.php';
           <td>$<?php echo $prix         ?></td>
           <td>
             <!--===============  ENLEVER ITEN  ===============-->    
-           <a href="gestionPanier.php?remove=item&id=<?php echo $films->PK_ID_Film; ?> " 
+          <a href="gestionPanier.php?remove=item&id=<?php echo $films->PK_ID_Film; ?> "  
               class="btn btn-danger">Enlever</a>
           </td>                         
       </tr> 
 
 
+             <?php
+                //$arrayFilms[] = $films->PK_ID_Film;                
+             ?>
+
               <!-- foreach -->
               <?php } ?>  
+
+           <?php
+               //$location->setArrayFilm($_SESSION['panier']);
+               //$location->setArrayFilm($arrayFilms);
+              echo "<pre>";
+                 // print_r($_SESSION['panier'][$idFilm]);//output total de films
+                // print_r($_SESSION['panier']);//output indice/value
+              echo "</pre>";             
+            ?> 
 
       <!--else -->
       <?php } ?>

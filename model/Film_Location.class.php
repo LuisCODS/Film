@@ -2,37 +2,62 @@
 
 	Class Film_Location 
 	{
+		//array de film
+		private $films = array();
+		private $id_location;
+		private $id_membre;
 
-		private $PK_ID_Film;
-		private $PK_ID_Location;
-		private $PK_ID_Membre;
+		// function __Construct($films, $id_location, $id_membre)
+		// {
+		// 	$this->films 	   = $films;
+  //           $this->id_location  = $id_location;
+  //           $this->id_membre  = $id_membre;
+		// }
 
-		function __Construct($PK_ID_Film, $PK_ID_Location, $PK_ID_Membre)
+		function __Construct( $id_location, $id_membre)
 		{
-			$this->PK_ID_Film 	   = $PK_ID_Film;
-            $this->PK_ID_Location  = $PK_ID_Location;
-            $this->PK_ID_Membre  = $PK_ID_Membre;
+            $this->id_location  = $id_location;
+            $this->id_membre  = $id_membre;
 		}
 
-		
 
-		function getFilmID(){
-			return $this->PK_ID_Film;
+
+		public function setArrayFilm(array $arrayDeFilms)
+		{
+
+			//print_r(count($array));//get array size
+
+			//global $films = $arrayDeFilms;
+			// for ($i = 0; $i < count($arrayDeFilms); $i++)
+			// {
+			// 	//$films[$i] = $arrayDeFilms[$i];
+			// }
+
+              echo "<pre>";
+              // print_r($arrayDeFilms);
+               //print_r($films);
+               //print_r(json_encode($arrayDeFilms));
+              echo "</pre>";  
+			
 		}
-		function setFilmID($PK_ID_Film){
-			 $this->PK_ID_Film = $PK_ID_Film;
-		}
+
+		//  function getFilmID(){
+		// 	return $this->films;
+		// }
+		// function setFilmID($films){
+		// 	 $this->films = $films;
+		// }
 		function getLocationID(){
-			return $this->PK_ID_Location;
+			return $this->id_location;
 		}
-		function setLocationID($PK_ID_Location){
-			 $this->PK_ID_Location = $PK_ID_Location;
+		function setLocationID($id_location){
+			 $this->id_location = $id_location;
 		}
 		function getMembreID(){
-			return $this->PK_ID_Membre;
+			return $this->id_membre;
 		}
-		function setMembreID($PK_ID_Membre){
-			 $this->PK_ID_Membre = $PK_ID_Membre;
+		function setMembreID($id_membre){
+			 $this->id_membre = $id_membre;
 		}
 
 
