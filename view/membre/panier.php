@@ -148,21 +148,22 @@ include_once '../../model/Film_Location.class.php';
       </tr> 
 
 
-             <?php
-                //$arrayFilms[] = $films->PK_ID_Film;                
-             ?>
+     <?php
+       // $arrayFilms[] = $films->PK_ID_Film;                
+     ?>
 
-              <!-- foreach -->
-              <?php } ?>  
+      <!-- foreach -->
+      <?php } ?>  
 
-           <?php
-               //$location->setArrayFilm($_SESSION['panier']);
-               //$location->setArrayFilm($arrayFilms);
-              echo "<pre>";
-                 // print_r($_SESSION['panier'][$idFilm]);//output total de films
-                // print_r($_SESSION['panier']);//output indice/value
-              echo "</pre>";             
-            ?> 
+   <?php
+      // $location->setArrayFilm($_SESSION['panier']);
+      //  $location->setArrayFilm($arrayFilms);
+       echo "<pre>";
+       // print_r($_SESSION['panier'][$idFilm]);//output     total de films
+           // print_r($_SESSION['panier']);//output indice/value
+           // print_r(json_encode($_SESSION['panier']) );//output indice/value
+      echo "</pre>";             
+    ?> 
 
       <!--else -->
       <?php } ?>

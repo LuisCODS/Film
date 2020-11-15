@@ -22,21 +22,18 @@
 
 
 
-		public function setArrayFilm(array $arrayDeFilms)
+		public function setArrayFilm($arrayDeFilms)
 		{
-
+			//global $films;
 			//print_r(count($array));//get array size
-
+			//array_push($films,"Allo")
 			//global $films = $arrayDeFilms;
-			// for ($i = 0; $i < count($arrayDeFilms); $i++)
-			// {
-			// 	//$films[$i] = $arrayDeFilms[$i];
-			// }
+
 
               echo "<pre>";
-              // print_r($arrayDeFilms);
-               //print_r($films);
-               //print_r(json_encode($arrayDeFilms));
+		            // print_r($arrayDeFilms);
+		              //  print_r($films);
+		              //print_r(json_encode($arrayDeFilms));
               echo "</pre>";  
 			
 		}
