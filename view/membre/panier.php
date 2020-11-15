@@ -156,12 +156,13 @@ include_once '../../model/Film_Location.class.php';
       <?php } ?>  
 
    <?php
-      // $location->setArrayFilm($_SESSION['panier']);
-      //  $location->setArrayFilm($arrayFilms);
+       //$location->setArrayFilm($_SESSION['panier']);
+     //  $location->setArrayFilm($arrayFilms);
        echo "<pre>";
-       // print_r($_SESSION['panier'][$idFilm]);//output     total de films
+           // print_r($_SESSION['panier'][$idFilm]);//output     total de films
            // print_r($_SESSION['panier']);//output indice/value
-           // print_r(json_encode($_SESSION['panier']) );//output indice/value
+          // print_r(json_encode($_SESSION['panier']) );//output indice/value
+            //  print_r($arrayFilms);
       echo "</pre>";             
     ?> 
 

@@ -24,15 +24,12 @@
 
 		public function setArrayFilm($arrayDeFilms)
 		{
-			//global $films;
-			//print_r(count($array));//get array size
-			//array_push($films,"Allo")
-			//global $films = $arrayDeFilms;
-
+			global $films;
+			$size = count($arrayDeFilms);
 
               echo "<pre>";
-		            // print_r($arrayDeFilms);
-		              //  print_r($films);
+		             //print_r($arrayDeFilms);
+		           //  print_r($films);
 		              //print_r(json_encode($arrayDeFilms));
               echo "</pre>";  
 			

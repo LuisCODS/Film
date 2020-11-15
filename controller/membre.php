@@ -10,7 +10,7 @@ include '../dao/MembreDAO.class.php';
 	
 	//var_dump($action);
 
-	//CRUD
+	//GLOBAL
 	$membreDAO = new MembreDAO();
 
 
@@ -28,12 +28,10 @@ include '../dao/MembreDAO.class.php';
 
  		case 'update':
 			$membre = new Membre($PK_ID_Membre,$nom,$prenom,$profil,$courriel,$tel_membre,$MDP_membre);
-
 			 $membreDAO->update($membre);//Si ok return 1
 
 			 //CREE LA SESSION AVCE L'OBJET MEMBRE
 			 $_SESSION["membre"] = serialize($membre);
-
 			 header('Location: ../view/membre/index.php');
 			break;
 
